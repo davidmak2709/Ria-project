@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>LOG IN</title>
+	<?php $this->assets->outputCss();?>
+</head>
+<body>
+	<div class = "conatiner login well" align = "center">
+		<h2><b>PRIJAVA</b></h2>
+		<?php echo $this->tag->form("login/login"); ?>
+		<div class = "form-group">
+			<label for = "Email">Email: </label>
+			<br>
+			<?php echo $this->tag->textField(["Email","class" => "form-control"]); ?>			
+		</div>
+		<div class = "form-group">
+			<label for = "Password">Password: </label>
+			<br>
+			<?php echo $this->tag->passwordField(["Password","class"=>"form-control"]); ?>			
+		</div>
+		<div class = "btn-group">
+			<button class = "btn btn-success login-btn">Prijava</button>
+		</div>		
+		<?php echo $this->tag->endForm(); ?>
+		<br>
+		<button class = "btn btn-primary login-btn">Facebook prijava</button>
+		<button class = "btn btn-danger login-btn">Povratak</button>
+		<br>
+		<br>
+		<a class = "btn btn-info login-btn" role = "button" href="#">Registracija</a>
+	</div>
+
+</body>
+</html>

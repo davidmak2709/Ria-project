@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Registracija</title>
+	<?php echo $this->assets->outputCss(); ?>
+	<style type="text/css">
+		.input-label{
+			margin-top: 3%;
+		}
+		.images {
+		    height: 150px;
+    		border: 1px solid #000;
+    		margin: 10px 5px 0 0;
+  		}
+
+	</style>
+	
+</head>
+<body onload="myfunction()">
+
+<div class="row">
+	<div class="col-sm-2"> </div>
+	<div class="col-sm-8 well">
+		<h2><b>REGISTRACIJA</b></h2>
+		<form action="register" method = "POST">
+		
+			<div class="col-sm-4" align="right">
+				<label class="input-label">Ime:</label> <br>
+				<label class="input-label">Prezime:</label><br>
+				<label class="input-label">Username:</label><br>
+				<label class="input-label">E-mail:</label><br>
+				<label class="input-label">Ponovite E-mail:</label><br>
+				<label class="input-label">Lozinka:</label><br>
+				<label class="input-label">Ponovite Lozinku:</label><br>
+				<label class="input-label">Spol:</label><br>
+				<label class="input-label">Tip korisnika:</label><br>
+			</div>
+			<div class="col-sm-4">
+				<input type="text" name="Ime">
+				<input type="text" name="Prezime">
+				<input type="text" name="Username">
+				<input type="text" name="Email">
+				<input type="text" name="">
+				<input type="password" name="Password">
+				<input type="password" name="">
+				<div class="container">
+					<input type="radio" name="Spol" value="M"> M 
+					<input type="radio" name="Spol" value="F"> Ž
+				</div>
+				<div class="container">
+					<input id = "type_user" type="radio" name="Tip" value="Korisnik" onchange="myfunction()" checked> Korisnik 
+					<input type="radio" name="Tip" value="Vlasnik" onchange="myfunction()"> Vlasnik
+				</div>
+			</div>
+			<script type="text/javascript">
+		function myfunction(){
+			if(document.getElementById('type_user').checked){
+				document.getElementById('vlasnik').style.display = 'none';
+							document.getElementById('korisnik').style.display = 'block';
+						}
+						else{
+							document.getElementById('korisnik').style.display = 'none';
+							document.getElementById('vlasnik').style.display = 'block';
+						}
+						
+					}
+	</script>
+
+
+
+			<div id="korisnik" class="col-sm-8">
+				<br>
+				<legend style="color: #337ab7;">Korinsik</legend>
+				<div class="col-sm-6" align="right">
+					<label class="input-label">Adresa:</label> <br>
+					<label class="input-label">Grad:</label> <br>
+					<label class="input-label">Broj telefona:</label> <br>
+					<label class="input-label">Datum rođenja:</label> <br>
+				</div>
+				<div class="col-sm-4">
+					<input type="text" name="Adresa">
+					<input type="text" name="Grad">
+					<input type="text" name="Telefon">
+					<input type="text" name="Godina">
+				</div>
+			</div>
+
+			<div id="vlasnik" class="col-sm-8">
+			<br>
+			<legend style="color: #337ab7;">Vlasnik</legend>
+				<div class="col-sm-6" align="right">
+					<label class="input-label">Adresa:</label> <br>
+					<label class="input-label">Grad:</label> <br>
+					<label class="input-label">Broj telefona:</label> <br>
+				</div>
+				<div class="col-sm-4">
+					<input type="text" name="Adresa">
+					<input type="text" name="Grad">
+					<input type="text" name="Telefon">
+				</div>
+			<legend style="margin-top: 35%; color: #337ab7;">Info kluba</legend>
+			<div class="col-sm-6" align="right">
+					<label class="input-label">Ime kluba:</label> <br>
+					<label class="input-label">Adresa:</label> <br>
+					<label class="input-label">Grad:</label> <br>
+					<label class="input-label">Broj telefona:</label> <br>
+					<label class="input-label">Opis:</label> <br>
+				</div>
+				<div class="col-sm-4">
+					<input type="text" name="B-ime">
+					<input type="text" name="B-adresa">
+					<input type="text" name="B-grad">
+					<input type="text" name="B-telefon">
+					<textarea style="resize: none; margin-top: 5%;" cols="30" rows="10" maxlength="256"></textarea>
+				</div>
+				<label>Upload slika(max 10): </label>
+				<input type="file" id="files" name="files[]" multiple onchange = "checkFiles(this.files)" accept = "image/jpeg"/> 
+				<div id = "img-status" class = "error-check"></div> <br />
+				<output id="list"></output>
+				<script>
+					 function checkFiles(files) {       
+							if(files.length>10) {
+							document.getElementById("img-status").innerHTML = "Max 10 images";
+							files.slice(0,10);
+							return false;
+							}       
+					}
+					
+					function handleFileSelect(evt) {
+						var files = evt.target.files;
+
+						for (var i = 0, f; f = files[i],i < 10; i++) {
+							var control = document.getElementById("list").childElementCount;
+							if(control > 9) break;
+							
+							if (!f.type.match('image.*')) {
+								continue;
+								}
+
+						var reader = new FileReader();
+							reader.onload = (function(theFile) {
+									return function(e) {
+									var span = document.createElement('span');
+									span.innerHTML = ['<img class="images" src="', e.target.result,
+									'" title="', escape(theFile.name), '"/>'].join('');
+									document.getElementById('list').insertBefore(span, null);
+						};})(f);
+							reader.readAsDataURL(f);
+					}}
+					document.getElementById('files').addEventListener('change', handleFileSelect, false);
+			</script>
+			</div>	
+		</form>
+	</div>
+	<div class="col-sm-2"> </div>
+</div>
+
+
+
+</body>
+</html>
