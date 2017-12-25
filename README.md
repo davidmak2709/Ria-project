@@ -1,3 +1,5 @@
+# RIA projekt - Klubovi 
+
 ## 1.Uvod
 ### 1.1. Svrha dokumenta
 
@@ -134,14 +136,4 @@ Korisnicima se nudi mogućnost komentiranja događaja i klubova.
 Korisnicima se nudi mogućnost ocjenjivanja komentara i klubova.
 
 **PODJELA POSLOVA, BAZA**
-
-
-
-
-
-
-
-
-
-
 
