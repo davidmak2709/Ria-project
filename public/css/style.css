@@ -1,0 +1,15 @@
+body{
+	background-color: rgb(215,206,180); 
+}
+
+.login{
+	margin-top: 10%;
+}
+
+.login-btn{
+	width: 150px;
+}
+
+.form-control{
+	width:30%;
+}

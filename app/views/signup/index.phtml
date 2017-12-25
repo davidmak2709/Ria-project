@@ -1,0 +1,24 @@
+<h2>Sign Up for free</h2>
+
+<?php echo $this->tag->form("signup/register"); ?>
+
+<p>
+	<label for="id">ID:</label>
+	<?php echo $this->tag->textField("ID");?>
+</p>
+<p>
+	<label for="name">Name:</label>
+	<?php echo $this->tag->textField("Name");?>
+</p>
+
+<p>
+	<label for="email">E-mail:</label>
+	<?php echo $this->tag->textField("Email");?>
+</p>
+
+<p>
+	<?php echo $this->tag->submitButton("Register");?>
+</p>
+
+
+</form>
