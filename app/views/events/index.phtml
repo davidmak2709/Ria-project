@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Eventi</title>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+</head>
+</head>
+<body>
+		<!-- NAVIGACIJSKI MENI-->
+<nav class="navbar navbar-default">
+  	<div class = "container-fluid">
+  	<div class = "navbar-header">
+  		<a class = "navbar-brand" href="#">Home</a>
+  	</div>
+		<ul class = "list-inline">  <!-- DODATI RAZNE LINKOVE -->
+		  <li><a href="#">Menu 1</a></li>
+		  <li><a href="events">EVENTI</a></li>
+		  <li><a href="#">Menu 3</a></li>
+		  <li><a href="#">Menu 4</a></li>
+		</ul>
+		<ul class = "list-inline">
+			<li><a href="login"><span class = "glyphicon glyphicon-log-in">Prijava</span></a></li>
+			<li><a href="signup"><span class = "glyphicon glyphicon-user">Registracija</span></a></li>
+		</ul>
+	</div>
+</nav>
+
+<!-- CONTAINER ZA PRINTANJE POJEDNIOG EVENTA, MOZDA BOLJE U MODELU DODATI FUNKCIJU PRINT ZA SVAKI POSEBNO -->
+<div class = "container">
+<div class = "row well">
+	<div class = "col-sm-4">
+		<img src="img/images.png" class = "img-circle">
+	</div>
+	<div class = "col-sm-8">
+		<h2>Naslov</h2><br> <!-- LINK NA STRANICU S DETALJIMA -->
+		<h5>Datum:</h5>
+		<h5>Opis:</h5>
+		<p>aaaaa</p>
+		<h5>Broj dolazaka:</h5>
+		<div class="col-sm-8" align="right">
+				<a class="btn btn-primary" style="color: white;">Idem!</a> <!-- LINK NA DODAVANJE U FAVORITE -->
+		</div>
+	</div>
+</div>
+</div>
+<!-- PADINACIJA -->
+<div align = "center">
+    <ul class="pagination">
+        <li><a href="#">&laquo;</a></li>
+        <li><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li><a href="#">&raquo;</a></li>
+    </ul>
+
+
+
+</body>
+</html>
