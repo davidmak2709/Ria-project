@@ -5,6 +5,7 @@
 	use Phalcon\Mvc\Url as UrlProvider;
 	use Phalcon\Mvc\Application;
 	use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
+	use Phalcon\Session\Adapter\Files as Session;
 
 
 	define('BASE_PATH',dirname(__DIR__));
@@ -39,8 +40,14 @@
 			'host' => '127.0.0.1',
 			'username' => 'root',
 			'password' => 'root',
-			'dbname' => 'vjezba'
+			'dbname' => 'RIA'
 		]);
+	});
+
+	$di->setShared("session",function (){
+		$session = new Session();
+		$session->start();
+		return $session;
 	});
 
 

@@ -17,11 +17,11 @@
 	
 </head>
 <body onload="myfunction()">
-
+<!-- DODATI SUBMIT BTN -->
 <div class="row">
 	<div class="col-sm-2"> </div>
 	<div class="col-sm-8 well">
-		<h2><b>REGISTRACIJA</b></h2>
+		<legend><h2><b>REGISTRACIJA</b></h2></legend>
 		<form action="register" method = "POST">
 		
 			<div class="col-sm-4" align="right">
@@ -114,8 +114,8 @@
 					<textarea style="resize: none; margin-top: 5%;" cols="30" rows="10" maxlength="256"></textarea>
 				</div>
 				<label>Upload slika(max 10): </label>
-				<input type="file" id="files" name="files[]" multiple onchange = "checkFiles(this.files)" accept = "image/jpeg"/> 
-				<div id = "img-status" class = "error-check"></div> <br />
+				<input class="file" type="file" id="files" name="files[]" multiple onchange = "checkFiles(this.files)" accept = "image/jpeg"/> 
+				<div id = "img-status"></div> <br />
 				<output id="list"></output>
 				<script>
 					 function checkFiles(files) {       

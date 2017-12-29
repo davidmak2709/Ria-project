@@ -5,6 +5,11 @@
 	<?php $this->assets->outputCss();?>
 </head>
 <body>
+<!--
+- MOZDA BOLJE PREPISATI SAMO U HTML-u
+- DODATI LINKOVE NA SVE BUTTONE
+ -->
+ <?php echo $this->session->get("user");?>
 	<div class = "conatiner login well" align = "center">
 		<h2><b>PRIJAVA</b></h2>
 		<?php echo $this->tag->form("login/login"); ?>
@@ -23,11 +28,11 @@
 		</div>		
 		<?php echo $this->tag->endForm(); ?>
 		<br>
-		<button class = "btn btn-primary login-btn">Facebook prijava</button>
-		<button class = "btn btn-danger login-btn">Povratak</button>
+		<a href="" class = "btn btn-primary login-btn">Facebook prijava</a>
+		<a href="index" class = "btn btn-danger login-btn">Povratak</a>
 		<br>
 		<br>
-		<a class = "btn btn-info login-btn" role = "button" href="#">Registracija</a>
+		<a class = "btn btn-info login-btn" role = "button" href="signup">Registracija</a>
 	</div>
 
 </body>
