@@ -10,7 +10,6 @@
 		}
 
 		public function registerAction(){
-			$user = new User();
 			$values = $this->request->getPost();
 
 			
