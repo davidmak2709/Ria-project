@@ -14,7 +14,19 @@
 		private $spol;
 		private $god_rodenja;
 		private $zadnji_login;
-	
+
+
+		public function addUser($values,$pwd){
+		//$values["password"] = $pwd;
+			return $this->save($values);
+		}
+
+
+		public function getValue($name){
+			if($this->$name == null || $name == null ) return null;
+			else return $this->$name;
+		}
+		
 	}
 
 

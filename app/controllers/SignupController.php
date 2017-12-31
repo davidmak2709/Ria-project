@@ -10,9 +10,14 @@
 		}
 
 		public function registerAction(){
-			$values = $this->request->getPost();
 
-			
+			$user = User::getUserType($this->request->getPost("Tip"));
+			$user->addUser($this->request->getPost(),
+							 $this->security->hash($this->request->getPost("password")
+						)
+					);
+
+			$this->response->redirect("index");
 
 		}	
 	}

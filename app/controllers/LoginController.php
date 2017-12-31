@@ -13,22 +13,22 @@
 		}
 
 		public function loginAction(){
-			$this->user = new User();
-
 			$value = $this->request->getPost();
 		
-			$success = User::findFirst([
-				"Name = :name: AND Email = :email:",
+			$success = Korisnik::findFirst([
+				"email = :email: AND password = :password:",
 				"bind" =>[
-					"name" => $value["Email"],
-					"email" => $value["Password"],
+					"email" => $value["email"],
+					"password" => $value["password"],
 				],
 			]);
 			if($success){
-				$this->session->set("user",$value["Email"]);
-				header("LOCATION:index");
+				$this->session->set("id",$success->getValue("id_Korisnik"));
+				$this->session->set("ime",$success->getValue("ime"));
+
+				$this->response->redirect("index");
 			}else{
-				echo "Pokusaj ponovo";
+				$this->response->redirect("login");
 			}
 		}
 
