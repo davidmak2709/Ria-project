@@ -10,6 +10,22 @@
 
 		}
 
+		public function followAction($id){
+			if($this->session->has("id")){
+				$var = new Pretplata();
+
+				$var->save(
+					[
+						"id_Korisnik" => $this->session->get("id"),
+						"id_Klub" => $id,
+						"notifikacije" =>0					]
+				);
+			}
+
+			$this->view->disable();
+			$this->response->redirect("index");
+				
+		}
 	}
 
 ?>

@@ -32,6 +32,12 @@
 			}
 		}
 
-	}
+
+		public function logoutAction(){
+			$this->session->destroy();
+			$this->response->redirect("index");
+		}
+
+}
 
 ?>
