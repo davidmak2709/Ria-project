@@ -26,6 +26,25 @@
 			$this->response->redirect("index");
 				
 		}
+
+		public function unfollowAction($id){
+			if($this->session->has("id")){
+				$var = new Pretplata();
+				$val = $var->find(
+					[
+						"id_Korisnik" => $this->session->get("id"),
+						"id_Klub" => $id,
+					]
+				);
+
+				$val->delete();
+				
+			}
+
+			// $this->view->disable();
+			// $this->response->redirect("index");
+				
+		}
 	}
 
 ?>

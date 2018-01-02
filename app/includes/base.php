@@ -9,22 +9,23 @@
 		  <li><a href="#">Menu 3</a></li>
 		  <li><a href="#">Menu 4</a></li>
 		</ul>
-		<?php
-			if (!$this->session->has("id")) {
-				echo '
+		<!-- OUTPUT OVISAN O STANJU -->
+		<? if (!$this->session->has("id")): ?>
+		
 			<ul class = "list-inline">
 				<li><a href="login"><span class = "glyphicon glyphicon-log-in">Prijava</span></a></li>	
 				<li><a href="signup"><span class = "glyphicon glyphicon-user">Registracija</span></a></li>
-			</ul>';
-			}else{
-				echo '
+			</ul>
+		
+		<? else: ?>
+				
 		<ul class = "list-inline">
 			<li><a href="profile"><span class = "glyphicon glyphicon-user">
-			 '.$this->session->get("ime").'</span></a></li>
+			 '<? echo $this->session->get("ime")?>'</span></a></li>
 			<li><a href="login/logout"><span class = "glyphicon glyphicon-log-out"> Odjava</span></a></li>
+		
+		<? endif ?>
+
 		</ul>
-';
-			}
-		?>
 	</div>
 </nav>
