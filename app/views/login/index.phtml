@@ -5,20 +5,6 @@
 	<?php $this->assets->outputCss();?>
 </head>
 <body>
-
-<div id="fb-root"></div>
-<script>
-
-(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = 'https://connect.facebook.net/hr_HR/sdk.js#xfbml=1&version=v2.11&appId=532305030462501';
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
-</script>
-
-
 <!--
 - MOZDA BOLJE PREPISATI SAMO U HTML-u
 - DODATI LINKOVE NA SVE BUTTONE
@@ -42,7 +28,7 @@
 		</div>		
 		<?php echo $this->tag->endForm(); ?>
 		<br>
-		<div class="fb-login-button" data-width="150" data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
+		<a href="login/facebook" class="btn btn-primary">Prijavite se putem Facebook</a>
 		<br>
 		<br>
 		<a class = "btn btn-info login-btn" role = "button" href="signup">Registracija</a>
