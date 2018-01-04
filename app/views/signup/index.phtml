@@ -1,24 +1,159 @@
-<h2>Sign Up for free</h2>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Registracija</title>
+	<?php echo $this->assets->outputCss(); ?>
+	<style type="text/css">
+		.input-label{
+			margin-top: 3%;
+		}
+		.images {
+		    height: 150px;
+    		border: 1px solid #000;
+    		margin: 10px 5px 0 0;
+  		}
 
-<?php echo $this->tag->form("signup/register"); ?>
+	</style>
+	
+</head>
+<body onload="myfunction()" >
 
-<p>
-	<label for="id">ID:</label>
-	<?php echo $this->tag->textField("ID");?>
-</p>
-<p>
-	<label for="name">Name:</label>
-	<?php echo $this->tag->textField("Name");?>
-</p>
+<!-- DODATI SUBMIT BTN -->
+<div class="row">
+	<div class="col-sm-2"> </div>
+	<div class="col-sm-8 well">
+		<legend><h2><b>REGISTRACIJA</b></h2></legend>
+		<a class="btn btn-primary" href="signup/facebook">Facebook</a>
+		<form action="signup/register" method = "POST">
+		
+			<div class="col-sm-4" align="right">
+				<label class="input-label">Ime:</label> <br>
+				<label class="input-label">Prezime:</label><br>
+				<label class="input-label">E-mail:</label><br>
+				<label class="input-label">Ponovite E-mail:</label><br>
+				<label class="input-label">Lozinka:</label><br>
+				<label class="input-label">Ponovite Lozinku:</label><br>
+				<label class="input-label">Spol:</label><br>
+				<label class="input-label">Tip korisnika:</label><br>
+			</div>
+			<div class="col-sm-4">
+				<input type="text" name="first_name" value="<? echo $this->session->get('first_name')?>">
+				<input type="text" name="last_name" value="<? echo $this->session->get('last_name')?>">
+				<input type="text" name="email" value="<? echo $this->session->get('email')?>">
+				<input type="text" name="" value="<? echo $this->session->get('email')?>">
+				<input type="password" name="password" value="<? echo $this->session->get('id')?>">
+				<input type="password" name="">
+				<div class="container">
+					<input type="radio" name="gender" value="male"> M 
+					<input type="radio" name="gender" value="female"> Ž
+				</div>
+				<div class="container">
+					<input id = "type_user" type="radio" name="Tip" value="Korisnik" onchange="myfunction()" checked> Korisnik 
+					<input type="radio" name="Tip" value="Vlasnik" onchange="myfunction()"> Vlasnik
+				</div>
+			</div>
+			<script type="text/javascript">
+		function myfunction(){
+			if(document.getElementById('type_user').checked){
+				document.getElementById('vlasnik').style.display = 'none';
+							document.getElementById('korisnik').style.display = 'block';
+						}
+						else{
+							document.getElementById('korisnik').style.display = 'none';
+							document.getElementById('vlasnik').style.display = 'block';
+						}
+						
+					}
+	</script>
 
-<p>
-	<label for="email">E-mail:</label>
-	<?php echo $this->tag->textField("Email");?>
-</p>
-
-<p>
-	<?php echo $this->tag->submitButton("Register");?>
-</p>
 
 
-</form>
+			<div id="korisnik" class="col-sm-8">
+				<br>
+				<legend style="color: #337ab7;">Korinsik</legend>
+				<div class="col-sm-6" align="right">
+					<label class="input-label">Adresa:</label> <br>
+					<label class="input-label">Grad:</label> <br>
+				</div>
+				<div class="col-sm-4">
+					<input type="text" name="address">
+					<input type="text" name="hometown">
+				</div>
+				<button name="submit" class="btn btn-primary">Potvrdi</button>
+			</div>
+
+			<div id="vlasnik" class="col-sm-8">
+			<br>
+			<legend style="color: #337ab7;">Vlasnik</legend>
+				<div class="col-sm-6" align="right">
+					<label class="input-label">Adresa:</label> <br>
+					<label class="input-label">Grad:</label> <br>
+					
+				</div>
+				<div class="col-sm-4">
+					<input type="text" name="address">
+					<input type="text" name="hometown" value="<? echo $this->session->get('hometown')?>">
+				</div>
+			<legend style="margin-top: 35%; color: #337ab7;">Info kluba</legend>
+			<div class="col-sm-6" align="right">
+					<label class="input-label">Ime kluba:</label> <br>
+					<label class="input-label">Adresa:</label> <br>
+					<label class="input-label">Grad:</label> <br>
+					<label class="input-label">Broj telefona:</label> <br>
+					<label class="input-label">Opis:</label> <br>
+				</div>
+				<div class="col-sm-4">
+					<input type="text" name="ime">
+					<input type="text" name="adresa">
+					<input type="text" name="grad">
+					<input type="text" name="telefon">
+					<textarea style="resize: none; margin-top: 5%;" cols="30" rows="10" maxlength="256" name="opis"></textarea>
+				</div>
+				<label>Upload slika(max 10): </label>
+				<input class="file" type="file" id="files" name="files[]" multiple onchange = "checkFiles(this.files)" accept = "image/jpeg"/> 
+				<div id = "img-status"></div> <br />
+				<output id="list"></output>
+				<script>
+					 function checkFiles(files) {       
+							if(files.length>10) {
+							document.getElementById("img-status").innerHTML = "Max 10 images";
+							files.slice(0,10);
+							return false;
+							}       
+					}
+					
+					function handleFileSelect(evt) {
+						var files = evt.target.files;
+
+						for (var i = 0, f; f = files[i],i < 10; i++) {
+							var control = document.getElementById("list").childElementCount;
+							if(control > 9) break;
+							
+							if (!f.type.match('image.*')) {
+								continue;
+								}
+
+						var reader = new FileReader();
+							reader.onload = (function(theFile) {
+									return function(e) {
+									var span = document.createElement('span');
+									span.innerHTML = ['<img class="images" src="', e.target.result,
+									'" title="', escape(theFile.name), '"/>'].join('');
+									document.getElementById('list').insertBefore(span, null);
+						};})(f);
+							reader.readAsDataURL(f);
+					}}
+					document.getElementById('files').addEventListener('change', handleFileSelect, false);
+			</script>
+			<button name="submit" class="btn btn-primary">Potvrdi</button>
+			</div>	
+			
+		</form>
+	</div>
+	<div class="col-sm-2"> </div>
+</div>
+
+
+
+</body>
+</html>

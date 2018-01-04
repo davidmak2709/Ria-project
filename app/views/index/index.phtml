@@ -3,39 +3,34 @@
 <head>
 	<title>Club</title>
 	<?php $this->assets->outputCss();?>
+	<meta charset="utf-8" />
+	 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
 </head>
 <body> 
 
-<nav class="navbar navbar-default">
-  	<div class = "container-fluid">
-  	<div class = "navbar-header">
-  		<a class = "navbar-brand" href="#">Home</a>
-  	</div>
-		<ul class = "list-inline">
-		  <li><a href="#">Menu 1</a></li>
-		  <li><a href="#">Menu 2</a></li>
-		  <li><a href="#">Menu 3</a></li>
-		  <li><a href="#">Menu 4</a></li>
-		</ul>
-		<ul class = "list-inline">
-			<li><a href="login"><span class = "glyphicon glyphicon-log-in">Prijava</span></a></li>
-			<li><a href="signup"><span class = "glyphicon glyphicon-user">Registracija</span></a></li>
-		</ul>
-	</div>
-</nav>
+<!-- NAVIGACIJSKI MENI mozda bolje include jer se ponavlja-->
+<?php include("../app/includes/base.php"); ?>
+
+<!-- CONTAINER ZA PRINTANJE POJEDNIOG KLUBA, MOZDA BOLJE U MODELU DODATI FUNKCIJU PRINT ZA SVAKI POSEBNO -->
 <div class = "container">
 <div class = "row well">
 	<div class = "col-sm-4">
 		<img src="img/images.png" class = "img-circle">
 	</div>
 	<div class = "col-sm-8">
-		<h2>Rakhia bar</h2><br>
+		<h2><a>Rakhia bar</a></h2><br> <!-- LINK NA STRANICU S DETALJIMA -->
 		<h5>Adresa:</h5>
 		<h5>Ocjena:</h5>
 		<h5>Opis:</h5>
-	</div>	
+		<p>aaaaa</p>
+		<div class="col-sm-8" align="right"> <!-- Napraviti kada se vec prati da bude unfollow -->
+		<a href="index/follow/123456785" class="btn btn-primary" style="color: white;">Prati</a>
+		</div>
+	</div>
+</div>
 </div>
 
+<!-- PAGINACIJA mozda bolje include jer se ponavlja-->
 <div align = "center">
     <ul class="pagination">
         <li><a href="#">&laquo;</a></li>
@@ -47,7 +42,6 @@
         <li><a href="#">&raquo;</a></li>
     </ul>
 </div>
-
 
 </body>
 </html>

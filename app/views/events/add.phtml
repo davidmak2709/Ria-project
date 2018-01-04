@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dodaj club</title>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+</head>
+<body>
+<?php include("../app/includes/base.php"); ?>
+<!-- FORMA ZA DODAVANJE NOVOG EVENTA -->
+<div class="container">
+	<div class="row">
+		<div class="col-sm-2"></div>
+		<div class="col-sm-8">
+		<form action="addNewEvent" method="POST">
+			<div class="input-group">
+				<label>Naslov:</label>
+				<input type="text" name="naslov-dogadaj">
+			</div>
+			<br>
+			<div class="input-group">
+				<label>Vrijeme:</label>
+				<input type="date" name="vrijeme-dogadaj">
+				<input type="time" placeholder="hrs:mins" name="vrijeme-dogadaj">
+				<i style="font-size: 10px;">*zadnje polje: A&raquo;prijepodne P&raquo;poslijepodne</i>
+			</div>
+			<br>
+			<div class="input-group">
+				<label>Opis:</label>
+				<input type="text" name="opis">
+			</div>
+			<br>
+			<a class="btn btn-primary" href=""> Dodaj</a>
+		</form>
+		<br>
+		<br>
+		<br>
+		<legend>Aktivni eventi</legend>
+		<legend>Prošli eventi</legend>
+		</div>
+		<div class="col-sm-2"></div>
+		
+	</div>
+	
+</div>
+
+
+
+</body>
+</html>

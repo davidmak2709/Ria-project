@@ -135,5 +135,12 @@ Korisnicima se nudi mogućnost komentiranja događaja i klubova.
 
 Korisnicima se nudi mogućnost ocjenjivanja komentara i klubova.
 
+### 3.12. Administracija
+
+* Kontrola sustava
+* Promocija drugih u admin (dodati novu bazu podataka)
+
+
 **PODJELA POSLOVA, BAZA**
+
 

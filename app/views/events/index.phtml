@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Eventi</title>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+</head>
+</head>
+<body>
+		<!-- NAVIGACIJSKI MENI mozda bolje include-->
+<?php include("../app/includes/base.php"); ?>
+
+<!-- CONTAINER ZA PRINTANJE POJEDNIOG EVENTA, MOZDA BOLJE U MODELU DODATI FUNKCIJU PRINT ZA SVAKI POSEBNO -->
+<div class = "container">
+<div class = "row well">
+	<div class = "col-sm-4">
+		<img src="img/images.png" class = "img-circle">
+	</div>
+	<div class = "col-sm-8">
+		<h2>Naslov</h2><br> <!-- LINK NA STRANICU S DETALJIMA -->
+		<h5>Datum:</h5>
+		<h5>Opis:</h5>
+		<p>aaaaa</p>
+		<h5>Broj dolazaka:</h5>
+		<div class="col-sm-8" align="right">
+				<a class="btn btn-primary" style="color: white;">Idem!</a> <!-- LINK NA DODAVANJE U FAVORITE -->
+		</div>
+	</div>
+</div>
+</div>
+
+<!-- PAGINACIJA  mozda bolje include-->
+<div align = "center">
+    <ul class="pagination">
+        <li><a href="#">&laquo;</a></li>
+        <li><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li><a href="#">&raquo;</a></li>
+    </ul>
+
+</body>
+</html>
