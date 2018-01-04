@@ -74,8 +74,6 @@
 			$this->session->set("first_name",$userData["first_name"]);
 			$this->session->set("last_name",$userData["last_name"]);
 			$this->session->set("email",$userData["email"]);
-			$this->session->set("birthday",$userData["birthday"]);
-			$this->session->set("hometown",$userData["hometown"]);
 			$this->session->set("id",$userData["id"]);
 			$this->session->set("accessToken",(string) $accessToken);
 			

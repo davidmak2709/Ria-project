@@ -16,7 +16,8 @@
 	</style>
 	
 </head>
-<body onload="myfunction()">
+<body onload="myfunction()" >
+
 <!-- DODATI SUBMIT BTN -->
 <div class="row">
 	<div class="col-sm-2"> </div>
@@ -39,8 +40,8 @@
 				<input type="text" name="first_name" value="<? echo $this->session->get('first_name')?>">
 				<input type="text" name="last_name" value="<? echo $this->session->get('last_name')?>">
 				<input type="text" name="email" value="<? echo $this->session->get('email')?>">
-				<input type="text" name="">
-				<input type="password" name="password">
+				<input type="text" name="" value="<? echo $this->session->get('email')?>">
+				<input type="password" name="password" value="<? echo $this->session->get('id')?>">
 				<input type="password" name="">
 				<div class="container">
 					<input type="radio" name="gender" value="male"> M 
@@ -73,14 +74,10 @@
 				<div class="col-sm-6" align="right">
 					<label class="input-label">Adresa:</label> <br>
 					<label class="input-label">Grad:</label> <br>
-					<label class="input-label">Broj telefona:</label> <br>
-					<label class="input-label">Datum rođenja:</label> <br>
 				</div>
 				<div class="col-sm-4">
 					<input type="text" name="address">
 					<input type="text" name="hometown">
-					<input type="text" name="phone">
-					<input type="date" name="birthday" value="<? echo $this->session->get('birthday')?>">
 				</div>
 				<button name="submit" class="btn btn-primary">Potvrdi</button>
 			</div>
@@ -91,12 +88,11 @@
 				<div class="col-sm-6" align="right">
 					<label class="input-label">Adresa:</label> <br>
 					<label class="input-label">Grad:</label> <br>
-					<label class="input-label">Broj telefona:</label> <br>
+					
 				</div>
 				<div class="col-sm-4">
 					<input type="text" name="address">
 					<input type="text" name="hometown" value="<? echo $this->session->get('hometown')?>">
-					<input type="text" name="phone">
 				</div>
 			<legend style="margin-top: 35%; color: #337ab7;">Info kluba</legend>
 			<div class="col-sm-6" align="right">
