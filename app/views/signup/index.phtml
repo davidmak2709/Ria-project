@@ -22,12 +22,12 @@
 	<div class="col-sm-2"> </div>
 	<div class="col-sm-8 well">
 		<legend><h2><b>REGISTRACIJA</b></h2></legend>
+		<a class="btn btn-primary" href="signup/facebook">Facebook</a>
 		<form action="signup/register" method = "POST">
 		
 			<div class="col-sm-4" align="right">
 				<label class="input-label">Ime:</label> <br>
 				<label class="input-label">Prezime:</label><br>
-				<label class="input-label">Username:</label><br>
 				<label class="input-label">E-mail:</label><br>
 				<label class="input-label">Ponovite E-mail:</label><br>
 				<label class="input-label">Lozinka:</label><br>
@@ -36,16 +36,15 @@
 				<label class="input-label">Tip korisnika:</label><br>
 			</div>
 			<div class="col-sm-4">
-				<input type="text" name="ime">
-				<input type="text" name="prezime">
-				<input type="text" name="username">
-				<input type="text" name="email">
+				<input type="text" name="first_name" value="<? echo $this->session->get('first_name')?>">
+				<input type="text" name="last_name" value="<? echo $this->session->get('last_name')?>">
+				<input type="text" name="email" value="<? echo $this->session->get('email')?>">
 				<input type="text" name="">
 				<input type="password" name="password">
 				<input type="password" name="">
 				<div class="container">
-					<input type="radio" name="Spol" value="M"> M 
-					<input type="radio" name="Spol" value="F"> Ž
+					<input type="radio" name="gender" value="male"> M 
+					<input type="radio" name="gender" value="female"> Ž
 				</div>
 				<div class="container">
 					<input id = "type_user" type="radio" name="Tip" value="Korisnik" onchange="myfunction()" checked> Korisnik 
@@ -78,11 +77,12 @@
 					<label class="input-label">Datum rođenja:</label> <br>
 				</div>
 				<div class="col-sm-4">
-					<input type="text" name="Adresa">
-					<input type="text" name="Grad">
-					<input type="text" name="Telefon">
-					<input type="date" name="Godina">
+					<input type="text" name="address">
+					<input type="text" name="hometown">
+					<input type="text" name="phone">
+					<input type="date" name="birthday" value="<? echo $this->session->get('birthday')?>">
 				</div>
+				<button name="submit" class="btn btn-primary">Potvrdi</button>
 			</div>
 
 			<div id="vlasnik" class="col-sm-8">
@@ -94,9 +94,9 @@
 					<label class="input-label">Broj telefona:</label> <br>
 				</div>
 				<div class="col-sm-4">
-					<input type="text" name="Adresa">
-					<input type="text" name="Grad">
-					<input type="text" name="Telefon">
+					<input type="text" name="address">
+					<input type="text" name="hometown" value="<? echo $this->session->get('hometown')?>">
+					<input type="text" name="phone">
 				</div>
 			<legend style="margin-top: 35%; color: #337ab7;">Info kluba</legend>
 			<div class="col-sm-6" align="right">
@@ -107,11 +107,11 @@
 					<label class="input-label">Opis:</label> <br>
 				</div>
 				<div class="col-sm-4">
-					<input type="text" name="B-ime">
-					<input type="text" name="B-adresa">
-					<input type="text" name="B-grad">
-					<input type="text" name="B-telefon">
-					<textarea style="resize: none; margin-top: 5%;" cols="30" rows="10" maxlength="256"></textarea>
+					<input type="text" name="ime">
+					<input type="text" name="adresa">
+					<input type="text" name="grad">
+					<input type="text" name="telefon">
+					<textarea style="resize: none; margin-top: 5%;" cols="30" rows="10" maxlength="256" name="opis"></textarea>
 				</div>
 				<label>Upload slika(max 10): </label>
 				<input class="file" type="file" id="files" name="files[]" multiple onchange = "checkFiles(this.files)" accept = "image/jpeg"/> 
@@ -149,8 +149,9 @@
 					}}
 					document.getElementById('files').addEventListener('change', handleFileSelect, false);
 			</script>
-			</div>	
 			<button name="submit" class="btn btn-primary">Potvrdi</button>
+			</div>	
+			
 		</form>
 	</div>
 	<div class="col-sm-2"> </div>

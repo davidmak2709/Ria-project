@@ -4,20 +4,18 @@
 
 	class Korisnik extends Model{
 		private $id_Korisnik;
-		private $username;
 		private $password;
 		private $email;
-		private $ime;
-		private $prezime;
-		private $adresa;
-		private $grad;
-		private $spol;
-		private $god_rodenja;
-		private $zadnji_login;
+		private $first_name;
+		private $last_name;
+		private $address;
+		private $hometown;
+		private $gender;
+		private $birthday;
 
 
 		public function addUser($values,$pwd){
-		//$values["password"] = $pwd;
+			$values["password"] = $pwd;
 			return $this->save($values);
 		}
 

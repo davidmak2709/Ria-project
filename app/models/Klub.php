@@ -9,9 +9,13 @@
 		private $adresa;
 		private $ocjena;
 		private $id_Vlasnik;
-		private $id_Muzika;
 		private $grad;
 		private $telefon;
 		private $opis;
+
+
+		public function addKlub($values){
+			return $this->save($values);
+		}
 	}
 ?>
