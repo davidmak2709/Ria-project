@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default">
   	<div class = "container-fluid">
   	<div class = "navbar-header">
-  		<a class = "navbar-brand" href="">Home</a>
+  		<a class = "navbar-brand" href="index">Home</a>
   	</div>
 		<ul class = "list-inline">  <!-- DODATI RAZNE LINKOVE -->
 		  <li><a href="#">Menu 1</a></li>
