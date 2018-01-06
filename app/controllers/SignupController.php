@@ -12,9 +12,9 @@
 		public function registerAction(){
 			if($this->request->isPost()){
 				$user = User::getUserType($this->request->getPost("Tip"));
-				echo $this->request->getPost("last_name");
+				
 				$user->addUser($this->request->getPost(),
-								 $this->security->hash($this->request->getPost("	password"))
+								 $this->security->hash($this->request->getPost("password"))
 						);
 			
 				if ($this->request->hasFiles() == true) {

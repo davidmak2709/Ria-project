@@ -12,27 +12,25 @@
 			
 		}
 
-		public function loginAction($name = null,$pwd = null){
+		public function loginAction(){
 			
-			if($name === null)
-				$name = $this->request->getPost("email");
-					
-			var_dump($name);
-			$success = Korisnik::findFirst([
-				"ime = :email: AND password = :password:",
-				"bind" =>[
-					"email" => $name,
-					"password" => $pwd,
-				],
-			]);
-			if($success){
+			$email = $this->request->getPost("email");
+			$pwd = $this->request->getPost("password");
+
+
+			$success = Korisnik::findFirstByEmail($email);
+
+
+			if($success && $this->security->checkHash($pwd,$success->getValue("password"))){
+
 				$this->session->set("id",$success->getValue("id_Korisnik"));
-				$this->session->set("ime",$success->getValue("ime"));
-				echo "string";
-				// $this->response->redirect("index");
+				
+				$this->session->set("first_name", $success->getFirstName());
+				
+				$this->response->redirect("index");
+			
 			}else{
-				// $this->response->redirect("login");
-				echo "string1";
+				$this->response->redirect("login");
 			}
 		}
 

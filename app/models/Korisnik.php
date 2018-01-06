@@ -22,13 +22,19 @@
 		}
 
 
-		public function getValue($name){
+		public function getValue($name = null){
 			if($this->$name == null || $name == null ) return null;
 			else return $this->$name;
 		}
-		
-	}
 
+		public function getFirstName(){
+			$retVal = explode(" ",$this->ime);
+
+			return $retVal[0];
+		}
+			
+	}
+	
 
 
 ?>
