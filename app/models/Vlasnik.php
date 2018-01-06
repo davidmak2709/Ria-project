@@ -14,19 +14,16 @@
 		private $birthday;
 
 		public function addUser($values,$pwd){
-			$values["password"] = $pwd;
-			
-			$barData["ime"] = $values["ime"]; 
-			$barData["adresa"] = $values["adresa"]; 
-			$barData["grad"] = $values["grad"]; 
-			$barData["telefon"] = $values["telefon"]; 
-			$barData["opis"] = $values["opis"]; 
-			$barData["files"] = $values["files"]; 
+			$user = new Korisnik();
+			$values["id_korisnik"] = $user->addUser($values,$pwd);
 			
 			$bar = new Klub();
-			$bar->addKlub($barData);
+			if($this->save($values)){
+				$values["bar"]["id_Vlasnik"] = $this->id_Vlasnik;
+				$values["bar"]["ocjena"] = 0;
+				$bar->addKlub($values["bar"]);
+			}
 
-			var_dump($this->save($values));
 		}
 	}
 	

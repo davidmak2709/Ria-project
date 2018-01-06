@@ -10,15 +10,27 @@
 		}
 
 		public function registerAction(){
+			if($this->request->isPost()){
+				$user = User::getUserType($this->request->getPost("Tip"));
+				echo $this->request->getPost("last_name");
+				$user->addUser($this->request->getPost(),
+								 $this->security->hash($this->request->getPost("	password"))
+						);
+			
+				if ($this->request->hasFiles() == true) {
+            		foreach ($this->request->getUploadedFiles() as $file) {
+            		  mkdir("img/" . Klub::lastId() ."/");
+            		  $file->moveTo("img/". Klub::lastId() ."/". $file->getName());
+            		}
+       			}
+       			$this->response->redirect("index");
 
-			$user = User::getUserType($this->request->getPost("Tip"));
-			$user->addUser($this->request->getPost(),
-							 $this->security->hash($this->request->getPost("password"))
-					);
-			$this->response->redirect("index");
+			}else{
+				$this->response->redirect("signup/index");
+			}
+			
 
 		}
-
 
 		public function facebookAction(){
 			$this->session->start();
@@ -71,6 +83,7 @@
 			
 			$response = $fb->get("/me?fields=id,first_name,last_name,gender,email,hometown,address", $accessToken);
 			$userData = $response->getGraphNode()->asArray();
+			
 			$this->session->set("first_name",$userData["first_name"]);
 			$this->session->set("last_name",$userData["last_name"]);
 			$this->session->set("email",$userData["email"]);

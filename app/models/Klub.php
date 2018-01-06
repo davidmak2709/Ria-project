@@ -15,7 +15,14 @@
 
 
 		public function addKlub($values){
-			return $this->save($values);
+		
+			$this->save($values);
+
+		}
+
+		static function lastId(){
+			$lastRecord =  Klub::find();
+			return $lastRecord->getLast()->id_Klub;
 		}
 	}
 ?>

@@ -17,7 +17,8 @@
 		public function addUser($values,$pwd){
 			$values["password"] = $pwd;
 			$values["ime"] = $values["first_name"] ." ". $values["last_name"];
-			return $this->save($values);
+			if($this->save($values))
+				return $this->id_Korisnik;
 		}
 
 
