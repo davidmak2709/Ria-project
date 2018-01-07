@@ -31,6 +31,13 @@
 			name[1].readOnly = true;
 
 		}
+
+		var name = document.getElementsByClassName("email");
+		if(name && name[0].value && name[1].value){
+			name[0].readOnly = true;
+			name[1].readOnly = true;
+
+		}
 	}
 
 </script>	
@@ -60,8 +67,8 @@
 				<input class="name" type="text" name="first_name" value="<?php echo $this->session->get('first_name')?>">
 				<input class="name" type="text" name="last_name" value="<?php echo $this->session->get('last_name')?>">
 				
-				<input type="text" name="email" value="<?php echo $this->session->get('email')?>">
-				<input type="text" name="email" value="<?php echo $this->session->get('email')?>">
+				<input class = "email" type="text" name="email" value="<?php echo $this->session->get('email')?>">
+				<input class = "email" type="text" name="email" value="<?php echo $this->session->get('email')?>">
 				
 				<input type="password" name="password" value="<?php echo $this->session->get('id')?>">
 				<input type="password" name="password" value="<?php echo $this->session->get('id')?>">

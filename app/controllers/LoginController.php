@@ -12,10 +12,13 @@
 			
 		}
 
-		public function loginAction(){
+		public function loginAction($email = null, $pwd = null){
 			
-			$email = $this->request->getPost("email");
-			$pwd = $this->request->getPost("password");
+			if ($email == null && $pwd == null) {
+				$email = $this->request->getPost("email");
+				$pwd = $this->request->getPost("password");
+				
+			}
 
 
 			$success = Korisnik::findFirstByEmail($email);
@@ -90,10 +93,10 @@
 				$accessToken = $oAuth2Client->getLongLivedAccessToken($accessToken);
 			}
 			
-			$response = $fb->get("/me?fields=id,name,email", $accessToken);
+			$response = $fb->get("/me?fields=id,email", $accessToken);
 			$userData = $response->getGraphNode()->asArray();
 
-			$this->loginAction($userData["name"],$this->security->hash($userData["id"]));
+			$this->loginAction($userData["email"],$userData["id"]);
 			
 		}	
 		

@@ -1,5 +1,13 @@
 <?php 
 	
+	/*
+		Problemi:
+
+		1. User s tim mailom vec postoji di da ga redirectam
+		2. Ako mail nije javan onda kako da nastavimo s fb login
+
+	*/
+
 	use Phalcon\Mvc\Controller;
 	require_once APP_PATH . "/Facebook/autoload.php";
 	class SignupController extends Controller{
@@ -18,9 +26,11 @@
 						);
 			
 				if ($this->request->hasFiles() == true) {
+					$dirName = Klub::lastId();
+					
+					mkdir("img/" . $dirName  ."/");
             		foreach ($this->request->getUploadedFiles() as $file) {
-            		  mkdir("img/" . Klub::lastId() ."/");
-            		  $file->moveTo("img/". Klub::lastId() ."/". $file->getName());
+            		     $file->moveTo("img/". $dirName ."/". $file->getName());
             		}
        			}
        			$this->response->redirect("index");
@@ -90,6 +100,7 @@
 			$this->session->set("id",$userData["id"]);
 			$this->session->set("accessToken",(string) $accessToken);
 			
+				
 			$this->response->redirect("signup");
 		}	
 	}
