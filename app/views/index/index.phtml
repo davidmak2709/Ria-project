@@ -3,32 +3,16 @@
 <head>
 	<title>Club</title>
 	<?php $this->assets->outputCss();?>
-	<meta charset="utf-8" />
-	 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
 </head>
 <body> 
 
 <!-- NAVIGACIJSKI MENI mozda bolje include jer se ponavlja-->
 <?php include("../app/includes/base.php"); ?>
 
+
 <!-- CONTAINER ZA PRINTANJE POJEDNIOG KLUBA, MOZDA BOLJE U MODELU DODATI FUNKCIJU PRINT ZA SVAKI POSEBNO -->
-<div class = "container">
-<div class = "row well">
-	<div class = "col-sm-4">
-		<img src="img/images.png" class = "img-circle">
-	</div>
-	<div class = "col-sm-8">
-		<h2><a>Rakhia bar</a></h2><br> <!-- LINK NA STRANICU S DETALJIMA -->
-		<h5>Adresa:</h5>
-		<h5>Ocjena:</h5>
-		<h5>Opis:</h5>
-		<p>aaaaa</p>
-		<div class="col-sm-8" align="right"> <!-- Napraviti kada se vec prati da bude unfollow -->
-		<a href="index/follow/123456785" class="btn btn-primary" style="color: white;">Prati</a>
-		</div>
-	</div>
-</div>
-</div>
+<?php include("../app/includes/bars.php"); ?>
 
 <!-- PAGINACIJA mozda bolje include jer se ponavlja-->
 <div align = "center">

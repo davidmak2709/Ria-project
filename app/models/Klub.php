@@ -14,6 +14,11 @@
 		private $opis;
 
 
+
+		public function getValue($name){
+			return $this->$name;
+		}
+
 		public function addKlub($values){
 		
 			$this->save($values);
@@ -24,5 +29,6 @@
 			$lastRecord =  Klub::find();
 			return $lastRecord->getLast()->id_Klub;
 		}
+
 	}
 ?>
