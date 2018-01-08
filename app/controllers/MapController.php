@@ -7,7 +7,7 @@ class MapController extends Controller{
 
 	public function indexAction(){
 		$this->request->getQuery("address", "string");		
-		$this->view->address = $_GET["address"];
+		$this->view->address = $_GET["address"].',rijeka';
 
 	}
 
