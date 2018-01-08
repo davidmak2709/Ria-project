@@ -20,15 +20,44 @@
 		}
 
 		public function addKlub($values){
-		
-			$this->save($values);
-
+			return $this->save($values);
 		}
-
+		
+		public function getIdKlub(){
+			return $this->id_Klub;
+		}
+		
+		public function getIme(){
+			return $this->ime;
+		}
+		
+		public function getAdresa(){
+			return $this->adresa;
+		}
+		
+		public function getOcjena(){
+			return $this->ocjena;
+		}
+		
+		public function getIdVlasnik(){
+			return $this->id_Vlasnik;
+		}
+		
+		public function getGrad(){
+			return $this->grad;
+		}
+		
+		public function getTelefon(){
+			return $this->telefon;
+		}
+		
+		public function getOpis(){
+			return $this->opis;
+		}
+		
 		static function lastId(){
 			$lastRecord =  Klub::find();
 			return $lastRecord->getLast()->id_Klub;
 		}
-
 	}
 ?>
