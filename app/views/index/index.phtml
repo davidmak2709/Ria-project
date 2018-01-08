@@ -5,6 +5,16 @@
 	<?php $this->assets->outputCss();?>
 	<meta charset="utf-8" />
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+
+	<style type="text/css">
+		.follow-btn{
+			color: white;
+			width: 65%;
+			margin-top: 10%;
+
+		}
+	</style>
+
 </head>
 <body> 
 
@@ -25,8 +35,18 @@
 		<h5>Ocjena: <?php echo $item->ocjena; ?></h5>
 		<h5>Opis:</h5>
 		<p><?php echo $item->opis; ?></p>
-		<div class="col-sm-8" align="right"> <!-- Napraviti kada se vec prati da bude unfollow -->
-		<a href="/index/follow/<?= $item->id_Klub; ?>" class="btn btn-primary" style="color: white;">Prati</a>
+		<div class="col-sm-8" align="right"> 
+
+		<? if (!Pretplata::isFollowed($this->session->get("id"),$item->id_Klub)): ?>
+			
+			<a href="http://dir.dev/index/follow/<?= $item->id_Klub; ?>" class="btn btn-primary follow-btn">Prati</a>
+						
+		<? else: ?>
+				
+			<a href="http://dir.dev/index/unfollow/<?= $item->id_Klub; ?>" class="btn btn-primary follow-btn">Odprati</a>
+		
+		<? endif ?>
+		
 		</div>
 	</div>
 </div>

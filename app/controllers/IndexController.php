@@ -35,7 +35,7 @@
 			}
 
 			$this->view->disable();
-			$this->response->redirect("index");
+			return $this->response->redirect($_SERVER['HTTP_REFERER']);
 				
 		}
 
@@ -53,8 +53,8 @@
 				
 			}
 
-			// $this->view->disable();
-			// $this->response->redirect("index");
+			$this->view->disable();
+			return $this->response->redirect($_SERVER['HTTP_REFERER']);
 				
 		}
 	}
