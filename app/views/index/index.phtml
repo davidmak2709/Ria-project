@@ -20,8 +20,8 @@
 		<img src="img/images.png" class = "img-circle">
 	</div>
 	<div class = "col-sm-8">
-		<h2><a><?php echo $item->ime; ?></a></h2><br> <!-- LINK NA STRANICU S DETALJIMA -->
-		<h5><a href="/map?address='<?php echo $item->adresa; ?>'">Adresa:</a><?php echo $item->adresa; ?></h5>
+		<h2><a href = "/details?id=<?=$item->id_Klub;?>"><?php echo $item->ime; ?></a></h2><br> <!-- LINK NA STRANICU S DETALJIMA -->
+		<h5>Adresa:</a><?php echo $item->adresa; ?></h5>
 		<h5>Ocjena: <?php echo $item->ocjena; ?></h5>
 		<h5>Opis:</h5>
 		<p><?php echo $item->opis; ?></p>
