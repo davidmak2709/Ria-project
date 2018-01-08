@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Club - <?= $bar->getIme();?></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+	<style>
+	img{
+		width: 100%;
+		height: 500px;
+	}
+
+	b{
+		color: #337ab7;
+	}
+	span{
+		margin-left: 30%;
+		margin-top: 10%;
+	}
+
+  	.carousel-inner{
+      	width: 100%;
+      	height: 100%;
+ 	}
+  </style>
+
+</head>
+<body>
+<div class = "row well">
+	<div class="col-sm-12">
+		<h1 class="display-3" align="center"><?= $bar->getIme();?></h1>
+	</div>
+	<hr>	
+	<div class="col-sm-12">
+		
+		<div id="demo" class="carousel slide" data-ride="carousel">
+
+  
+  		<ul class="carousel-indicators">
+  		  <li data-target="#demo" data-slide-to="0" class="active"></li>
+  		  <li data-target="#demo" data-slide-to="1"></li>
+  		  <li data-target="#demo" data-slide-to="2"></li>
+  		</ul>
+		
+		  		<div class="carousel-inner">
+    				<div class="carousel-item active">
+    				  <img src="img/images.png">
+    				</div>
+    				<div class="carousel-item">
+    				  <img src="img/images.jpg">
+    				</div>
+    				<div class="carousel-item">
+    				  <img src="img/i1mages.jpeg">
+    				</div>
+  				</div>
+		
+		  	<a class="carousel-control-prev" href="#demo" data-slide="prev">
+		  		  <span class="carousel-control-prev-icon"></span>
+		  	</a>
+			<a class="carousel-control-next" href="#demo" data-slide="next">
+		  		  <span class="carousel-control-next-icon"></span>
+			</a>
+		
+		</div>
+		
+		
+	</div>
+	<div class="col-sm-1"></div>
+
+	<div class="col-sm-2"></div>
+	<div class="col-sm-8">
+		<blockquote class="blockquote">
+    			<p style="margin-top: 10%;"><?= $bar->getOpis();?></p>
+    	</blockquote>
+	</div>
+	<div class="col-sm-2"></div>
+
+	<div class="col-sm-4">
+		<h5><b>Adresa</b></h5>
+			<span style="margin-left: 30%;"><?= $bar->getAdresa();?></span> 
+		
+		<h5><b>Grad</b></h5>	
+			<span><?= $bar->getGrad();?> </span>
+		<h5><b>Ocjena</b></h5>
+			<span><?= $bar->getOcjena();?></span>
+		<h5><b>Telefon</b></h5>
+			<span><?= $bar->getTelefon();?></span>
+	</div>
+
+	<div class="col-sm-6">
+		<div class = "container" height=400px>
+ 			 <iframe width=100% height=350px src="https://www.google.com/maps/embed/v1/place?q=<?= $bar->getAdresa();?>,Rijeka		
+    		  &zoom=16
+    		  &key=AIzaSyAFjIZDe8vEiCE99V5Sl7xxKXlhyOts_ew">
+  			</iframe>
+		</div>
+	</div>
+	
+	
+</div>
+
+</body>
+</html>
