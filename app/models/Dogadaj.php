@@ -4,9 +4,15 @@
 	class Dogadaj extends Model{
 		private $id_Dogadaj;
 		private $id_Klub;
-		private $id_Akcije;
 		private $vrijeme;
 		private $opis;
+
+
+		public function addDogadaj($values){
+			$values["rezervacija"] = 0;
+			$this->save($values);
+
+		}
 	}
 	
 ?>
