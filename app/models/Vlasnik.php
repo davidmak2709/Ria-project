@@ -4,15 +4,8 @@
 	class Vlasnik extends Model{
 		
 		private $id_Vlasnik;
-		private $first_name;
-		private $last_name;
-		private $password;
-		private $email;
-		private $gender;
-		private $address;
-		private $hometown;
-		private $birthday;
-
+		private $id_Korisnik;
+		
 		public function addUser($values,$pwd){
 			$user = new Korisnik();
 			$values["id_korisnik"] = $user->addUser($values,$pwd);
