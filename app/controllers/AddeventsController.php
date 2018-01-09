@@ -29,7 +29,7 @@ class AddeventsController extends Controller{
 			$values["rezervacija"] = 0;
 			$dogadaj->addDogadaj($this->request->getPost());
 			
-			$this->response->redirect("events");
+			// $this->response->redirect("events");
 
 	}
 }
