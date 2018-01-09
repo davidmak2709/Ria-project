@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Club - <?= $bar->getIme();?></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+	<style>
+	html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+	}
+
+	img{
+		width: 100%;
+		height: 500px;
+	}
+
+	b{
+		color: #337ab7;
+	}
+	span{
+		margin-left: 30%;
+		margin-top: 10%;
+	}
+
+  	.carousel-inner{
+      	width: 100%;
+      	height: 100%;
+ 	}
+
+ 	.category{
+ 		margin-top: 75%;
+ 		margin-left: 50%;
+ 	}
+  </style>
+
+</head>
+<body>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/hr_HR/sdk.js#xfbml=1&version=v2.11&appId=636102426778495';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+</script>
+
+
+<div class = "row well">
+	<div class="col-sm-12">
+		<h1 class="display-3" align="center"><?= $bar->getIme();?></h1>
+	</div>
+	<hr>	
+	<div class="col-sm-12">
+		
+		<div id="demo" class="carousel slide" data-ride="carousel">
+
+  
+  		<ul class="carousel-indicators">
+  		  <li data-target="#demo" data-slide-to="0" class="active"></li>
+  		  <li data-target="#demo" data-slide-to="1"></li>
+  		  <li data-target="#demo" data-slide-to="2"></li>
+  		</ul>
+		
+		  		<div class="carousel-inner">
+    				<div class="carousel-item active">
+    				  <img src="img/images.png">
+    				</div>
+    				<div class="carousel-item">
+    				  <img src="img/images.jpg">
+    				</div>
+    				<div class="carousel-item">
+    				  <img src="img/images1.jpeg">
+    				</div>
+  				</div>
+		
+		  	<a class="carousel-control-prev" href="#demo" data-slide="prev">
+		  		  <span class="carousel-control-prev-icon"></span>
+		  	</a>
+			<a class="carousel-control-next" href="#demo" data-slide="next">
+		  		  <span class="carousel-control-next-icon"></span>
+			</a>
+		
+		</div>
+		
+		
+	</div>
+	<div class="col-sm-1"></div>
+</div>
+
+<div class="row">
+
+	<div class="col-sm-2">
+		<h4 class = "category"><b>Opis</b></h4>
+	</div>
+	<div class="col-sm-8">
+		<blockquote class="blockquote">
+    			<p style="margin-top: 10%;"><?= $bar->getOpis();?></p>
+    	</blockquote>
+	</div>
+	<div class="col-sm-2"></div>
+
+</div>
+
+<div class="row" style="margin-top: 15%;">
+	<div class="col-sm-2">
+		<h4 class = "category"><b>Adresa</b></h4>
+	</div>
+	<div class="col-sm-8">
+		<div class = "container" height=400px>
+ 			 <iframe width=100% height=350px src="https://www.google.com/maps/embed/v1/place?q=<?= $bar->getAdresa();?>,Rijeka		
+    		  &zoom=16
+    		  &key=AIzaSyAFjIZDe8vEiCE99V5Sl7xxKXlhyOts_ew">
+  			</iframe>
+		</div>
+	</div>
+	<div class="col-sm-1"></div>	
+</div>
+<div class="row" style="margin-top: 15%;">
+	<div class="col-sm-2">
+		<h4 class = "category"><b>Ocjena</b></h4>
+	</div>
+	<div class="col-sm-8">
+		<p>Mozda zvjezdice</p>
+	</div>
+	<div class="col-sm-1"></div>	
+</div>
+
+<div class="row" style="margin-top: 15%;">
+	<div class="col-sm-2">
+		<h4 class = "category"><b>Kontakt</b></h4>
+	</div>
+	<div class="col-sm-8" align="center">
+		<h5 ><?= $bar->getTelefon();?></h5>
+		<br>
+		<br>
+		<b>ILI</b>
+		<br>
+		<br>
+		<? if (!$bar->follow): ?>
+			
+			<a href="http://dir.dev/index/follow/<?= $bar->id_Klub; ?>" class="btn btn-primary" style="color: white; width: 65%;">Prati</a>
+						
+		<? else: ?>
+				
+			<a href="http://dir.dev/index/unfollow/<?= $bar->id_Klub; ?>" class="btn btn-primary" style="color: white; width: 65%;">Odprati</a>
+		
+		<? endif ?>
+	</div>
+	<div class="col-sm-1"></div>	
+</div>
+
+<div class="row">	
+	<div class="col-sm-12">
+			<div class="fb-comments" data-href="http://dir.dev/details/<?=$bar->getIdKlub();?>" data-width="500px" data-numposts="5"></div>
+					
+	</div>
+</div>	
+
+</body>
+</html>
+
+
