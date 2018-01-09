@@ -33,7 +33,12 @@
 
 			return $retVal[0];
 		}
-			
+		// nisam siguran da li je 100% ispravno 
+		public function isOwner($id_Korisnik){
+			$vlasnik = Vlasnik::findFirst("id_korisnik = ".$id_Korisnik."");
+			if($vlasnik) return true;
+			else return false;
+		}
 	}
 	
 
