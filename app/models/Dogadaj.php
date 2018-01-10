@@ -1,7 +1,11 @@
 <?php
 	use Phalcon\Mvc\Model;
 	
-	require_once APP_PATH . "/phpmailer/PHPMailerAutoload.php";
+	use PHPMailer\PHPMailer\PHPMailer;
+	use PHPMailer\PHPMailer\Exception;
+
+	require APP_PATH .'/vendor/autoload.php';
+
 
 	class Dogadaj extends Model{
 		private $id_Dogadaj;
@@ -52,34 +56,31 @@
 			}
 		}
 
-
 		private function createMail($to,$subject,$message){
-				
-			$mail = new PHPMailer();
+			$mail = new PHPMailer;
 			
-				$mail->SMTPDebug = 4;
-				$mail->Host = "smtp.gmail.com";
+			$mail->isSMTP();
+			$mail->SMTPDebug = 2;
+			
+			$mail->Host = 'smtp.gmail.com';
+			$mail->Port = 587;
+			$mail->SMTPSecure = 'tls';
+		
+			$mail->SMTPAuth = true;
+			$mail->Username = "riaclubprojekt@gmail.com";
+			$mail->Password =  "projektRIA";
 
-				//ukljucuje smtp
-				$mail->isSMTP();
-
-				$mail->SMTPAuth = true;
-
-				$mail->Username = "riaclubprojekt@gmail.com";
-				$mail->Password = "projektRIA";
-
-				$mail->SMTPSecure = "tls";
-				$mail->Port = 587;
-
-
-				$mail->Subject = $subject;
-				$mail->Body = $message;
-
-				$mail->setFrom("riaclubprojekt@gmail.com","Club RIA");
-				$mail->addAddress($to);
-
-				if($mail->send()) echo "da";
-					
+			$mail->setFrom("riaclubprojekt@gmail.com", "RIA Club");
+			$mail->addAddress($to, 'John Doe');
+			
+			$mail->Subject = $subject;
+			$mail->Body = $message;
+			
+			if (!$mail->send()) {
+   				 echo "Mailer Error: " . $mail->ErrorInfo;
+			} else {
+			    echo "Message sent!";
+			}		
 		}
 
 
