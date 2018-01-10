@@ -10,7 +10,10 @@ class DetailsController extends Controller{
 
 */
 	public function indexAction(){
+		$this->assets->addCss('css/rating.css');
+
 		$id = $_GET["id"];
+		$this->view->id_Klub=$id;
 
 		$this->view->bar = Klub::findFirst($id);
 
@@ -18,6 +21,23 @@ class DetailsController extends Controller{
 
 		if($id == null || $this->view->bar == null) 
 			$this->response->redirect("index");
+	}
+
+	public function rateAction(){
+		if (!$this->request->isPost()){
+			$this->flash->error('404');
+		}
+		elseif (!$this->session->get("id")) {
+			$this->flashSession->error('You have to be logged in!');
+			return $this->response->redirect('login');
+		}
+		else{
+			$ocjena=new Ocjena_klub();
+			$retVal=$ocjena->addOcjena($this->request->getPost(), $this->session->get("id"));
+			$this->flashSession->success($retVal);
+			return $this->response->redirect('details?id='.$_POST["id_Klub"].'#rating_done');
+		}
+
 	}
 
 
