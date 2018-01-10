@@ -20,7 +20,7 @@
 		<? else: ?>
 				
 		<ul class = "list-inline">
-			<li><a href="profile"><span class = "glyphicon glyphicon-user">
+			<li><a href=""><span class = "glyphicon glyphicon-user">
 			 <? echo $this->session->get("first_name")?></span></a></li>
 			<li><a href="login/logout"><span class = "glyphicon glyphicon-log-out"> Odjava</span></a></li>
 		
