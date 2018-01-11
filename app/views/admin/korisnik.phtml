@@ -22,7 +22,8 @@
 <?php include("../app/includes/base.php"); ?>
 
 <div class="container">
-  <h2>Korisnici</h2>           
+  <h2>Korisnici</h2> 
+  <a href="/admin/addKorisnik#bot"><button nam"del0" class='btn btn-info glyphicon glyphicon-user'></button></a>
   <table class="table">
     <thead>
       <tr>
@@ -48,12 +49,13 @@
         </td>
         <td><button name='submit' class='btn btn-danger glyphicon glyphicon-edit row-edit'></button></td>
     </form>
-        <td><a href="/admin/deleteKorisnik/<?php echo $item->id_Korisnik; ?>"><button nam"del0" class='btn btn-danger glyphicon glyphicon-remove row-remove'></button></a></td>
+        <td><a href="/admin/deleteKorisnik/<?php echo $item->id_Korisnik; ?>"><button nam"del0" class='btn btn-danger glyphicon glyphicon-trash row-remove'></button></a></td>
       </tr>
     
       <?php } ?>
     </tbody>
   </table>
+  <a name="bot">
 </div>
 
 </body>
