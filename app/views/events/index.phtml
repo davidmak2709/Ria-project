@@ -18,13 +18,23 @@
 		<img src="img/images.png" class = "img-circle">
 	</div>
 	<div class = "col-sm-8">
-		<h2>Naslov: <?php echo $item->naziv; ?></h2><br> <!-- LINK NA STRANICU S DETALJIMA -->
+		<h2><?php echo $item->naziv; ?></h2><br> <!-- LINK NA STRANICU S DETALJIMA -->
 		<h5>Datum: <?php echo $item->vrijeme; ?></h5>
 		<h5>Opis:</h5>
 		<p><?php echo $item->opis; ?></p>
 		<h5>Broj dolazaka: <?php echo $item->rezervacija; ?></h5>
-		<div class="col-sm-8" align="right">
-				<a class="btn btn-primary" style="color: white;">Idem!</a> <!-- LINK NA DODAVANJE U FAVORITE -->
+		<div class="col-sm-8" align="right"> 
+
+		<? if (!Rezervacija::isReserved($this->session->get("id"),$item->id_Dogadaj)): ?>
+			
+			<a href="http://dir.dev/events/reserve/<?= $item->id_Dogadaj; ?>" class="btn btn-primary follow-btn">Rezerviraj</a>
+						
+		<? else: ?>
+				
+			<a href="http://dir.dev/events/unreserve/<?= $item->id_Dogadaj; ?>" class="btn btn-primary follow-btn">Odrezerviraj</a>
+		
+		<? endif ?>
+		
 		</div>
 	</div>
 </div>

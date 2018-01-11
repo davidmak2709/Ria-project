@@ -7,7 +7,7 @@
 		  <li><a href="#">Menu 1</a></li>
 		  <li><a href="events">EVENTI</a></li>
 		  <li><a href="#">Menu 3</a></li>
-		  <li><a href="#">Menu 4</a></li>
+		  <li><a href="addevents">DODAJ EVENT</a></li>
 		</ul>
 		<!-- OUTPUT OVISAN O STANJU -->
 		<? if (!$this->session->has("id")): ?>

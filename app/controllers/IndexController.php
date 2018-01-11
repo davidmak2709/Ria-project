@@ -42,11 +42,14 @@
 		public function unfollowAction($id){
 			if($this->session->has("id")){
 				$var = new Pretplata();
-				$val = $var->find(
-					[
-						"id_Korisnik" => $this->session->get("id"),
-						"id_Klub" => $id,
-					]
+				$val = $var->find([
+					"id_Korisnik = :name: AND id_Klub = :type:",
+			        	
+			        	"bind" =>[
+			            	"name" => $this->session->get("id"),
+			        	    "type" => $id,
+			        	],
+				]
 				);
 
 				$val->delete();
