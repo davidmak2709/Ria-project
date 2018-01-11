@@ -41,6 +41,7 @@
 
 </head>
 <body>
+<?php include("../app/includes/base.php"); ?>
 <div id="fb-root"></div>
 
 <script>
@@ -129,7 +130,7 @@
 </div>
 <div class="row" style="margin-top: 15%;">
 	<div class="col-sm-2">
-		<h4 class = "category"><b>Ocjena</b></h4>
+		<h4 class = "category"><b>Ocjena: </b><?php echo $ocjena_klub; ?></h4>
 		<section id="rating_done"></section>
 	</div>
 	<div class="col-sm-8">

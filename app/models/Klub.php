@@ -54,6 +54,10 @@
 		public function getOpis(){
 			return $this->opis;
 		}
+
+		public function setOcjena($ocjena){
+			$this->ocjena=$ocjena;
+		}
 		
 		static function lastId(){
 			$lastRecord =  Klub::find();

@@ -32,6 +32,35 @@
 				return "Uspješno ste ocijenili klub!";
 			}
 		}
+
+		public function getOcjena($id_Klub){
+			$ratings=Ocjena_klub::find(
+				[
+					"conditions" => "id_Klub = ?1",
+					"bind" => [
+						1 => $id_Klub,
+					]
+				]
+			);
+			$klub=Klub::findFirst($id_Klub);
+
+			if (count($ratings)==0) {
+				$klub->ocjena=0;
+				$klub->save();
+				return "Klub još nije ocijenjen!";
+			}
+
+			$sum_rating=0;
+			foreach ($ratings as $rating) {
+				$sum_rating=$sum_rating+$rating->ocjena;
+			}
+			$club_rating=$sum_rating/count($ratings);
+
+			
+			$klub->ocjena=$club_rating;
+			$klub->save();
+			return $club_rating;
+		}
 	}
 	
 ?>

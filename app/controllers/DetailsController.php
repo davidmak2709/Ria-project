@@ -10,12 +10,14 @@ class DetailsController extends Controller{
 
 */
 	public function indexAction(){
+		$this->assets->addCss('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css',false);
+		$this->assets->addCss("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css",false);
 		$this->assets->addCss('css/rating.css');
 
 		$id = $_GET["id"];
 		$this->view->id_Klub=$id;
 
-
+		$this->view->ocjena_klub=Ocjena_klub::getOcjena($id);
 
 		$this->view->bar = Klub::findFirst($id);
 
@@ -40,7 +42,7 @@ class DetailsController extends Controller{
 		else{
 			$ocjena=new Ocjena_klub();
 			$retVal=$ocjena->addOcjena($this->request->getPost(), $this->session->get("id"));
-			$this->flashSession->success($retVal);
+			$this->flashSession->notice($retVal);
 			return $this->response->redirect('details?id='.$_POST["id_Klub"].'#rating_done');
 		}
 
