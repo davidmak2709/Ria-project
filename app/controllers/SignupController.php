@@ -26,14 +26,16 @@
 						);
 			
 				if ($this->request->hasFiles() == true) {
-					$dirName = Klub::lastId();
+					$barId = Klub::lastId();
 					
-					mkdir("img/" . $dirName  ."/");
+					mkdir("img/" . $barId  ."/", 0755);
+					$cnt = 0;
             		foreach ($this->request->getUploadedFiles() as $file) {
-            		     $file->moveTo("img/". $dirName ."/". $file->getName());
+            		     $file->moveTo("img/". $barId ."/". $barId . $cnt . ".jpeg");
+            		     $cnt = $cnt+1;
             		}
        			}
-       			$this->response->redirect("index");
+       			// $this->response->redirect("index");
 
 			}else{
 				$this->response->redirect("signup/index");

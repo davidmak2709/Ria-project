@@ -42,7 +42,10 @@
 		public function unfollowAction($id){
 			if($this->session->has("id")){
 				$var = new Pretplata();
+<<<<<<< HEAD
+=======
 				
+>>>>>>> origin/mail-dogadaj
 				$val = $var->find([
 					"id_Korisnik = :name: AND id_Klub = :type:",
 			        	
@@ -50,7 +53,11 @@
 			            	"name" => $this->session->get("id"),
 			        	    "type" => $id,
 			        	],
+<<<<<<< HEAD
+				]
+=======
 					]
+>>>>>>> origin/mail-dogadaj
 				);
 
 				$val->delete();

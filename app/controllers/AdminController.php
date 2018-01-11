@@ -50,6 +50,17 @@ class AdminController extends Controller{
 
 	}
 
+	public function updateKlubAction($id){
+
+		$val = Klub::findFirst($id);
+		//$val->opis ='bababba';
+		$val->save($this->request->getPost());
+		//$val->save();
+		$this->response->redirect("/admin/klub");
+			
+
+	}
+
 }
 
 ?>

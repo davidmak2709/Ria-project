@@ -10,6 +10,7 @@
 			return $this->id_Korisnik;
 		}
 
+
 		static function isFollowed($id_Korisnik,$id_Klub){
 		 return	Pretplata::count(
 			    	[
