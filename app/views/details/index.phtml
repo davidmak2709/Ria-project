@@ -7,6 +7,7 @@
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+  	<?php $this->assets->outputCss(); ?>
 	<style>
 	html, body {
     max-width: 100%;
@@ -124,9 +125,33 @@
 <div class="row" style="margin-top: 15%;">
 	<div class="col-sm-2">
 		<h4 class = "category"><b>Ocjena</b></h4>
+		<section id="rating_done"></section>
 	</div>
 	<div class="col-sm-8">
-		<p>Mozda zvjezdice</p>
+		<form action="/details/rate" method="POST">
+		<fieldset id='demo1' class="rating">
+        	<input class="stars" type="radio" id="star5" name="rating" value="5" />
+            <label class = "full" for="star5" title="5 stars"></label>
+            <input class="stars" type="radio" id="star4" name="rating" value="4" />
+            <label class = "full" for="star4" title="4 stars"></label>
+            <input class="stars" type="radio" id="star3" name="rating" value="3" />
+            <label class = "full" for="star3" title="3 stars"></label>
+            <input class="stars" type="radio" id="star2" name="rating" value="2" />
+            <label class = "full" for="star2" title="2 stars"></label>
+            <input class="stars" type="radio" id="star1" name="rating" value="1" />
+            <label class = "full" for="star1" title="1 star"></label>
+            <input type="hidden" name="id_Klub" value="<?= $id_Klub ?>">
+        </fieldset>
+        </form>
+        <p><?php $this->flashSession->output() ?></p>
+        <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>  
+		<script>
+			$(document).ready(function() {   
+				$('input[name=rating]').change(function(){  
+					$('form').submit();
+				});  
+			});
+		</script>
 	</div>
 	<div class="col-sm-1"></div>	
 </div>

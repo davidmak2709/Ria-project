@@ -11,6 +11,7 @@
  -->
  <?php echo $this->session->get("user");?>
 	<div class = "conatiner login well" align = "center">
+		<p><?php $this->flashSession->output() ?></p>
 		<h2><b>PRIJAVA</b></h2>
 		<?php echo $this->tag->form("login/login"); ?>
 		<div class = "form-group">

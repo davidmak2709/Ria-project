@@ -6,6 +6,8 @@
 	use Phalcon\Mvc\Application;
 	use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
 	use Phalcon\Session\Adapter\Files as Session;
+	use Phalcon\Flash\Direct as FlashDirect;
+	use Phalcon\Flash\Session as FlashSession;
 
 
 	define('BASE_PATH',dirname(__DIR__));
@@ -40,7 +42,8 @@
 			'host' => '127.0.0.1',
 			'username' => 'root',
 			'password' => 'root',
-			'dbname' => 'RIA'
+			'dbname' => 'RIA',
+			'options' => array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8')
 		]);
 	});
 
@@ -49,6 +52,20 @@
 		$session->start();
 		return $session;
 	});
+
+	$di->set(
+    	'flash',
+    	function () {
+        	return new FlashDirect();
+    	}
+	);
+
+	$di->set(
+    	'flashSession',
+    	function () {
+        	return new FlashSession();
+    	}
+	);
 
 
 	$app = new Application($di);
