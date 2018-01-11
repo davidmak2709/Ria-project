@@ -4,10 +4,11 @@
   		<a class = "navbar-brand" href="index">Home</a>
   	</div>
 		<ul class = "list-inline">  <!-- DODATI RAZNE LINKOVE -->
-		  <li><a href="#">Menu 1</a></li>
+		  <li><a href="/index">POCETNA</a></li>
 		  <li><a href="/events">EVENTI</a></li>
-		  <li><a href="#">Menu 3</a></li>
 		  <li><a href="/addevents">DODAJ EVENT</a></li>
+		  <li><a href="/admin">ADMIN</a></li>
+
 		</ul>
 		<!-- OUTPUT OVISAN O STANJU -->
 		<? if (!$this->session->has("id")): ?>

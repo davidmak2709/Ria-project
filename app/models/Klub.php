@@ -22,6 +22,9 @@
 		public function addKlub($values){
 			return $this->save($values);
 		}
+		public function setOpis($values){
+			$this->opis = $values;
+		}
 		
 		public function getIdKlub(){
 			return $this->id_Klub;

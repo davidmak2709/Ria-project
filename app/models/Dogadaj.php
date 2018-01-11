@@ -93,7 +93,7 @@
 		public function getOpis(){
 			return $this->opis;
 		}
-		public function getId_Klub(){
+		public function getIdKlub(){
 			return $this->id_Klub;
 		}
 		public function getNaziv(){

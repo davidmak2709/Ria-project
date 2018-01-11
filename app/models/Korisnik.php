@@ -34,6 +34,18 @@
 			return $retVal[0];
 		}
 
+		public function getIdKorisnik(){
+			return $this->id_Korisnik;
+		}
+
+		public function getEmail(){
+			return $this->email;
+		}
+
+		public function getPassword(){
+			return $this->password;
+		}
+
 	}
 	
 

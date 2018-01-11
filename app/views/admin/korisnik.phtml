@@ -22,39 +22,33 @@
 <?php include("../app/includes/base.php"); ?>
 
 <div class="container">
-  <h2>Klubovi</h2>           
+  <h2>Korisnici</h2>           
   <table class="table">
     <thead>
       <tr>
         <th>#</th>
         <th>Ime</th>
-        <th>Adresa</th>
-        <th>Ocjena</th>
-        <th>ID_Vlasnika</th>
-        <th>Opis</th>
+        <th>Email</th>
+        <th>Password</th>
       </tr>
     </thead>
     <tbody>
     <?php foreach ($items as $item){ ?>
-    <form action="/admin/updateKlub/<?php echo $item->id_Klub; ?>" method = "POST" enctype="multipart/form-data">
+    <form action="/admin/updateKorisnik/<?php echo $item->id_Korisnik; ?>" method = "POST" enctype="multipart/form-data">
       <tr>
-        <td><?php echo $item->id_Klub; ?></td>
+        <td><?php echo $item->id_Korisnik; ?></td>
         <td>
         	<input type="text" name='ime' class="form-control" value="<?php echo $item->ime; ?>"/>
         </td>
         <td>
-        	<input type="text" name='adresa' class="form-control" value="<?php echo $item->adresa; ?>"/>
+        	<input type="text" name='email' class="form-control" value="<?php echo $item->email; ?>"/>
         </td>
         <td>
-		    <input type="text" name='ocjena' class="form-control" value="<?php echo $item->ocjena; ?>"/>    	
+		    <input type="text" name='password' class="form-control" value="<?php echo $item->password; ?>"/>    	
         </td>
-        <td>
-			<input type="text" name='id_Vlasnik' class="form-control" value="<?php echo $item->id_Vlasnik; ?>"/>
-        </td>
-        <td><textarea name="opis" class="form-control"><?php echo $item->opis; ?> </textarea></td>
         <td><button name='submit' class='btn btn-danger glyphicon glyphicon-edit row-edit'></button></td>
     </form>
-        <td><a href="/admin/deleteKlub/<?php echo $item->id_Klub; ?>"><button nam"del0" class='btn btn-danger glyphicon glyphicon-remove row-remove'></button></a></td>
+        <td><a href="/admin/deleteKorisnik/<?php echo $item->id_Korisnik; ?>"><button nam"del0" class='btn btn-danger glyphicon glyphicon-remove row-remove'></button></a></td>
       </tr>
     
       <?php } ?>
