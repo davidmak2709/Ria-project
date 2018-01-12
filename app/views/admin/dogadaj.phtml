@@ -22,13 +22,14 @@
 <?php include("../app/includes/base.php"); ?>
 
 <div class="container">
-  <h2>Događaji</h2>           
+  <h2>Događaji</h2>
+  <a href="/admin/addDogadaj#bot"><button nam"del0" class='btn btn-info glyphicon glyphicon-calendar'></button></a>  
   <table class="table">
     <thead>
       <tr>
         <th>#</th>
         <th>Naziv</th>
-        <th>Vrijem</th>
+        <th>Vrijeme</th>
         <th>Rezervacija</th>
         <th>ID_Kluba</th>
         <th>Opis</th>
@@ -54,12 +55,13 @@
         <td><textarea name="opis" class="form-control"><?php echo $item->opis; ?> </textarea></td>
         <td><button name='submit' class='btn btn-danger glyphicon glyphicon-edit row-edit'></button></td>
     </form>
-        <td><a href="/admin/deleteDogadaj/<?php echo $item->id_Dogadaj; ?>"><button nam"del0" class='btn btn-danger glyphicon glyphicon-remove row-remove'></button></a></td>
+        <td><a href="/admin/deleteDogadaj/<?php echo $item->id_Dogadaj; ?>"><button nam"del0" class='btn btn-danger glyphicon glyphicon-trash row-remove'></button></a></td>
       </tr>
     
       <?php } ?>
     </tbody>
   </table>
+  <a name="bot">
 </div>
 
 </body>

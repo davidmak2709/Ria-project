@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Admins</title>
+	<?php $this->assets->outputCss();?>
+	<meta charset="utf-8" />
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+
+	<style type="text/css">
+		.follow-btn{
+			color: white;
+			width: 65%;
+			margin-top: 10%;
+
+		}
+	</style>
+
+</head>
+<body> 
+
+<!-- NAVIGACIJSKI MENI mozda bolje include jer se ponavlja-->
+<?php include("../app/includes/base.php"); ?>
+
+<div class="container">
+  <h2>Admin</h2> 
+  <a href="/admin/addAdmin#bot"><button nam"del0" class='btn btn-info glyphicon glyphicon-user'></button></a>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Id_Korisik</th>
+      </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($items as $item){ ?>
+    <form action="/admin/updateAdmin/<?php echo $item->id_Admin; ?>" method = "POST" enctype="multipart/form-data">
+      <tr>
+        <td><?php echo $item->id_Admin; ?></td>
+        <td>
+        	<input type="text" name='id_korisnik' class="form-control" value="<?php echo $item->id_korisnik; ?>"/>
+        </td>
+        <td><button name='submit' class='btn btn-danger glyphicon glyphicon-edit row-edit'></button></td>
+    </form>
+        <td><a href="/admin/deleteAdmin/<?php echo $item->id_Admin; ?>"><button nam"del0" class='btn btn-danger glyphicon glyphicon-trash row-remove'></button></a></td>
+      </tr>
+    
+      <?php } ?>
+    </tbody>
+  </table>
+  <a name="bot">
+</div>
+
+</body>
+</html>

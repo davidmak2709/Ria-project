@@ -6,7 +6,8 @@
 		private $id_Admin;
 		private $id_Korisnik;
 		
-		public function addAdmin(){
+		public function getidAdmin(){
+			return $this->id_Admin;
 
 			}
 

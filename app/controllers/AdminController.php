@@ -45,6 +45,56 @@ class AdminController extends Controller{
 		$this->view->items = Korisnik::find();
 	}
 
+	public function adminsAction(){
+		$this->assets->addCss('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css',false);
+		$this->assets->addCss("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css",false);
+		
+		$this->view->items = Admin::find();
+	}
+
+//admin
+
+	public function addAdminAction(){
+			$val = new Admin();
+			$val->save([
+					'id_korisnik' => 81
+				]);
+			$this->response->redirect("/admin/admins");
+
+	}
+	public function deleteAdminAction($id){
+			$val = Admin::findFirst($id);
+			$val->delete();
+			$this->response->redirect("/admin/admins");
+
+	}
+
+	public function updateAdminAction($id){
+
+		$val = Admin::findFirst($id);
+		$val->save($this->request->getPost());
+		$this->response->redirect("/admin/admins");
+			
+
+	}
+
+
+//klub
+
+	public function addKlubAction(){
+			$val = new Klub();
+			$val->save([
+					'ime' => 'defult',
+					'adresa' => 'default',
+					'ocjena' => 0,
+					'id_Vlasnik' => 987654325,
+					'opis' => 'dodaj opis'
+
+				]);
+			$this->response->redirect("/admin/klub");
+
+	}
+
 	public function deleteKlubAction($id){
 			$val = Klub::findFirst($id);
 			$val->delete();
@@ -61,6 +111,22 @@ class AdminController extends Controller{
 
 	}
 
+//dogadaj
+
+	public function addDogadajAction(){
+			$val = new Dogadaj();
+			$val->save([
+					'id_Klub' => 123456784,
+					'naziv' => '#NOVI',
+					'vrijeme' => "1.1.2000",
+					'rezervacija' => 0,
+					'opis' => '#OPIS'
+
+				]);
+			$this->response->redirect("/admin/dogadaj");
+
+	}
+
 	public function deleteDogadajAction($id){
 			$val = Dogadaj::findFirst($id);
 			$val->delete();
@@ -74,6 +140,20 @@ class AdminController extends Controller{
 		$val->save($this->request->getPost());
 		$this->response->redirect("/admin/dogadaj");
 			
+
+	}
+
+//korisnik
+
+	public function addKorisnikAction(){
+			$val = new Korisnik();
+			$val->save([
+					'ime' => 'root',
+					'password' => 'root',
+					'email' => 'root@root.com'
+
+				]);
+			$this->response->redirect("/admin/korisnik");
 
 	}
 
