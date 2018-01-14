@@ -137,6 +137,6 @@ Korisnicima se nudi mogućnost ocjenjivanja komentara i klubova.
 * Promocija drugih u admin (dodati novu bazu podataka)
 
 
-
+**BAZA**
 
 
