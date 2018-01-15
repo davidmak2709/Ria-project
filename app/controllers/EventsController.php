@@ -20,6 +20,8 @@ class EventsController extends Controller{
 				]
 			);
 			$this->view->page=$paginator2->getPaginate();
+
+			$this->view->setTemplateAfter("base");
 	}
 
 	public function addAction(){

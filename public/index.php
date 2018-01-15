@@ -8,10 +8,17 @@
 	use Phalcon\Session\Adapter\Files as Session;
 	use Phalcon\Flash\Direct as FlashDirect;
 	use Phalcon\Flash\Session as FlashSession;
+	use Phalcon\Config\Adapter\Ini as ConfigIni;
+
 
 
 	define('BASE_PATH',dirname(__DIR__));
 	define('APP_PATH',BASE_PATH . '/app');
+
+	$config = new ConfigIni(
+    	APP_PATH . '/config/config.ini'
+	);
+
 
 	$loader = new Loader();
 	$loader->registerDirs(
@@ -22,6 +29,8 @@
 	);
 
 	$loader->register();
+
+	require_once BASE_PATH . '/vendor/autoload.php';
 
 	$di = new FactoryDefault();
 
@@ -37,12 +46,18 @@
 		return $url;
 	});
 
-	$di->set('db',function () {
+	$di->set('config', function() use ($config) {
+			return $config;
+	}, true);
+
+
+
+	$di->set('db',function () use ($config){
 		return new DbAdapter([
-			'host' => '127.0.0.1',
-			'username' => 'root',
-			'password' => 'root',
-			'dbname' => 'RIA',
+			'host' => $config->database->host,
+			'username' => $config->database->username,
+			'password' => $config->database->password,
+			'dbname' => $config->database->name,
 			'options' => array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8')
 		]);
 	});
