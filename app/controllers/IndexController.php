@@ -40,9 +40,9 @@
 			}
 
 			$this->view->disable();
-			
+					
+			$this->redirectBack();
 
-			$this->response->redirect($_SERVER['HTTP_REFERER']);
 		}
 
 		public function unfollowAction($id){
@@ -64,8 +64,19 @@
 			}
 
 			$this->view->disable();
-			return $this->response->redirect($_SERVER['HTTP_REFERER']);
-				
+
+			$this->redirectBack();
+	
+		}
+
+		private function redirectBack(){
+			$url = parse_url($this->request->getHTTPReferer(),PHP_URL_HOST);
+			
+			if($url == "dir.dev"){
+				$this->response->redirect($this->request->getHTTPReferer());
+			} else{
+				$this->response->redirect("/index");
+			}
 		}
 	}
 
