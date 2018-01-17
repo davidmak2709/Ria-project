@@ -72,7 +72,7 @@
 		private function redirectBack(){
 			$url = parse_url($this->request->getHTTPReferer(),PHP_URL_HOST);
 			
-			if($url == "dir.dev"){
+			if($url == $this->request->getHttpHost()){
 				$this->response->redirect($this->request->getHTTPReferer());
 			} else{
 				$this->response->redirect("/index");
