@@ -5,7 +5,7 @@
 	class SignupController extends Controller{
 
 		public function indexAction(){
-			$this->assets->addCss("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css",false);
+			$this->assets->addCss("/css/signup.css");
 			
 		}
 
