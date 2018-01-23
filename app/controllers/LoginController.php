@@ -115,7 +115,6 @@
 			$response = $fb->get("/me?fields=id,email", $accessToken);
 			$userData = $response->getGraphNode()->asArray();
 
-			var_dump($accessToken);
 			$this->loginAction($userData["email"],$userData["id"]);
 			
 		}	
