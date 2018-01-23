@@ -1,15 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Eventi</title>
-	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" />
-	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-</head>
-</head>
-<body>
-		<!-- NAVIGACIJSKI MENI mozda bolje include-->
-<?php include("../app/includes/base.php"); ?>
-
 <!-- CONTAINER ZA PRINTANJE POJEDNIOG EVENTA, MOZDA BOLJE U MODELU DODATI FUNKCIJU PRINT ZA SVAKI POSEBNO -->
 <?php foreach($page->items as $item){ ?>
 <div class = "container">
@@ -52,6 +40,3 @@
     <br>
     <?php echo "You are in page ", $page->current, " of ", $page->total_pages; ?>
 </div>
-
-</body>
-</html>

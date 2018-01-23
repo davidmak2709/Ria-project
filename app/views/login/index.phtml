@@ -1,14 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>LOG IN</title>
-	<?php $this->assets->outputCss();?>
-</head>
-<body>
-<!--
-- MOZDA BOLJE PREPISATI SAMO U HTML-u
-- DODATI LINKOVE NA SVE BUTTONE
- -->
  <?php echo $this->session->get("user");?>
 	<div class = "conatiner login well" align = "center">
 		<p><?php $this->flashSession->output() ?></p>
