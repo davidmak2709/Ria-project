@@ -5,11 +5,7 @@
 	
 
 		public function indexAction(){
-			$this->assets->addCss('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css',false);
-			$this->assets->addCss("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css",false);
-			$this->assets->addCss("css/style.css");
-
-			
+						
 		}
 
 		public function loginAction($email = null, $pwd = null){
@@ -27,6 +23,29 @@
 			if($success && $this->security->checkHash($pwd,$success->getValue("password"))){
 
 				$this->session->set("id",$success->getValue("id_Korisnik"));
+
+				$retVal = Admin::count(
+			    	[
+			        	"id_korisnik = :name:",
+			        	"bind" => [
+			            	"name" => $success->getValue("id_Korisnik"),
+			        	    
+			        	],
+			    	]
+				);
+				if($retVal) $this->session->set("admin", 1);
+
+				$retVal = Vlasnik::count(
+			    	[
+			        	"id_korisnik = :name:",
+			        	"bind" => [
+			            	"name" => $success->getValue("id_Korisnik"),
+			        	    
+			        	],
+			    	]
+				);
+
+				if($retVal) $this->session->set("vlasnik", 1);
 				
 				$this->session->set("first_name", $success->getFirstName());
 				
@@ -96,6 +115,7 @@
 			$response = $fb->get("/me?fields=id,email", $accessToken);
 			$userData = $response->getGraphNode()->asArray();
 
+			var_dump($accessToken);
 			$this->loginAction($userData["email"],$userData["id"]);
 			
 		}	

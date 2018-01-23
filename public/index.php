@@ -9,6 +9,8 @@
 	use Phalcon\Flash\Direct as FlashDirect;
 	use Phalcon\Flash\Session as FlashSession;
 	use Phalcon\Config\Adapter\Ini as ConfigIni;
+	use Phalcon\Mvc\Dispatcher; 				//potrebno za acl
+	use Phalcon\Events\Manager as EventsManager; //potrebno za acl
 
 
 
@@ -25,6 +27,7 @@
 		[
 			APP_PATH . '/controllers/',
 			APP_PATH . '/models/',
+			APP_PATH . '/plugins/',
 		]
 	);
 
@@ -82,6 +85,32 @@
     	}
 	);
 
+	$di->set(  //dodavanje dispatchera
+    "dispatcher",
+    function () {
+        // Create an events manager
+        $eventsManager = new EventsManager();
+
+        // Listen for events produced in the dispatcher using the Security plugin
+        $eventsManager->attach(
+            "dispatch:beforeExecuteRoute",
+            new SecurityPlugin()
+        );
+
+        // Handle exceptions and not-found exceptions using NotFoundPlugin
+        $eventsManager->attach(
+            "dispatch:beforeException",
+            new NotFoundPlugin()
+        );
+
+        $dispatcher = new Dispatcher();
+
+        // Assign the events manager to the dispatcher
+        $dispatcher->setEventsManager($eventsManager);
+
+        return $dispatcher;
+    	}
+	);
 
 	$app = new Application($di);
 
