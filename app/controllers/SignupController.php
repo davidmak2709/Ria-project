@@ -6,7 +6,7 @@
 
 		public function indexAction(){
 			$this->assets->addCss("/css/signup.css");
-			
+			$this->assets->addJs("/js/signup.js");
 		}
 
 		public function registerAction(){

@@ -1,4 +1,3 @@
-<!-- DODATI SUBMIT BTN -->
 <div class="row">
 	<div class="col-sm-2"> </div>
 	<div class="col-sm-8 well">
@@ -30,25 +29,10 @@
 					<input type="radio" name="gender" value="female"> Ž
 				</div> -->
 				<div class="container">
-					<input id = "type_user" type="radio" name="Tip" value="Korisnik" onchange="myfunction()" checked> Korisnik 
-					<input type="radio" name="Tip" value="Vlasnik" onchange="myfunction()"> Vlasnik
+					<input id = "type_user" type="radio" name="Tip" value="Korisnik" onchange="userInput()" checked> Korisnik 
+					<input type="radio" name="Tip" value="Vlasnik" onchange="userInput()"> Vlasnik
 				</div>
 			</div>
-			<script type="text/javascript">
-		function myfunction(){
-			if(document.getElementById('type_user').checked){
-				document.getElementById('vlasnik').style.display = 'none';
-							document.getElementById('korisnik').style.display = 'block';
-						}
-						else{
-							document.getElementById('korisnik').style.display = 'none';
-							document.getElementById('vlasnik').style.display = 'block';
-						}
-						
-					}
-	</script>
-
-
 
 			<div id="korisnik" class="col-sm-8">
 				<br>
