@@ -66,18 +66,15 @@ potreban za ispravan rad sustava:
 * E-mail adresa
 * Password
 * Ime i prezime 
-* Korisničko ime
 * Vrsta korisnika (vlasnik ili  obični korisnik)
-* Spol
 
 Ako je odabrana vrsta korisnika vlasnik potrebno je odmah prilikom registracije od njega zatražiti 
 unos prvog kluba, a za istog potrebno je od vlasnika zatražiti:
 
 * Ime kluba
 * Adresa
-* Tip glazbe
 * Kratak opis
-* Slike(max 5-10)
+* Slike(max 10)
 
 ### 3.2.  Login
 
@@ -93,14 +90,12 @@ Odjavljivanje korisnika.
 Svim korisnicima nudi se mogućnost pregleda ranije oglašenih klubova u obliku popisa na 
 više stranica. Svakom klubu potrebno je dodijeliti karticu u kojoj će biti prikazana pripadajuća slika, 
 naziv, adresa, ocjena i kratki opis, dok se klikom na naziv otvara posebna web stranica na kojoj će  uz 
-već navedene atribute biti omogućeno komentiranje, ocjenjivanje, popis događaja vezan uz klub i 
-lokacija kafića na Google Maps karti. 
+već navedene atribute biti omogućeno komentiranje, ocjenjivanje i lokacija kafića na Google Maps karti. 
 
 ### 3.5. Pregled događaja
 
 Kao što je navedeno u prethodnom poglavlju istovjetno vrijedi i za događaje koje ćemo 
-prikazivati u obliku popisa. Također nudi se mogućnost da se korisnici rezerviraju na event tako da 
-dobivaju ažurne obavijesti o istom.
+prikazivati u obliku popisa. 
 
 ### 3.6. Dodavanje događaja
 
@@ -108,10 +103,11 @@ Vlasniku kluba nudi se mogućnost objavljivanje organiziranih događaja u vlasti
 svrhu promoviranja istih.  Objava je moguća putem forme na web aplikaciji ili jednostavnim unosom 
 Facebook ID određenog eventa. U oba slučaja potrebno je dohvatiti:
 * Naslov događaja
+* Mjesto
 * Opis događaja
 * Datum
-* "Akcija"
-**// Dodavanje s naše app na FB**
+
+* **Dodavanje s naše app na FB**
 
 ### 3.7. Dodavanje kluba
 
@@ -141,6 +137,6 @@ Korisnicima se nudi mogućnost ocjenjivanja komentara i klubova.
 * Promocija drugih u admin (dodati novu bazu podataka)
 
 
-**PODJELA POSLOVA, BAZA**
+**BAZA**
 
 

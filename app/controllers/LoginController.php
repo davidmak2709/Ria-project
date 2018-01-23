@@ -1,6 +1,6 @@
 <?php  
 	use Phalcon\Mvc\Controller;
-	require_once APP_PATH . "/Facebook/autoload.php";
+
 	class LoginController extends Controller{
 	
 
@@ -70,8 +70,8 @@
 		public function facebookAction(){
 			$this->session->start();
 			$fb = new \Facebook\Facebook([
-					"app_id" => "636102426778495",
-					"app_secret" => "040fcbf122e1caaf368365f50ef82f6d ",
+					"app_id" => $this->config->facebook->app_id,
+					"app_secret" => $this->config->facebook->app_secret,
 					"default_graph_version" => "v2.10"
 				]);
 
@@ -88,8 +88,8 @@
 		public function callbackAction(){
 			$this->session->start();
 			$fb = new \Facebook\Facebook([
-					"app_id" => "636102426778495",
-					"app_secret" => "040fcbf122e1caaf368365f50ef82f6d",
+					"app_id" => $this->config->facebook->app_id,
+					"app_secret" => $this->config->facebook->app_secret,
 					"default_graph_version" => "v2.10"
 				]);
 

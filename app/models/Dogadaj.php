@@ -4,9 +4,6 @@
 	use PHPMailer\PHPMailer\PHPMailer;
 	use PHPMailer\PHPMailer\Exception;
 
-	require APP_PATH .'/vendor/autoload.php';
-
-
 	class Dogadaj extends Model{
 		private $id_Dogadaj;
 		private $vrijeme;

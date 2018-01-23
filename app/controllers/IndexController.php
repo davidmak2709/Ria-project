@@ -4,18 +4,18 @@
 	use Phalcon\Paginator\Adapter\Model as PaginatorModel;
 
 	class IndexController extends Controller{
+
+
 		
 		public function indexAction(){
 			$this->assets->addCss('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css',false);
 			$this->assets->addCss("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css",false);
 			
 
-			$this->request->getQuery("page", "int");
-			$currentPage=(int)$_GET["page"];
+			
+			$currentPage= $this->request->getQuery("page", "int");
+			
 			$klubovi=Klub::find();
-			/*foreach ($klubovi as $klub) {
-				Ocjena_klub::getOcjena($klub->id_Klub);
-			}*/
 			$paginator=new PaginatorModel(
 				[
 					"data"=>$klubovi,
@@ -24,6 +24,7 @@
 				]
 			);
 			$this->view->page=$paginator->getPaginate();
+			$this->view->setTemplateBefore("base");
 		}
 
 		public function followAction($id){
@@ -39,8 +40,9 @@
 			}
 
 			$this->view->disable();
-			return $this->response->redirect($_SERVER['HTTP_REFERER']);
-				
+					
+			$this->redirectBack();
+
 		}
 
 		public function unfollowAction($id){
@@ -62,8 +64,19 @@
 			}
 
 			$this->view->disable();
-			return $this->response->redirect($_SERVER['HTTP_REFERER']);
-				
+
+			$this->redirectBack();
+	
+		}
+
+		private function redirectBack(){
+			$url = parse_url($this->request->getHTTPReferer(),PHP_URL_HOST);
+			
+			if($url == $this->request->getHttpHost()){
+				$this->response->redirect($this->request->getHTTPReferer());
+			} else{
+				$this->response->redirect("/index");
+			}
 		}
 	}
 
