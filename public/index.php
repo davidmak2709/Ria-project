@@ -8,13 +8,10 @@
 	use Phalcon\Session\Adapter\Files as Session;
 	use Phalcon\Flash\Direct as FlashDirect;
 	use Phalcon\Flash\Session as FlashSession;
-<<<<<<< HEAD
+	use Phalcon\Config\Adapter\Ini as ConfigIni;
 	use Phalcon\Mvc\Dispatcher; 				//potrebno za acl
 	use Phalcon\Events\Manager as EventsManager; //potrebno za acl
-=======
-	use Phalcon\Config\Adapter\Ini as ConfigIni;
 
->>>>>>> origin/view
 
 
 	define('BASE_PATH',dirname(__DIR__));
