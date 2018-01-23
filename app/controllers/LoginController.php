@@ -27,6 +27,29 @@
 			if($success && $this->security->checkHash($pwd,$success->getValue("password"))){
 
 				$this->session->set("id",$success->getValue("id_Korisnik"));
+
+				$retVal = Admin::count(
+			    	[
+			        	"id_korisnik = :name:",
+			        	"bind" => [
+			            	"name" => $success->getValue("id_Korisnik"),
+			        	    
+			        	],
+			    	]
+				);
+				if($retVal) $this->session->set("admin", 1);
+
+				$retVal = Vlasnik::count(
+			    	[
+			        	"id_korisnik = :name:",
+			        	"bind" => [
+			            	"name" => $success->getValue("id_Korisnik"),
+			        	    
+			        	],
+			    	]
+				);
+
+				if($retVal) $this->session->set("vlasnik", 1);
 				
 				$this->session->set("first_name", $success->getFirstName());
 				
