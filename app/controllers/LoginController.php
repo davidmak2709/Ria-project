@@ -1,15 +1,11 @@
 <?php  
 	use Phalcon\Mvc\Controller;
-	require_once APP_PATH . "/Facebook/autoload.php";
+
 	class LoginController extends Controller{
 	
 
 		public function indexAction(){
-			$this->assets->addCss('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css',false);
-			$this->assets->addCss("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css",false);
-			$this->assets->addCss("css/style.css");
-
-			
+						
 		}
 
 		public function loginAction($email = null, $pwd = null){
@@ -70,8 +66,8 @@
 		public function facebookAction(){
 			$this->session->start();
 			$fb = new \Facebook\Facebook([
-					"app_id" => "636102426778495",
-					"app_secret" => "040fcbf122e1caaf368365f50ef82f6d ",
+					"app_id" => $this->config->facebook->app_id,
+					"app_secret" => $this->config->facebook->app_secret,
 					"default_graph_version" => "v2.10"
 				]);
 
@@ -88,8 +84,8 @@
 		public function callbackAction(){
 			$this->session->start();
 			$fb = new \Facebook\Facebook([
-					"app_id" => "636102426778495",
-					"app_secret" => "040fcbf122e1caaf368365f50ef82f6d",
+					"app_id" => $this->config->facebook->app_id,
+					"app_secret" => $this->config->facebook->app_secret,
 					"default_graph_version" => "v2.10"
 				]);
 
@@ -119,7 +115,8 @@
 			$response = $fb->get("/me?fields=id,email", $accessToken);
 			$userData = $response->getGraphNode()->asArray();
 
-			$this->loginAction($userData["email"],$userData["id"]);
+			var_dump($accessToken);
+			//$this->loginAction($userData["email"],$userData["id"]);
 			
 		}	
 		

@@ -1,19 +1,11 @@
 <?php 
-	
-	/*
-		Problemi:
-
-		1. User s tim mailom vec postoji di da ga redirectam
-		2. Ako mail nije javan onda kako da nastavimo s fb login
-
-	*/
-
 	use Phalcon\Mvc\Controller;
-	require_once APP_PATH . "/Facebook/autoload.php";
+	
+	
 	class SignupController extends Controller{
 
 		public function indexAction(){
-			$this->assets->addCss("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css",false);
+			$this->assets->addCss("/css/signup.css");
 			
 		}
 
@@ -35,7 +27,7 @@
             		     $cnt = $cnt+1;
             		}
        			}
-       			// $this->response->redirect("index");
+       			$this->response->redirect("index");
 
 			}else{
 				$this->response->redirect("signup/index");
@@ -47,8 +39,8 @@
 		public function facebookAction(){
 			$this->session->start();
 			$fb = new \Facebook\Facebook([
-					"app_id" => "636102426778495",
-					"app_secret" => "040fcbf122e1caaf368365f50ef82f6d ",
+					"app_id" => $this->config->facebook->app_id,
+					"app_secret" => $this->config->facebook->app_secret,
 					"default_graph_version" => "v2.10"
 				]);
 
@@ -65,8 +57,8 @@
 		public function callbackAction(){
 			$this->session->start();
 			$fb = new \Facebook\Facebook([
-					"app_id" => "636102426778495",
-					"app_secret" => "040fcbf122e1caaf368365f50ef82f6d",
+					"app_id" => $this->config->facebook->app_id,
+					"app_secret" => $this->config->facebook->app_secret,
 					"default_graph_version" => "v2.10"
 				]);
 
