@@ -44,12 +44,11 @@ te dodijeljene pojedinim korisničkim skupinama, dok se iste detaljnije opisuju 
 |3.| Odjava |X|X|
 |4.| Pregled klubova |X|X|
 |5.| Pregled događaja |X|X|
-|6.| Dodavanje klubova |X||
-|7.| Dodavanje događaja |X||
-|8.| Pretplata na klub |X|X|
-|9.| Rezervacija na događaj |X|X|
-|10.| Komentiranje |X|X|
-|11.| Ocjenjivanje |X|X|
+|6.| Dodavanje događaja |X||
+|7.| Pretplata na klub |X|X|
+|8.| Rezervacija na događaj |X|X|
+|9.| Komentiranje |X|X|
+|10.| Ocjenjivanje |X|X|
 
 ## 3.Opis funkcionalnosti
 
@@ -97,41 +96,30 @@ već navedene atribute biti omogućeno komentiranje, ocjenjivanje i lokacija kaf
 Kao što je navedeno u prethodnom poglavlju istovjetno vrijedi i za događaje koje ćemo 
 prikazivati u obliku popisa. 
 
-### 3.6. Dodavanje događaja
 
-Vlasniku kluba nudi se mogućnost objavljivanje organiziranih događaja u vlastitom objektu u 
-svrhu promoviranja istih.  Objava je moguća putem forme na web aplikaciji ili jednostavnim unosom 
-Facebook ID određenog eventa. U oba slučaja potrebno je dohvatiti:
-* Naslov događaja
-* Mjesto
-* Opis događaja
-* Datum
-
-* **Dodavanje s naše app na FB**
-
-### 3.7. Dodavanje kluba
+### 3.6. Dodavanje kluba
 
 Vlasnicima klubova osim dodavanja  prvog kluba prilikom registracije omogućena je i kasnija
 objava drugih klubova. Također potrebno je uzeti iste podatke kao i prilikom registracije.
 
-### 3.8. Pretplata na klub
+### 3.7. Pretplata na klub
 
 Svim korisnici imaju mogućnost pretplate na omiljene klubove te mogu primati informacije 
 na vlastiti mail o događajima koji se organiziraju u njima.
 
-### 3.9. Rezervacija na događaj
+### 3.8. Rezervacija na događaj
 
 Ova funkcionalnost korisnika dodaje na popis gostiju  koji će posjetiti određeni event.
 
-### 3.10. Komentiranje
+### 3.9. Komentiranje
 
 Korisnicima se nudi mogućnost komentiranja događaja i klubova.
 
-### 3.11. Ocjenjivanje
+### 3.10. Ocjenjivanje
 
 Korisnicima se nudi mogućnost ocjenjivanja komentara i klubova.
 
-### 3.12. Administracija
+### 3.11. Administracija
 
 * Kontrola sustava
 * Promocija drugih u admin (dodati novu bazu podataka)
