@@ -4,12 +4,12 @@
 	class Facebook extends Model{
 		
 		public $id_Korisnik;
-		private $accessToken;
+		private $id_Facebook;
 
 
 
-		public function addRecord($id_Korisnik,$accessToken){
-			$val = array('id_Korisnik' => $id_Korisnik, 'accessToken' => $accessToken);
+		public function addRecord($id_Korisnik,$id_Facebook){
+			$val = array('id_Korisnik' => $id_Korisnik, 'id_Facebook' => $id_Facebook);
 			try {
 				$this->save($val);
 			} catch (Exception $e) {

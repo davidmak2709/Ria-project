@@ -120,9 +120,9 @@
 			try {
 				$fbResult = Facebook::find(
 					[
-						"accessToken = :accessToken:",
+						"id_Facebook = :id_Fcaebook:",
     					"bind" => [
-           					"accessToken" => $userData["id"],
+           					"id_Fcaebook" => $userData["id"],
 			        	],
 					]
 				);
