@@ -49,17 +49,17 @@
 				
 				$this->session->set("first_name", $success->getFirstName());
 				
-				$this->response->redirect("index");
+				$this->response->redirect("/index");
 			
 			}else{
-				$this->response->redirect("login");
+				$this->response->redirect("/login");
 			}
 		}
 
 
 		public function logoutAction(){
 			$this->session->destroy();
-			$this->response->redirect("index");
+			$this->response->redirect("/index");
 		}
 		
 
@@ -113,10 +113,34 @@
 			}
 			
 			$response = $fb->get("/me?fields=id,email", $accessToken);
-			$userData = $response->getGraphNode()->asArray();
+			$userData = $response->getGraphNode()->asArray();			
+		
 
-			$this->loginAction($userData["email"],$userData["id"]);
+
+			try {
+				$fbResult = Facebook::find(
+					[
+						"accessToken = :accessToken:",
+    					"bind" => [
+           					"accessToken" => $userData["id"],
+			        	],
+					]
+				);
 			
+				$idUser =$fbResult->getFirst()->get();
+
+				$user = Korisnik::findFirst($idUser);
+
+				$this->session->set("id", $user->getValue("id_Korisnik"));				
+				$this->session->set("first_name", $user->getFirstName());
+				$this->session->set("accessToken", (string) $accessToken);
+
+
+				$this->response->redirect("/index");
+
+			} catch (Exception $e) {
+				echo $e->getMessage();
+			}
 		}	
 		
 }

@@ -14,10 +14,18 @@
 				$user = User::getUserType($this->request->getPost("Tip"));
 				
 				$user->addUser($this->request->getPost(),
-								 $this->security->hash($this->request->getPost("password"))
+							$this->security->hash($this->request->getPost("password"))
 						);
+
+				if($this->session->has("facebookId")){
+					$fb = new Facebook();
+
+					$fb->addRecord($user->getIdKorisnik(),$this->session->get("facebookId"));
+				}
+
+
 			
-				if ($this->request->hasFiles() == true) {
+				if ($this->request->hasFiles(true) == true) {
 					$barId = Klub::lastId();
 					
 					mkdir("img/" . $barId  ."/", 0755);
@@ -27,10 +35,12 @@
             		     $cnt = $cnt+1;
             		}
        			}
-       			$this->response->redirect("index");
+
+       			$this->session->set("id",$user->getIdKorisnik());
+       			$this->response->redirect("/index");
 
 			}else{
-				$this->response->redirect("signup/index");
+				$this->response->redirect("/signup/index");
 			}
 			
 
@@ -85,17 +95,17 @@
 				$accessToken = $oAuth2Client->getLongLivedAccessToken($accessToken);
 			}
 			
-			$response = $fb->get("/me?fields=id,first_name,last_name,gender,email,hometown,address", $accessToken);
+			$response = $fb->get("/me?fields=id,first_name,last_name,email",$accessToken);
 			$userData = $response->getGraphNode()->asArray();
 			
+			$this->session->set("facebookId",$userData["id"]);
 			$this->session->set("first_name",$userData["first_name"]);
 			$this->session->set("last_name",$userData["last_name"]);
 			$this->session->set("email",$userData["email"]);
-			$this->session->set("id",$userData["id"]);
 			$this->session->set("accessToken",(string) $accessToken);
-			
+					
 				
-			$this->response->redirect("signup");
+			$this->response->redirect("/signup");
 		}	
 	}
 ?>
