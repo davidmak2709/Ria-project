@@ -1,0 +1,20 @@
+<div class="conteiner">
+    <div style="margin-left: 10%">
+        <div class="input-group">
+            <label for = "name">Ime</label> <br>
+            <input type="text" name="name" value="<?= $bar->getIme();?>">
+        </div>
+        <div class="input-group">
+            <label for = "address">Adressa</label> <br>
+            <input type="text" name="address" value="<?= $bar->getAdresa();?>">
+        </div>
+        <div class="input-group">
+            <label for = "phone">Broj telefona</label> <br>
+            <input type="text" name="phone" value="<?= $bar->getTelefon();?>">
+        </div>
+        <div class="input-group">
+            <label>Opis</label><br>
+            <textarea name = "desc" style="resize: none;" cols="55" rows="10" maxlength="256"><?= $bar->getOpis(); ?></textarea>
+        </div>
+    </div>
+</div>

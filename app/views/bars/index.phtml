@@ -1,0 +1,13 @@
+
+<div class="container row">
+    <? foreach ($bars as $bar){ ?>
+    <div class="card bg-light text-dark" style="margin-left: 5%; margin-top: 5%; width: 27%;">
+        <div class="card-body">
+           <? echo $this->tag->image(["img/images.png", "class" => "card-img-top" ]); ?>
+           <h4 class="card-title" style="text-align: center;">
+               <a class="card-link" href="/bars/edit/<?= $bar->getIdKlub();?>" ><?= $bar->getIme();?></a>
+           </h4>
+        </div>
+    </div>
+     <?}?>
+</div>

@@ -69,6 +69,7 @@ class SecurityPlugin extends Plugin
 		}
 
 		$privateResources = [
+		    "bars" => ["index","edit"],
 		    "details" => ["index", "rate"],
 		    "events" => ["index", "reserve", "unreserve"],
 		    "index" => ["index", "folow", "unfolow"],
