@@ -1,0 +1,13 @@
+body{
+    overflow-x: hidden;
+}
+img {
+    width: 150px;
+    height: 150px;
+    margin-top: 2%;
+    margin-left: 2%;
+}
+
+.btn-edit{
+    margin-right: 2%;
+}

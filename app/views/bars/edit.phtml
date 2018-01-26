@@ -1,20 +1,40 @@
 <div class="conteiner">
     <div style="margin-left: 10%">
+        <form method="post" action="/bars/update/<?= $bar->getIdKlub();?>" >
+        <div class="col-sm-6">
         <div class="input-group">
-            <label for = "name">Ime</label> <br>
-            <input type="text" name="name" value="<?= $bar->getIme();?>">
+            <label for = "ime">Ime</label> <br>
+            <input type="text" name="ime" value="<?= $bar->getIme();?>">
         </div>
         <div class="input-group">
-            <label for = "address">Adressa</label> <br>
-            <input type="text" name="address" value="<?= $bar->getAdresa();?>">
+            <label for = "adresa">Adressa</label> <br>
+            <input type="text" name="adresa" value="<?= $bar->getAdresa();?>">
         </div>
         <div class="input-group">
-            <label for = "phone">Broj telefona</label> <br>
-            <input type="text" name="phone" value="<?= $bar->getTelefon();?>">
+            <label for = "telefon">Broj telefona</label> <br>
+            <input type="text" name="telefon" value="<?= $bar->getTelefon();?>">
         </div>
         <div class="input-group">
             <label>Opis</label><br>
-            <textarea name = "desc" style="resize: none;" cols="55" rows="10" maxlength="256"><?= $bar->getOpis(); ?></textarea>
+            <textarea name = "opis" style="resize: none;" cols="55" rows="10" maxlength="256"><?= $bar->getOpis(); ?></textarea>
         </div>
-    </div>
+        </div>
+        <div class="col-cm-6">
+            <?
+                $folder = "img/".$bar->getIdKlub()."/";
+                $images = array_diff(scandir($folder), array('..', '.'));
+                foreach ($images as $image){
+                    echo $this->tag->image([$folder . $image]);
+                }
+            ?>
+        </div>
+        <div class="col-sm-12" style="margin-top: 5%; margin-left: 30%;">
+        <button class="btn btn-success btn-edit" style="color: white;">
+            Spremi promjene <span class="glyphicon glyphicon-edit"></span></button>
+        </form>
+        <a class="btn btn-danger btn-edit" style="color: white;" onclick="return confirm('Želite izbrisati ovaj klub?');"
+            href="/bars/delete/<?= $bar->getIdKlub();?>" >
+            Izbriši klub <span class="glyphicon glyphicon-trash"></span></a>
+        </div>
+
 </div>

@@ -75,7 +75,7 @@
 					<input type="text" name="bar[telefon]">
 					<textarea style="resize: none; margin-top: 5%;" cols="30" rows="10" maxlength="256" name="bar[opis]"></textarea>
 				</div>
-				<label>Upload slika(max 10): </label>
+				<label>Upload slika(max 5): </label>
 				<input class="file" type="file" id="files" name="files[]" multiple onchange = "checkFiles(this.files)" accept = "image/jpeg"/> 
 				<div id = "img-status"></div> <br />
 				<output id="list"></output>
@@ -83,7 +83,7 @@
 					 function checkFiles(files) {       
 							if(files.length>10) {
 							document.getElementById("img-status").innerHTML = "Max 10 images";
-							files.slice(0,10);
+							files.slice(0,5);
 							return false;
 							}       
 					}
@@ -91,7 +91,7 @@
 					function handleFileSelect(evt) {
 						var files = evt.target.files;
 
-						for (var i = 0, f; f = files[i],i < 10; i++) {
+						for (var i = 0, f; f = files[i],i < 5; i++) {
 							var control = document.getElementById("list").childElementCount;
 							if(control > 9) break;
 							
