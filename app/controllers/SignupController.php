@@ -29,10 +29,8 @@
 					$barId = Klub::lastId();
 					
 					mkdir("img/" . $barId  ."/", 0755);
-					$cnt = 0;
             		foreach ($this->request->getUploadedFiles() as $file) {
-            		     $file->moveTo("img/". $barId ."/". $barId . $cnt . ".jpeg");
-            		     $cnt = $cnt+1;
+            		     $file->moveTo("img/". $barId ."/".$file->getName());
             		}
        			}
 

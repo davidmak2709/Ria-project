@@ -3,7 +3,16 @@
 <div class = "container">
 <div class = "row well">
 	<div class = "col-sm-4">
-		<img src="img/images.png" class = "img-circle">
+		<?
+            $folder = "img/".$item->id_Klub."/";
+            if(file_exists($folder)){
+                $images = scandir($folder);
+                echo $this->tag->image([$folder . $images[2], "class" => "img-circle"]);
+            } else {
+                echo $this->tag->image(["img/default.png", "class" => "img-circle"]);
+            }
+
+        ?>
 	</div>
 	<div class = "col-sm-8">
 		<h2><a href = "/details?id=<?=$item->id_Klub;?>"><?php echo $item->ime; ?></a></h2><br> <!-- LINK NA STRANICU S DETALJIMA -->

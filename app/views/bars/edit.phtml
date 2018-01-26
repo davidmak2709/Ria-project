@@ -1,32 +1,85 @@
 <div class="conteiner">
     <div style="margin-left: 10%">
-        <form method="post" action="/bars/update/<?= $bar->getIdKlub();?>" >
+        <form method="post" action="/bars/update/<?= $bar->getIdKlub();?>" enctype="multipart/form-data">
         <div class="col-sm-6">
         <div class="input-group">
             <label for = "ime">Ime</label> <br>
-            <input type="text" name="ime" value="<?= $bar->getIme();?>">
+            <input type="text" name="bar[ime]" value="<?= $bar->getIme();?>">
         </div>
         <div class="input-group">
-            <label for = "adresa">Adressa</label> <br>
-            <input type="text" name="adresa" value="<?= $bar->getAdresa();?>">
+            <label for = "adresa">Adresa</label> <br>
+            <input type="text" name="bar[adresa]" value="<?= $bar->getAdresa();?>">
+        </div>
+        <div class="input-group">
+            <label for = "grad">Grad</label> <br>
+            <input type="text" name="bar[grad]" value="<?= $bar->getGrad();?>">
         </div>
         <div class="input-group">
             <label for = "telefon">Broj telefona</label> <br>
-            <input type="text" name="telefon" value="<?= $bar->getTelefon();?>">
+            <input type="text" name="bar[telefon]" value="<?= $bar->getTelefon();?>">
         </div>
         <div class="input-group">
             <label>Opis</label><br>
-            <textarea name = "opis" style="resize: none;" cols="55" rows="10" maxlength="256"><?= $bar->getOpis(); ?></textarea>
+            <textarea name = "bar[opis]" style="resize: none;" cols="55" rows="10" maxlength="256"><?= $bar->getOpis(); ?></textarea>
         </div>
         </div>
-        <div class="col-cm-6">
+        <div class="col-sm-6">
+            <label style="text-align: left;">Galerija(max. 5)</label> <br>
+            <div style="width: 100%;">
             <?
                 $folder = "img/".$bar->getIdKlub()."/";
-                $images = array_diff(scandir($folder), array('..', '.'));
-                foreach ($images as $image){
-                    echo $this->tag->image([$folder . $image]);
-                }
+                if(file_exists($folder)){
+                    $images = array_diff(scandir($folder), array('..', '.'));
+                    foreach ($images as $image) {
+                        echo "<div class='img-container'>";
+                        echo $this->tag->image([$folder . $image]);
             ?>
+                <div class='input-back'>
+                    <label class="input-label"> Obriši:</label>
+                    <input type='checkbox' class='checkbox' value='<?=$image?>' name='delete[]'/>
+                </div>
+            </div>
+            <?}}?>
+            </div>
+            <input class="file" type="file" id = "files" name="add[]" multiple onchange = "checkFiles(this.files);" accept = "image/*"/>
+            <div id = "img-status"></div> <br />
+            <output id="list"></output>
+            <script>
+                function checkFiles(files) {
+                    if(files.length + controlImages() > 4) {
+                        document.getElementById("img-status").innerHTML = "Max 5 slika";
+                        files.slice(0,4-controlImages());
+                        return false;
+                    }
+                }
+
+                function handleFileSelect(evt) {
+                    var files = evt.target.files;
+                    var cnt = controlImages();
+
+                    for (var i = 0, f; f = files[i],i < 5-cnt; i++) {
+                        if (!f.type.match('image.*')) {
+                            continue;
+                        }
+
+                        var reader = new FileReader();
+                        reader.onload = (function(theFile) {
+                            return function(e) {
+                                var img = document.createElement("img");
+                                img.src = e.target.result;
+                                img.className = "images";
+                                img.title = escape(theFile.name);
+                                document.getElementById('list').insertBefore(img, null);
+                            };})(f);
+                        reader.readAsDataURL(f);
+                    }
+                }
+                function controlImages(){
+                    var countTag = document.getElementsByTagName("img").length;
+                    return countTag;
+                }
+                document.getElementById('files').addEventListener('change', handleFileSelect, false);
+            </script>
         </div>
         <div class="col-sm-12" style="margin-top: 5%; margin-left: 30%;">
         <button class="btn btn-success btn-edit" style="color: white;">

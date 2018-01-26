@@ -5,8 +5,12 @@
         <div class="card-body">
             <?
                 $folder = "img/" . $bar->getIdKlub() ."/";
-                $images = scandir($folder);
-                echo $this->tag->image([$folder . $images[2], "class" => "card-img-top" ]);
+                if(file_exists($folder)) {
+                    $images = scandir($folder);
+                    echo $this->tag->image([$folder . $images[2], "class" => "card-img-top"]);
+                } else{
+                    echo $this->tag->image(["img/default.png", "class" => "card-img-top"]);
+                }
             ?>
             <h4 class="card-title" style="text-align: center;">
                <a class="card-link" href="/bars/edit/<?= $bar->getIdKlub();?>" ><?= $bar->getIme();?></a>

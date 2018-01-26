@@ -76,14 +76,14 @@
 					<textarea style="resize: none; margin-top: 5%;" cols="30" rows="10" maxlength="256" name="bar[opis]"></textarea>
 				</div>
 				<label>Upload slika(max 5): </label>
-				<input class="file" type="file" id="files" name="files[]" multiple onchange = "checkFiles(this.files)" accept = "image/jpeg"/> 
+				<input class="file" type="file" id="files" name="files[]" multiple onchange = "checkFiles(this.files)" accept = "image/*"/>
 				<div id = "img-status"></div> <br />
 				<output id="list"></output>
 				<script>
 					 function checkFiles(files) {       
-							if(files.length>10) {
-							document.getElementById("img-status").innerHTML = "Max 10 images";
-							files.slice(0,5);
+							if(files.length>4) {
+							document.getElementById("img-status").innerHTML = "Max 5 slika";
+							files.slice(0,4);
 							return false;
 							}       
 					}
@@ -93,7 +93,7 @@
 
 						for (var i = 0, f; f = files[i],i < 5; i++) {
 							var control = document.getElementById("list").childElementCount;
-							if(control > 9) break;
+							if(control > 4) break;
 							
 							if (!f.type.match('image.*')) {
 								continue;
