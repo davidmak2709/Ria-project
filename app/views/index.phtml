@@ -18,7 +18,7 @@
 <nav class="navbar navbar-default">
   	<div class = "container-fluid">
   	<div class = "navbar-header">
-  		<a class = "navbar-brand" href="index">Home</a>
+  		<a class = "navbar-brand" href="/index">Home</a>
   	</div>
 		<ul class = "list-inline">  <!-- DODATI RAZNE LINKOVE -->
 		  <li><a href="/index">POCETNA</a></li>
@@ -38,8 +38,8 @@
 		<? else: ?>
 				
 		<ul class = "list-inline">
-			<li><a href=""><span class = "glyphicon glyphicon-user">
-			 <? echo $this->session->get("first_name")?></span></a></li>
+			<li><a href="/user"><span class = "glyphicon glyphicon-user">
+			 <? echo $this->session->get("first_name"); ?></span></a></li>
 			<li><a href="login/logout"><span class = "glyphicon glyphicon-log-out"> Odjava</span></a></li>
 		
 		<? endif ?>
