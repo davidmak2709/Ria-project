@@ -14,6 +14,7 @@ class BarsController extends Controller
 
     public function editAction($id){
         $this->assets->addCss("css/barsEdit.css");
+        $this->assets->addJs("js/edit.js");
         $this->view->bar = Klub::findFirst($id);
 
 
@@ -41,8 +42,12 @@ class BarsController extends Controller
                     mkdir("img/" . $bar->getIdKlub()  ."/", 0755);
                 }
 
+                $cnt = count(scandir("img/" . $bar->getIdKlub()  ."/"))-2;
+
                 foreach ($imagesAdd as $img){
-                   $img->moveTo("img/".$bar->getIdKlub()."/".$img->getName());
+                    if($cnt == 5) break;
+                    $img->moveTo("img/".$bar->getIdKlub()."/".$img->getName());
+                    $cnt++;
                 }
 
             }

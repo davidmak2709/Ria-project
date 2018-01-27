@@ -1,6 +1,8 @@
-body{
+html, body {
+    max-width: 100%;
     overflow-x: hidden;
 }
+
 img {
     width: 100%;
     height: 100%;
@@ -51,15 +53,24 @@ img {
     margin-top: 2%;
 }
 
-.file{
+#files{
     margin-top: 3%;
-    margin-right: -5%;
+    margin-left: 5%;
 }
 
 #img-status{
     color: red;
 
 }
+
+label{
+   color: #337ab7;
+}
+
+input{
+    margin-left: 5%;
+}
+
 
 
 
