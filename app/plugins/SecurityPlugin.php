@@ -54,7 +54,8 @@ class SecurityPlugin extends Plugin
 		}
 		$superprivateResources = [
 		    "addevents" => ["index", "add"],
-		    "details" => ["index", "rate"],
+            "bars" => ["index","edit","update","delete"],
+            "details" => ["index", "rate"],
 		    "events" => ["index", "reserve", "unreserve"],
 		    "index" => ["index", "folow", "unfolow"],
 		    "login" => ["index", "login", "logout", "facebook", "callback"],
@@ -69,7 +70,6 @@ class SecurityPlugin extends Plugin
 		}
 
 		$privateResources = [
-		    "bars" => ["index","edit","update","delete"],
 		    "details" => ["index", "rate"],
 		    "events" => ["index", "reserve", "unreserve"],
 		    "index" => ["index", "folow", "unfolow"],
@@ -130,7 +130,7 @@ class SecurityPlugin extends Plugin
 		            $action
 		        );
 		    }
-		}// ...	
+		}// ...
 
 		// Grant access to private area only to role Users
 		foreach ($privateResources as $resource => $actions) {
@@ -150,10 +150,10 @@ class SecurityPlugin extends Plugin
     {
         // Check whether the "id" variable exists in session to define the active role
         $auth = $this->session->get("id");
-        
+
         $vlasnik = $this->session->get("vlasnik");
         $admin = $this->session->get("admin");
-        
+
         if ($admin==1) {
             $role = "Admins";
         } elseif($vlasnik==1) {
@@ -163,7 +163,7 @@ class SecurityPlugin extends Plugin
         } else{
         	$role = "Users";
         }
-		
+
 
         // Take the active controller/action from the dispatcher
         $controller = $dispatcher->getControllerName();

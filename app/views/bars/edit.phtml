@@ -1,62 +1,64 @@
 <div style="margin-left: 10%;">
-    <form method="post" action="/bars/update/<?= $bar->getIdKlub();?>" enctype="multipart/form-data">
+    <form method="post" action="/bars/update/<?= $bar->getIdKlub(); ?>" enctype="multipart/form-data">
         <div class="col-sm-6">
             <div class="input-group">
-                <label for = "ime">Ime</label> <br>
-                <input type="text" name="bar[ime]" value="<?= $bar->getIme();?>">
+                <label for="ime">Ime</label> <br>
+                <input type="text" name="bar[ime]" value="<?= $bar->getIme(); ?>">
             </div>
             <div class="input-group">
-                <label for = "adresa">Adresa</label> <br>
-                <input type="text" name="bar[adresa]" value="<?= $bar->getAdresa();?>">
+                <label for="adresa">Adresa</label> <br>
+                <input type="text" name="bar[adresa]" value="<?= $bar->getAdresa(); ?>">
             </div>
             <div class="input-group">
-                <label for = "grad">Grad</label> <br>
-                <input type="text" name="bar[grad]" value="<?= $bar->getGrad();?>">
+                <label for="grad">Grad</label> <br>
+                <input type="text" name="bar[grad]" value="<?= $bar->getGrad(); ?>">
             </div>
             <div class="input-group">
-                <label for = "telefon">Broj telefona</label> <br>
-                <input type="text" name="bar[telefon]" value="<?= $bar->getTelefon();?>">
+                <label for="telefon">Broj telefona</label> <br>
+                <input type="text" name="bar[telefon]" value="<?= $bar->getTelefon(); ?>">
             </div>
             <div class="input-group">
                 <label>Opis</label><br>
-                <textarea name = "bar[opis]" style="resize: none;" cols="55" rows="10" maxlength="256"><?= $bar->getOpis(); ?></textarea>
+                <textarea name="bar[opis]" style="resize: none;" cols="55" rows="10"
+                          maxlength="256"><?= $bar->getOpis(); ?></textarea>
             </div>
         </div>
         <div class="col-sm-6" style="height: 50%; width: 100%;">
             <label>Galerija</label> <span class="glyphicon glyphicon-picture" style="margin-left: 2%;"></span> <br>
-<!--            <div style="width: 100%;">-->
-                <?
-                $folder = "img/".$bar->getIdKlub()."/";
-                if(file_exists($folder)){
-                $images = array_diff(scandir($folder), array('..', '.'));
-                foreach ($images as $image) {
-                        echo "<div class='img-container'>";
-                        echo $this->tag->image([$folder . $image]);
-                ?>
-                <div class='input-back'>
-                    <label class="input-label"> Obriši:</label>
-                    <input type='checkbox' class='checkbox' value='<?=$image?>' name='delete[]'/>
-                </div>
-                </div> <?}};?>
-<!--            </div>-->
-        </div>
-        <div class="col-sm-6" style="width: 50%; width: 100%;">
-            <label>Dodaj slike </label> <span class="glyphicon glyphicon-plus" style="margin-left: 2%; margin-top: 2%"></span>
-            <input type="file" id = "files" name="add[]" multiple onchange = "checkFiles(this.files);" accept = "image/*"/>
-            <label id = "img-status" class="alert alert-danger" style="visibility: hidden;">Max 5 slika ukupno</label> <br />
-            <output id="list"></output>
-            <script>
-                document.getElementById('files').addEventListener('change', handleFileSelect, false);
-            </script>
-        </div>
+            <?
+            $folder = "img/" . $bar->getIdKlub() . "/";
+            if (file_exists($folder)){
+            $images = array_diff(scandir($folder), array('..', '.'));
+            foreach ($images
 
-        <div class="col-sm-12" style="margin-top: 5%; margin-left: 30%; height: 5%;">
-            <button class="btn btn-success btn-edit" style="color: white;">
-                Spremi promjene <span class="glyphicon glyphicon-edit"></span></button>
+            as $image) {
+            echo "<div class='img-container'>";
+            echo $this->tag->image([$folder . $image]);
+            ?>
+            <div class='input-back'>
+                <label class="input-label"> Obriši:</label>
+                <input type='checkbox' class='checkbox' value='<?= $image ?>' name='delete[]'/>
+            </div>
+        </div> <? }
+        }; ?>
+</div>
+<div class="col-sm-6" style="width: 50%; width: 100%;">
+    <label>Dodaj slike </label> <span class="glyphicon glyphicon-plus" style="margin-left: 2%; margin-top: 2%"></span>
+    <input type="file" id="files" name="add[]" multiple onchange="checkFiles(this.files);" accept="image/*"/>
+    <label id="img-status" class="alert alert-danger" style="visibility: hidden;">Max 5 slika ukupno</label> <br/>
+    <output id="list"></output>
+    <script>
+        document.getElementById('files').addEventListener('change', handleFileSelect, false);
+    </script>
+</div>
+
+<div class="col-sm-12" style="margin-top: 5%; margin-left: 30%; height: 5%;">
+    <button class="btn btn-success btn-edit" style="color: white;">
+        Spremi promjene <span class="glyphicon glyphicon-edit"></span></button>
     </form>
-        <a class="btn btn-danger btn-edit" style="color: white;" onclick="return confirm('Želite izbrisati ovaj klub?');"
-            href="/bars/delete/<?= $bar->getIdKlub();?>" >
-            Izbriši klub <span class="glyphicon glyphicon-trash"></span></a>
-        </div>
+    <a class="btn btn-danger btn-edit" style="color: white;" onclick="return confirm('Želite izbrisati ovaj klub?');"
+       href="/bars/delete/<?= $bar->getIdKlub(); ?>">
+        Izbriši klub <span class="glyphicon glyphicon-trash"></span></a>
+</div>
 
 </div>
