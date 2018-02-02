@@ -14,12 +14,7 @@
 		private $opis;
 
 
-
-		public function getValue($name){
-			return $this->$name;
-		}
-
-		public function addKlub($values){
+  		public function addKlub($values){
 			return $this->save($values);
 		}
 		public function setOpis($values){

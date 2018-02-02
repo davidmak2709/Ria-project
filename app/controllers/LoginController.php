@@ -20,15 +20,15 @@
 			$success = Korisnik::findFirstByEmail($email);
 
 
-			if($success && $this->security->checkHash($pwd,$success->getValue("password"))){
+			if($success && $this->security->checkHash($pwd,$success->getPassword())){
 
-				$this->session->set("id",$success->getValue("id_Korisnik"));
+				$this->session->set("id",$success->getIdKorisnik());
 
 				$retVal = Admin::count(
 			    	[
 			        	"id_korisnik = :name:",
 			        	"bind" => [
-			            	"name" => $success->getValue("id_Korisnik"),
+			            	"name" => $success->getIdKorisnik(),
 			        	    
 			        	],
 			    	]
@@ -39,7 +39,7 @@
 			    	[
 			        	"id_korisnik = :name:",
 			        	"bind" => [
-			            	"name" => $success->getValue("id_Korisnik"),
+			            	"name" => $success->getIdKorisnik(),
 			        	    
 			        	],
 			    	]
@@ -73,7 +73,7 @@
 
 			$helper = $fb->getRedirectLoginHelper();
 
-			$redirectUrl = $this->url->getBaseUri()."/login/callback";
+			$redirectUrl = "http://dir.dev/login/callback";
 			$permissions = ['email'];
 			$loginURL = $helper->getLoginUrl($redirectUrl,$permissions); 
 
