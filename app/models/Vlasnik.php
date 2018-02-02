@@ -1,7 +1,7 @@
 <?php
 	use Phalcon\Mvc\Model;
 
-	class Vlasnik extends Model{
+	class Vlasnik extends Model implements UserInterface {
 		
 		private $id_Vlasnik;
 		private $id_Korisnik;
@@ -18,6 +18,14 @@
 			}
 
 		}
+
+		public function getIdKorisnik(){
+		    return $this->id_Korisnik;
+        }
+
+        public function getIdVlasnik(){
+		    return $this->id_Vlasnik;
+        }
 	}
 	
 ?>

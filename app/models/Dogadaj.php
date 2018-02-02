@@ -64,10 +64,10 @@
 			$mail->SMTPSecure = 'tls';
 		
 			$mail->SMTPAuth = true;
-			$mail->Username = "riaclubprojekt@gmail.com";
-			$mail->Password =  "projektRIA";
+			$mail->Username = $this->config->mail->mail;
+			$mail->Password =  $this->config->mail->password;
 
-			$mail->setFrom("riaclubprojekt@gmail.com", "RIA Club");
+			$mail->setFrom($this->config->mail->mail, "RIA Club");
 			$mail->addAddress($to, 'John Doe');
 			
 			$mail->Subject = $subject;

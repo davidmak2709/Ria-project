@@ -2,16 +2,13 @@
 
 	use Phalcon\Mvc\Model;
 
-	class Korisnik extends Model{
+	class Korisnik extends Model implements UserInterface {
 		private $id_Korisnik;
 		private $password;
 		private $email;
 		private $first_name;
 		private $last_name;
-		private $address;
-		private $hometown;
-		private $gender;
-		private $birthday;
+
 
 
 		public function addUser($values,$pwd){

@@ -5,7 +5,7 @@
 	
 
 		public function indexAction(){
-						
+
 		}
 
 		public function loginAction($email = null, $pwd = null){
@@ -73,7 +73,7 @@
 
 			$helper = $fb->getRedirectLoginHelper();
 
-			$redirectUrl = "http://dir.dev/login/callback";
+			$redirectUrl = $this->url->getBaseUri()."/login/callback";
 			$permissions = ['email'];
 			$loginURL = $helper->getLoginUrl($redirectUrl,$permissions); 
 
@@ -120,9 +120,9 @@
 			try {
 				$fbResult = Facebook::find(
 					[
-						"id_Facebook = :id_Fcaebook:",
+						"id_Facebook = :id_Facebook:",
     					"bind" => [
-           					"id_Fcaebook" => $userData["id"],
+           					"id_Facebook" => $userData["id"],
 			        	],
 					]
 				);
@@ -131,7 +131,8 @@
 
 				$user = Korisnik::findFirst($idUser);
 
-				$this->session->set("id", $user->getValue("id_Korisnik"));				
+
+				$this->session->set("id", $user->getIdKorisnik());
 				$this->session->set("first_name", $user->getFirstName());
 				$this->session->set("accessToken", (string) $accessToken);
 
