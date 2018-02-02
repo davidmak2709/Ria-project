@@ -15,8 +15,11 @@
 
 		public function addDogadaj($values){
 			$values["rezervacija"] = 0;
-			$this->save($values);
-
+            try {
+                $this->save($values);
+            } catch (\Exception $e){
+                echo $e->getMessage();
+            }
 			$this->sendMails();
 
 		}
@@ -54,20 +57,20 @@
 		}
 
 		private function createMail($to,$subject,$message){
+            $mailData = $this->getDI()->get('config')->mail;
+
 			$mail = new PHPMailer;
 			
 			$mail->isSMTP();
 			$mail->SMTPDebug = 2;
-			
 			$mail->Host = 'smtp.gmail.com';
 			$mail->Port = 587;
 			$mail->SMTPSecure = 'tls';
-		
 			$mail->SMTPAuth = true;
-			$mail->Username = $this->config->mail->mail;
-			$mail->Password =  $this->config->mail->password;
+			$mail->Username = $mailData["mail"];
+			$mail->Password =  $mailData["password"];
 
-			$mail->setFrom($this->config->mail->mail, "RIA Club");
+			$mail->setFrom($mailData["mail"], "RIA Club");
 			$mail->addAddress($to, 'John Doe');
 			
 			$mail->Subject = $subject;

@@ -9,7 +9,7 @@
 		
 		public function indexAction(){
 			
-			$this->assets->addCss("css/index.css");
+			$this->assets->addCss("/css/index.css");
 
 			$currentPage= $this->request->getQuery("page", "int");
 			

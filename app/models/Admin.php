@@ -4,7 +4,7 @@
 	class Admin extends Model{
 		
 		private $id_Admin;
-		private $id_Korisnik;
+		private $id_korisnik;
 		
 		public function getidAdmin(){
 			return $this->id_Admin;

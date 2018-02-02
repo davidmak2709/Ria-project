@@ -9,7 +9,7 @@
 		}
 
 		public function loginAction($email = null, $pwd = null){
-			
+
 			if ($email == null && $pwd == null) {
 				$email = $this->request->getPost("email");
 				$pwd = $this->request->getPost("password");
@@ -17,8 +17,8 @@
 			}
 
 
-			$success = Korisnik::findFirstByEmail($email);
 
+			$success = Korisnik::findFirstByEmail($email);
 
 			if($success && $this->security->checkHash($pwd,$success->getPassword())){
 
@@ -33,17 +33,23 @@
 			        	],
 			    	]
 				);
+                echo "a1";
+
+
 				if($retVal) $this->session->set("admin", 1);
 
-				$retVal = Vlasnik::count(
-			    	[
-			        	"id_korisnik = :name:",
-			        	"bind" => [
-			            	"name" => $success->getIdKorisnik(),
-			        	    
-			        	],
-			    	]
-				);
+				try {
+                    $retVal = Vlasnik::count(
+                        [
+                            "id_korisnik = :name:",
+                            "bind" => [
+                                "name" => $success->getIdKorisnik(),
+                            ],
+                        ]
+                    );
+                } catch (Exception $e){
+				    echo $e->getMessage();
+				}
 
 				if($retVal) $this->session->set("vlasnik", 1);
 				
@@ -72,8 +78,7 @@
 				]);
 
 			$helper = $fb->getRedirectLoginHelper();
-
-			$redirectUrl = "http://dir.dev/login/callback";
+			$redirectUrl = $this->request->getHTTPReferer() ."/callback";
 			$permissions = ['email'];
 			$loginURL = $helper->getLoginUrl($redirectUrl,$permissions); 
 

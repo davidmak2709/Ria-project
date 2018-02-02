@@ -9,7 +9,7 @@
                 $images = scandir($folder);
                 echo $this->tag->image([$folder . $images[2], "class" => "img-circle"]);
             } else {
-                echo $this->tag->image(["img/default.png", "class" => "img-circle"]);
+                echo $this->tag->image(["/img/default.png", "class" => "img-circle"]);
             }
         ?>
 	</div>
