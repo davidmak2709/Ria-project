@@ -1,6 +1,9 @@
 <?php
 
 	use Phalcon\Mvc\Model;
+    use Phalcon\Validation;
+    use Phalcon\Validation\Validator\Uniqueness;
+    use Phalcon\Validation\Validator\PresenceOf;
 
 	class Korisnik extends Model implements UserInterface {
 		private $id_Korisnik;
@@ -8,14 +11,21 @@
 		private $email;
 		private $first_name;
 		private $last_name;
-
+        private $ime;
 
 
 		public function addUser($values,$pwd){
 			$values["password"] = $pwd;
 			$values["ime"] = $values["first_name"] ." ". $values["last_name"];
-			if($this->save($values))
-				return $this->id_Korisnik;
+
+			$val = Korisnik::validation($values);
+
+			if($val)
+			    return false;
+			else if($this->save($values))
+			    return $this->id_Korisnik;
+			else
+			    return true;
 		}
 
 
@@ -35,6 +45,29 @@
 
 		public function getPassword(){
 			return $this->password;
+		}
+
+		public  static function validation($values){
+            $validation = new Validation();
+
+            $validation->add(
+                "email",
+                new Uniqueness(
+                    [
+                        "model"   => new Korisnik(),
+                        "message" => ":field je vec korišten",
+                    ]
+                )
+            );
+
+            $messages = $validation->validate($values);
+
+            if(count($messages)){
+                return true;
+            } else {
+                return false;
+            }
+
 		}
 
 	}

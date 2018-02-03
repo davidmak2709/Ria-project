@@ -13,10 +13,14 @@
 			if($this->request->isPost()){
 				$user = User::getUserType($this->request->getPost("Tip"));
 				
-				$user->addUser($this->request->getPost(),
+				$retval = $user->addUser($this->request->getPost(),
 							$this->security->hash($this->request->getPost("password"))
 						);
 
+				if(!$retval){
+                    $this->flashSession->error("E-MAIL SE VEĆ KORISTI");
+                    return $this->response->redirect('/signup');
+                }
 				if($this->session->has("facebookId")){
 					$fb = new Facebook();
 
@@ -35,10 +39,12 @@
        			}
 
        			$this->session->set("id",$user->getIdKorisnik());
-       			$this->response->redirect("/index");
+       			$this->session->set("first_name",$user->getFirstName());
+
+       			//$this->response->redirect("/index");
 
 			}else{
-				$this->response->redirect("/signup/index");
+				//$this->response->redirect("/signup/index");
 			}
 			
 
@@ -104,6 +110,6 @@
 					
 				
 			$this->response->redirect("/signup");
-		}	
+		}
 	}
 ?>

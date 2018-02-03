@@ -3,35 +3,42 @@
 	<div class="col-sm-8 well">
 		<legend><h2><b>REGISTRACIJA</b></h2></legend>
 		<a class="btn btn-primary" href="signup/facebook" style="margin-bottom: 5%;">Dohvati podatke s Facebook računa</a>
-		<form action="signup/register" method = "POST" enctype="multipart/form-data">
+       <div style="text-align: center; font-size: larger;">
+         <b class="error-message"><? $this->flashSession->output(); ?></b>
+       </div>
+       <form action="signup/register" method = "POST" enctype="multipart/form-data">
 		
-			<div class="col-sm-4" align="right">
-				<label class="input-label">Ime:</label> <br>
-				<label class="input-label">Prezime:</label><br>
-				<label class="input-label">E-mail:</label><br>
-				<label class="input-label">Ponovite E-mail:</label><br>
-				<label class="input-label">Lozinka:</label><br>
-				<label class="input-label">Ponovite Lozinku:</label><br>
-				<!-- <label class="input-label">Spol:</label><br> -->
-				<label class="input-label">Tip korisnika:</label><br>
-			</div>
-			<div class="col-sm-4">
-				<input class="name" type="text" name="first_name" value="<?php echo $this->session->get('first_name')?>">
-				<input class="name" type="text" name="last_name" value="<?php echo $this->session->get('last_name')?>">
-				
-				<input class = "email" type="text" name="email" value="<?php echo $this->session->get('email')?>">
-				<input class = "email" type="text" name="email" value="<?php echo $this->session->get('email')?>">
-				
-				<input type="password" name="password" value="<?php echo $this->session->get('id')?>" required>
-				<input type="password" name="password" value="<?php echo $this->session->get('id')?>" required>
-				<!-- <div class="container">
-					<input type="radio" name="gender" value="male"> M 
-					<input type="radio" name="gender" value="female"> Ž
-				</div> -->
-				<div class="container">
-					<input id = "type_user" type="radio" name="Tip" value="Korisnik" onchange="userInput()" checked> Korisnik 
-					<input type="radio" name="Tip" value="Vlasnik" onchange="userInput()"> Vlasnik
-				</div>
+			<div class="col-sm-10" >
+				<div class="input-group">
+                    <label class="input-label" for = "first_name">Ime:</label>
+                    <input class="input" type="text" name="first_name" value="<?php echo $this->session->get('first_name')?>" required>
+                </div>
+                <div class="input-group">
+				    <label class="input-label" for = "last_name">Prezime:</label>
+                    <input class="input" type="text" name="last_name" value="<?php echo $this->session->get('last_name')?>" required>
+                </div>
+                <div class="input-group">
+    				<label class="input-label">E-mail:</label>
+                    <input class = "input" type="text" name="email" value="<?php echo $this->session->get('email')?>" required>
+                </div>
+                <div class="input-group">
+                    <label class="input-label">Ponovite E-mail:</label>
+                    <input class = "input" type="text" name="r-email" value="<?php echo $this->session->get('email')?>" required>
+                </div>
+                <div class="input-group">
+                    <label class="input-label">Lozinka:</label>
+                    <input class="input" type="password" name="password" value="<?php echo $this->session->get('id')?>" required>
+                </div>
+                <div class="input-group">
+                    <label class="input-label">Ponovite Lozinku:</label>
+                    <input class="input" type="password" name="password" value="<?php echo $this->session->get('id')?>" required>
+                </div>
+                <div class="input-group">
+				    <label class="input-label">Tip korisnika:</label>
+                    <input id = "type_user" type="radio" name="Tip" value="Korisnik" onchange="userInput()" checked> Korisnik
+                    <input type="radio" name="Tip" value="Vlasnik" onchange="userInput()"> Vlasnik
+                </div>
+
 			</div>
 
 			<div id="korisnik" class="col-sm-8">
@@ -45,8 +52,10 @@
 					<input type="text" name="address">
 					<input type="text" name="hometown">
 				</div>
-				<button name="submit" class="btn btn-primary">Potvrdi</button>
-			</div>
+                <div style="margin-top: 100px; margin-left: 48%;">
+				    <button name="submit" class="btn btn-primary" style="width: 150px;">Potvrdi</button>
+                </div>
+            </div>
 
 			<div id="vlasnik" class="col-sm-8">
 			<br>

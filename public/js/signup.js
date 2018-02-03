@@ -6,7 +6,7 @@ function userInput(){
 		document.getElementById('korisnik').style.display = 'none';
 		document.getElementById('vlasnik').style.display = 'block';
 	}
-						
 }
+
 
 window.onload = userInput;
