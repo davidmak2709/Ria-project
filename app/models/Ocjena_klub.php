@@ -19,7 +19,7 @@
 
 
 			if (count($is_rated)!=0){
-				return "Već ste ocijenili ovaj klub!";
+				return False;
 			}
 			else{
 				$this->save(
@@ -29,7 +29,7 @@
 						'ocjena' => $values['rating'],
 					]
 				);
-				return "Uspješno ste ocijenili klub!";
+				return True;
 			}
 		}
 
@@ -47,7 +47,7 @@
 			if (count($ratings)==0) {
 				$klub->ocjena=0;
 				$klub->save();
-				return "Klub još nije ocijenjen!";
+				return False;
 			}
 
 			$sum_rating=0;
