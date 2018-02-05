@@ -5,7 +5,7 @@
 	<div class = "col-sm-4">
 		<?
             $folder = "img/".$item->id_Klub."/";
-            if(file_exists($folder)){
+            if(file_exists($folder) && count(scandir($folder)) > 2){
                 $images = scandir($folder);
                 echo $this->tag->image([$folder . $images[2], "class" => "img-circle"]);
             } else {

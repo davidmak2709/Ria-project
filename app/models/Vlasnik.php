@@ -36,6 +36,7 @@
 		    return $this->id_Vlasnik;
         }
 
+
 	}
 	
 ?>

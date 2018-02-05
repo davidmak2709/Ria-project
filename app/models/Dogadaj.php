@@ -1,8 +1,9 @@
 <?php
 	use Phalcon\Mvc\Model;
-	
 	use PHPMailer\PHPMailer\PHPMailer;
 	use PHPMailer\PHPMailer\Exception;
+    use Phalcon\Mvc\Model\Query\Builder as Builder;
+    use Phalcon\Mvc\Model\Query;
 
 	class Dogadaj extends Model{
 		private $id_Dogadaj;
@@ -106,9 +107,21 @@
 		public function setRezervacija($br){
 			$this->rezervacija = $br;
 		}
+
 		static function lastId(){
-			$lastRecord =  Dogadaj::find();
-			return $lastRecord->getLast()->id_Klub;
+			$builder = new Builder();
+
+			$builder->distinct(null);
+			$builder->from("dogadaj");
+            $builder->columns([
+                "dogadaj.id_Dogadaj",
+            ]);
+
+            $builder->orderBy("dogadaj.id_Dogadaj DESC");
+            $builder->limit(1);
+
+            return $builder->getQuery()->execute()->toArray()[0]["id_Dogadaj"];
+
 		}
 	}
 	

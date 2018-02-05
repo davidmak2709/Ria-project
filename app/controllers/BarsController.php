@@ -1,6 +1,7 @@
 <?php
 
 use Phalcon\Mvc\Controller;
+use Phalcon\Mvc\Model\Query\Builder as Builder;
 
 class BarsController extends Controller
 {
@@ -12,6 +13,36 @@ class BarsController extends Controller
         $this->view->bars = Klub::find([
             "limit" => 30
         ]);
+    }
+
+    public function addAction(){
+        $this->assets->addJs("js/edit.js");
+        $this->assets->addCss("css/barsAdd.css");
+    }
+
+    public function newBarAction(){
+        $bar = new Klub();
+        $builder = new Builder();
+        $builder->from("Vlasnik");
+        $builder->where("id_korisnik =". $this->session->get("id"));
+        try{
+            $values = $this->request->getPost();
+            $values["id_Vlasnik"] = $builder->getQuery()->execute()->getFirst()->getIdVlasnik();
+            $values["ocjena"] = 0;
+            $bar->addKlub($values);
+
+        } catch (Exception $e){
+            echo $e->getMessage();
+        }
+
+        if ($this->request->hasFiles(true) == true) {
+            mkdir("img/" . $bar->getIdKlub()  ."/", 0755);
+            foreach ($this->request->getUploadedFiles() as $file) {
+                $file->moveTo("img/". $bar->getIdKlub()."/".$file->getName());
+            }
+        }
+
+        $this->response->redirect("/bars/index");
     }
 
     public function editAction($id){

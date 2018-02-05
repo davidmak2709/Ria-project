@@ -15,11 +15,10 @@
 
 
   		public function addKlub($values){
-			try{
-  				$this->save($values);
-            } catch (Exception $exception){
-				echo $exception->getMessage();
-			}
+            if (! $this->save($values)){
+                //do something with our errors
+                var_dump($this->getMessages());
+            }
 		}
 		public function setOpis($values){
 			$this->opis = $values;
@@ -62,8 +61,18 @@
 		}
 		
 		public static function lastId(){
-			$lastRecord =  Klub::find();
-			return $lastRecord->getLast()->id_Klub;
+            $builder = new Builder();
+
+            $builder->distinct(null);
+            $builder->from("klub");
+            $builder->columns([
+                "klub.id_Klub",
+            ]);
+
+            $builder->orderBy("klub.id_Klub DESC");
+            $builder->limit(1);
+
+            return $builder->getQuery()->execute()->toArray()[0]["id_Klub"];
 		}
 
 		public static function getMyClubs($id_Korisnik){
@@ -80,8 +89,7 @@
 
 			$builder->where("id_korisnik =".$id_Korisnik);
 			try{
-				$retVal = Phalcon\Di::getDefault()->get("modelsManager");
-				return $retVal->executeQuery($builder->getPhql())->jsonSerialize();
+				return $builder->getQuery()->execute()->jsonSerialize();
 	        } catch (Exception $e){
 				return $e->getMessage();
 			}

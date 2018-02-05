@@ -57,7 +57,7 @@ class SecurityPlugin extends Plugin
 		}
 		$superprivateResources = [
 		    "addevents" => ["index", "add"],
-            "bars" => ["index","edit","update","delete"],
+            "bars" => ["index","edit","update","delete","add","newBar"],
             "details" => ["index", "rate"],
 		    "events" => ["index", "reserve", "unreserve"],
 		    "index" => ["index", "folow", "unfolow"],

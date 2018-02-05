@@ -1,11 +1,14 @@
 
 <div class="container row">
+    <div style="height: 100px; width: 100%;">
+        <a style="margin-left: 40%; width: 30%; color: white;" class="btn btn-success" href="/bars/add">Dodaj novi klub</a>
+    </div>
     <? foreach ($bars as $bar){ ?>
     <div class="card bg-light text-dark" style="margin-left: 5%; margin-top: 5%; width: 27%;">
         <div class="card-body">
             <?
                 $folder = "img/" . $bar->getIdKlub() ."/";
-                if(file_exists($folder)) {
+                if(file_exists($folder)  && count(scandir($folder)) > 2) {
                     $images = scandir($folder);
                     echo $this->tag->image([$folder . $images[2], "class" => "card-img-top"]);
                 } else{

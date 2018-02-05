@@ -1,0 +1,14 @@
+img{
+    height: 100%;
+    width: 100%;
+}
+
+
+.images{
+    position: relative;
+    width: 150px;
+    height: 150px;
+    float: left;
+    margin-left: 2%;
+    margin-top: 2%;
+}
