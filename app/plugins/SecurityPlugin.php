@@ -148,21 +148,9 @@ class SecurityPlugin extends Plugin
 	}
 	public function beforeExecuteRoute(Event $event, Dispatcher $dispatcher)
     {
-        // Check whether the "id" variable exists in session to define the active role
-        $auth = $this->session->get("id");
+        $role = $this->session->get("role_type");
+        if($role ==  null) $role = "Guests";
 
-        $vlasnik = $this->session->get("vlasnik");
-        $admin = $this->session->get("admin");
-
-        if ($admin==1) {
-            $role = "Admins";
-        } elseif($vlasnik==1) {
-            $role = "Vlasnik";
-        } elseif(!$auth){
-        	$role = "Guests";
-        } else{
-        	$role = "Users";
-        }
 
 
         // Take the active controller/action from the dispatcher

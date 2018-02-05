@@ -11,6 +11,7 @@
 	use Phalcon\Config\Adapter\Ini as ConfigIni;
 	use Phalcon\Mvc\Dispatcher; 				//potrebno za acl
 	use Phalcon\Events\Manager as EventsManager; //potrebno za acl
+    use Phalcon\Mvc\Model\Manager as ModelsManager;
 
 
 
@@ -53,7 +54,12 @@
 			return $config;
 	}, true);
 
-
+	$di->set(
+        "modelsManager",
+        function() {
+            return new ModelsManager();
+        }
+    );
 
 	$di->set('db',function () use ($config){
 		return new DbAdapter([

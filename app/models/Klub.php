@@ -1,7 +1,7 @@
 <?php
 	use Phalcon\Mvc\Model;
-
-
+	use Phalcon\Mvc\Model\Query\Builder as Builder;
+	use Phalcon\Mvc\Model\Query;
 
 	class Klub extends Model{
 		private $id_Klub;
@@ -15,7 +15,11 @@
 
 
   		public function addKlub($values){
-			return $this->save($values);
+			try{
+  				$this->save($values);
+            } catch (Exception $exception){
+				echo $exception->getMessage();
+			}
 		}
 		public function setOpis($values){
 			$this->opis = $values;
@@ -57,9 +61,31 @@
 			$this->ocjena=$ocjena;
 		}
 		
-		static function lastId(){
+		public static function lastId(){
 			$lastRecord =  Klub::find();
 			return $lastRecord->getLast()->id_Klub;
+		}
+
+		public static function getMyClubs($id_Korisnik){
+			$builder = new Builder();
+
+			$builder->distinct(null);
+			$builder->from("klub");
+			$builder->columns([
+				"klub.ime",
+				"klub.id_Klub",
+			]);
+
+			$builder->innerJoin("Vlasnik","Vlasnik.id_Vlasnik = klub.id_Vlasnik");
+
+			$builder->where("id_korisnik =".$id_Korisnik);
+			try{
+				$retVal = Phalcon\Di::getDefault()->get("modelsManager");
+				return $retVal->executeQuery($builder->getPhql())->jsonSerialize();
+	        } catch (Exception $e){
+				return $e->getMessage();
+			}
+
 		}
 	}
 ?>

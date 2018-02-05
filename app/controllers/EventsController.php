@@ -65,6 +65,16 @@ class EventsController extends Controller{
 		return $this->response->redirect("events");
 				
 		}
+
+		public function editAction($id){
+	        $this->view->item = Dogadaj::findFirst($id);
+        }
+
+        public function updateAction($id){
+	        $val =  Dogadaj::findFirst($id);
+	        $val->save($this->request->getPost());
+	        $this->response->redirect("/events");
+        }
 }
 
 ?>

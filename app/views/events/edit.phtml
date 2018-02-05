@@ -1,0 +1,37 @@
+<div class="container">
+  <h2>Događaji</h2>  
+  <table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Naziv</th>
+        <th>Vrijeme</th>
+        <th>Rezervacija</th>
+        <th>ID_Kluba</th>
+        <th>Opis</th>
+      </tr>
+    </thead>
+    <tbody>
+    <form action="/events/update/<?php echo $item->id_Dogadaj; ?>" method = "POST" enctype="multipart/form-data">
+      <tr>
+        <td><?php echo $item->id_Dogadaj; ?></td>
+        <td>
+        	<input type="text" name='naziv' class="form-control" value="<?php echo $item->naziv; ?>"/>
+        </td>
+        <td>
+        	<input type="date" name='vrijeme' class="form-control" min="<?php echo date('Y-m-d'); ?>" value="<?php echo $item->vrijeme; ?>"/>
+        </td>
+        <td>
+		    <input type="text" name='rezervacija' class="form-control" value="<?php echo $item->rezervacija; ?>"/>    	
+        </td>
+        <td>
+			<input type="text" name='id_Klub' class="form-control" value="<?php echo $item->id_Klub; ?>"/>
+        </td>
+        <td><textarea name="opis" class="form-control"><?php echo $item->opis; ?> </textarea></td>
+        <td><button name='submit' class='btn btn-primary glyphicon glyphicon-edit row-edit'></button></td>
+    </form>
+      </tr>
+    </tbody>
+  </table>
+  <a name="bot">
+</div>

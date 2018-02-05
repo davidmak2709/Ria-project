@@ -5,33 +5,26 @@ use Phalcon\Mvc\Controller;
 class AddeventsController extends Controller{
 
 	public function indexAction(){
-		if ($this->session->has("id")) {
-			$retVal = Vlasnik::count(
-			    	[
-			        	"id_korisnik = :name:",
-			        	"bind" => [
-			            	"name" => $this->session->get("id"),
-			        	    
-			        	],
-			    	]
-				);
-			if(!$retVal) $this->response->redirect("index");
-		}
-		else{
-			$this->response->redirect("index");
-		}
+	    $this->assets->addCss("css/addEvents.css");
+		$this->view->myClubs = Klub::getMyClubs($this->session->get("id"));
 	}
 
 
 	public function addAction(){
 			
+            $values = $this->request->getPost();
+            $bars = $values["bars"];
 
-			$dogadaj = new Dogadaj();	
-			$values["rezervacija"] = 0;
-			$dogadaj->addDogadaj($this->request->getPost());
-			
-			$this->response->redirect("events");
+            unset($values["bars"]);
+            unset($values["submit"]);
 
+            $dogadaj = new Dogadaj();
+            foreach($bars as $bar){
+                $values["id_Klub"] = $bar;
+                var_dump($values);
+                $dogadaj->addDogadaj($values);
+            }
+            $this->response->redirect("events");
 	}
 }
 

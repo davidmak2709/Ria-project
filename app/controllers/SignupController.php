@@ -17,7 +17,7 @@
 							$this->security->hash($this->request->getPost("password"))
 						);
 
-				if(!$retval){
+				if($retval === false){
                     $this->flashSession->error("E-MAIL SE VEĆ KORISTI");
                     return $this->response->redirect('/signup');
                 }
@@ -41,10 +41,10 @@
        			$this->session->set("id",$user->getIdKorisnik());
        			$this->session->set("first_name",$user->getFirstName());
 
-       			//$this->response->redirect("/index");
+       			$this->response->redirect("/index");
 
 			}else{
-				//$this->response->redirect("/signup/index");
+				$this->response->redirect("/signup/index");
 			}
 			
 

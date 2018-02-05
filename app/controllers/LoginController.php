@@ -22,7 +22,9 @@
 
 			if($success && $this->security->checkHash($pwd,$success->getPassword())){
 
+
 				$this->session->set("id",$success->getIdKorisnik());
+                $this->session->set("role_type","Users");
 
 				$retVal = Admin::count(
 			    	[
@@ -33,10 +35,7 @@
 			        	],
 			    	]
 				);
-                echo "a1";
-
-
-				if($retVal) $this->session->set("admin", 1);
+				if($retVal) $this->session->set("role_type","Admins");
 
 				try {
                     $retVal = Vlasnik::count(
@@ -51,7 +50,7 @@
 				    echo $e->getMessage();
 				}
 
-				if($retVal) $this->session->set("vlasnik", 1);
+				if($retVal) $this->session->set("role_type","Vlasnik");
 				
 				$this->session->set("first_name", $success->getFirstName());
 				

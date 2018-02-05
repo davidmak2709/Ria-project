@@ -18,14 +18,19 @@
 			$values["password"] = $pwd;
 			$values["ime"] = $values["first_name"] ." ". $values["last_name"];
 
-			$val = Korisnik::validation($values);
+			$val = Korisnik::myValidation($values);
+
 
 			if($val)
 			    return false;
-			else if($this->save($values))
-			    return $this->id_Korisnik;
-			else
-			    return true;
+			else{
+			    try{
+			        $this->save($values);
+			        return $this->id_Korisnik;
+                } catch (Exception $exception){
+			        echo $exception->getMessage();
+                }
+            }
 		}
 
 
@@ -47,7 +52,7 @@
 			return $this->password;
 		}
 
-		public  static function validation($values){
+		public  static function myValidation($values){
             $validation = new Validation();
 
             $validation->add(
