@@ -75,6 +75,7 @@ class SecurityPlugin extends Plugin
 		    "index" => ["index", "folow", "unfolow"],
 		    "login" => ["index", "login", "logout", "facebook", "callback"],
 		    "signup" => ["index", "register", "facebook", "callback"],
+		    "user" => ["index", "edit", "update"],
 		];
 
 		foreach ($privateResources as $resourceName => $actions) {

@@ -19,7 +19,10 @@ class DetailsController extends Controller{
 		$this->view->id_Klub=$id;
 
 		$this->view->ocjena_klub=Ocjena_klub::getOcjena($id);
-
+		if ($this->view->ocjena_klub==False){
+			$this->view->ocjena_klub="Klub još nije ocijenjen!";
+		}
+		
 		$this->view->bar = Klub::findFirst($id);
 
 		$this->view->bar->follow = Pretplata::isFollowed($this->session->get("id"),$id);
@@ -43,7 +46,12 @@ class DetailsController extends Controller{
 		else{
 			$ocjena=new Ocjena_klub();
 			$retVal=$ocjena->addOcjena($this->request->getPost(), $this->session->get("id"));
-			$this->flashSession->notice($retVal);
+			if ($retVal){
+				$this->flashSession->notice("Uspješno ste ocijenili klub!");
+			}
+			else{
+				$this->flashSession->notice("Već ste ocijenili ovaj klub!");
+			}
 			return $this->response->redirect('details?id='.$_POST["id_Klub"].'#rating_done');
 		}
 

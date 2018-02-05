@@ -1,7 +1,7 @@
 <?php
 
 	use Phalcon\Mvc\Controller;
-	use Phalcon\Paginator\Adapter\Model as PaginatorModel;
+	use Phalcon\Paginator\Adapter\QueryBuilder as PaginatorQueryBuilder;
 
 	class IndexController extends Controller{
 
@@ -12,14 +12,15 @@
 			$this->assets->addCss("/css/index.css");
 
 			$currentPage= $this->request->getQuery("page", "int");
-			
-			$klubovi=Klub::find();
-			$paginator=new PaginatorModel(
-				[
-					"data"=>$klubovi,
-					"limit"=>5,
-					"page"=>$currentPage,
-				]
+
+			$builder=new Phalcon\Mvc\Model\Query\Builder();
+			$builder->from("Klub");
+			$paginator = new PaginatorQueryBuilder(
+    			[
+        			"builder" => $builder,
+        			"limit"   => 5,
+        			"page"    => $currentPage,
+    			]
 			);
 			$this->view->page=$paginator->getPaginate();
 		}
