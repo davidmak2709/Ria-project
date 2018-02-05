@@ -6,7 +6,9 @@ class BarsController extends Controller
 {
     public function indexAction(){
         /* Treba napraviti da se uzimaju samo oni klubovi kojima je logirani korisnik vlasnik */
-        /* I selectat samo id i ime */
+        /* I selectat samo id i ime
+            mozda paginacija a mozda ne
+        */
         $this->view->bars = Klub::find([
             "limit" => 30
         ]);

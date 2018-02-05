@@ -1,43 +1,50 @@
 <?php
  
 use Phalcon\Mvc\Controller;
+use Phalcon\Paginator\Adapter\QueryBuilder as PaginatorQueryBuilder;
+
+
 
 class AdminController extends Controller{
 
 	public function indexAction(){
-		if ($this->session->has("id")) {
-			$retVal = Admin::count(
-			    	[
-			        	"id_korisnik = :name:",
-			        	"bind" => [
-			            	"name" => $this->session->get("id"),
-			        	    
-			        	],
-			    	]
-				);
-			if(!$retVal) $this->response->redirect("index");
-		}
-		else{
-			$this->response->redirect("index");
-		}
-		
 	}
 
 	public function klubAction(){
-		$this->view->items = Klub::find();
+        $currentPage=$this->request->getQuery("page", "int");
+        $this->view->page= $this->paginate("Klub",$currentPage);
 	}
 
 	public function dogadajAction(){
-		$this->view->items = Dogadaj::find();
+        $currentPage=$this->request->getQuery("page", "int");
+        $this->view->page= $this->paginate("Dogadaj",$currentPage);
 	}
 
 	public function korisnikAction(){
-		$this->view->items = Korisnik::find();
+        $currentPage=$this->request->getQuery("page", "int");
+        $this->view->page= $this->paginate("Korisnik",$currentPage);
 	}
 
 	public function adminsAction(){
-		$this->view->items = Admin::find();
+        $currentPage=$this->request->getQuery("page", "int");
+        $this->view->page= $this->paginate("Admin",$currentPage);
 	}
+
+//za sve
+
+    private function paginate($type,$page){
+        $builder=new Phalcon\Mvc\Model\Query\Builder();
+        $builder->from($type);
+        $paginator = new PaginatorQueryBuilder(
+            [
+                "builder" => $builder,
+                "limit"   => 5,
+                "page"    => $page,
+            ]
+        );
+
+        return $paginator->getPaginate();
+    }
 
 //admin
 

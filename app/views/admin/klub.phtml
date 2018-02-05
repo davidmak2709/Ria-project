@@ -13,7 +13,7 @@
       </tr>
     </thead>
     <tbody>
-    <?php foreach ($items as $item){ ?>
+    <?php foreach ($page->items as $item){ ?>
     <form action="/admin/updateKlub/<?php echo $item->id_Klub; ?>" method = "POST" enctype="multipart/form-data">
       <tr>
         <td><?php echo $item->id_Klub; ?></td>
@@ -41,3 +41,14 @@
   <a name="bot">
 </div>
 
+
+<div align = "center">
+    <ul class="pagination">
+        <li><a href="/admin/klub">First</a></li>
+        <li><a href="/admin/klub?page=<?= $page->before; ?>">&laquo;</a></li>
+        <li><a href="/admin/klub?page=<?= $page->next; ?>">&raquo;</a></li>
+        <li><a href="/admin/klub?page=<?= $page->last; ?>">Last</a></li>
+    </ul>
+    <br>
+    <?php echo "You are in page ", $page->current, " of ", $page->total_pages; ?>
+</div>

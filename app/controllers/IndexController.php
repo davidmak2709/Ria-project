@@ -26,7 +26,6 @@
 		}
 
 		public function followAction($id){
-			if($this->session->has("id")){
 				$var = new Pretplata();
 
 				$var->save(
@@ -35,16 +34,12 @@
 						"id_Klub" => $id,
 						"notifikacije" =>0					]
 				);
-			}
-
 			$this->view->disable();
-					
 			$this->redirectBack();
 
 		}
 
 		public function unfollowAction($id){
-			if($this->session->has("id")){
 				$var = new Pretplata();
 				
 				$val = $var->find([
@@ -59,7 +54,7 @@
 
 				$val->delete();
 				
-			}
+
 
 			$this->view->disable();
 

@@ -10,6 +10,10 @@
 			return $this->id_Admin;
 
 			}
+        public function getidKorisnik(){
+            return $this->id_korisnik;
+
+        }
 
 	}
 	

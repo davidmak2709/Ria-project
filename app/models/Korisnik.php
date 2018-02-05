@@ -41,6 +41,12 @@
 			return $retVal[0];
 		}
 
+        public function getLastName(){
+            $retVal = explode(" ",$this->ime);
+
+            return $retVal[1];
+        }
+
 		public function getIdKorisnik(){
 			return $this->id_Korisnik;
 		}
@@ -52,6 +58,10 @@
 		public function getPassword(){
 			return $this->password;
 		}
+
+        public function getIme(){
+            return $this->ime;
+        }
 
 		public  static function myValidation($values){
             $validation = new Validation();

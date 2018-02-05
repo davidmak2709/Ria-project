@@ -37,13 +37,16 @@ class SecurityPlugin extends Plugin
 
 		// Private area resources (backend)
 		$adminResources = [
-		    "addevents" => ["index", "add"],
-		    "admin" => ["index", "klub", "dogadaj", "korisnik", "admins", "addklub", "adddogadaj", "addkorisnik", "addadmins", "deleteklub", "deletedogadaj", "deletekorisnik", "deleteadmins", "updateklub", "updatedogadaj", "updatekorisnik", "updateadmins"],
+		    "admin" => ["index", "klub", "dogadaj", "korisnik", "admins",
+                "addKlub", "addDogadaj", "addKorisnik", "addAdmins",
+                "deleteKlub", "deleteDogadaj", "deleteKorisnik", "deleteAdmins",
+                "updateKlub", "updateDogadaj", "updateKorisnik", "updateAdmins"],
 		    "details" => ["index", "rate"],
 		    "events" => ["index", "reserve", "unreserve"],
 		    "index" => ["index", "folow", "unfolow"],
 		    "login" => ["index", "login", "logout", "facebook", "callback"],
 		    "signup" => ["index", "register", "facebook", "callback"],
+            "user" => ["index","edit","update"]
 		];
 
 		foreach ($adminResources as $resourceName => $actions) {
@@ -60,6 +63,7 @@ class SecurityPlugin extends Plugin
 		    "index" => ["index", "folow", "unfolow"],
 		    "login" => ["index", "login", "logout", "facebook", "callback"],
 		    "signup" => ["index", "register", "facebook", "callback"],
+            "user" => ["index","edit","update"]
 		];
 
 		foreach ($superprivateResources as $resourceName => $actions) {
@@ -75,7 +79,7 @@ class SecurityPlugin extends Plugin
 		    "index" => ["index", "folow", "unfolow"],
 		    "login" => ["index", "login", "logout", "facebook", "callback"],
 		    "signup" => ["index", "register", "facebook", "callback"],
-		    "user" => ["index", "edit", "update"],
+		    "user" => ["index", "edit", "update"]
 		];
 
 		foreach ($privateResources as $resourceName => $actions) {

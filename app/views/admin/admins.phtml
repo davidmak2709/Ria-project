@@ -9,7 +9,7 @@
       </tr>
     </thead>
     <tbody>
-    <?php foreach ($items as $item){ ?>
+    <?php foreach ($page->items as $item){ ?>
     <form action="/admin/updateAdmin/<?php echo $item->id_Admin; ?>" method = "POST" enctype="multipart/form-data">
       <tr>
         <td><?php echo $item->id_Admin; ?></td>
@@ -27,3 +27,14 @@
   <a name="bot">
 </div>
 
+
+<div align = "center">
+    <ul class="pagination">
+        <li><a href="/admin/admins">First</a></li>
+        <li><a href="/admin/admins?page=<?= $page->before; ?>">&laquo;</a></li>
+        <li><a href="/admin/admins?page=<?= $page->next; ?>">&raquo;</a></li>
+        <li><a href="/admin/admins?page=<?= $page->last; ?>">Last</a></li>
+    </ul>
+    <br>
+    <?php echo "You are in page ", $page->current, " of ", $page->total_pages; ?>
+</div>

@@ -24,35 +24,8 @@
 
 
 				$this->session->set("id",$success->getIdKorisnik());
-                $this->session->set("role_type","Users");
-
-				$retVal = Admin::count(
-			    	[
-			        	"id_korisnik = :name:",
-			        	"bind" => [
-			            	"name" => $success->getIdKorisnik(),
-			        	    
-			        	],
-			    	]
-				);
-				if($retVal) $this->session->set("role_type","Admins");
-
-				try {
-                    $retVal = Vlasnik::count(
-                        [
-                            "id_korisnik = :name:",
-                            "bind" => [
-                                "name" => $success->getIdKorisnik(),
-                            ],
-                        ]
-                    );
-                } catch (Exception $e){
-				    echo $e->getMessage();
-				}
-
-				if($retVal) $this->session->set("role_type","Vlasnik");
-				
-				$this->session->set("first_name", $success->getFirstName());
+                $this->setRole($success->getIdKorisnik());
+               	$this->session->set("first_name", $success->getFirstName());
 				
 				$this->response->redirect("/index");
 			
@@ -139,14 +112,46 @@
 				$this->session->set("id", $user->getIdKorisnik());
 				$this->session->set("first_name", $user->getFirstName());
 				$this->session->set("accessToken", (string) $accessToken);
-
+                $this->setRole($user->getIdKorisnik());
 
 				$this->response->redirect("/index");
 
 			} catch (Exception $e) {
 				echo $e->getMessage();
 			}
-		}	
+		}
+
+		private function setRole($id){
+            $this->session->set("role_type","Users");
+
+            $retVal = Admin::count(
+                [
+                    "id_korisnik = :name:",
+                    "bind" => [
+                        "name" => $id,
+
+                    ],
+                ]
+            );
+            if($retVal) $this->session->set("role_type","Admins");
+
+            try {
+                $retVal = Vlasnik::count(
+                    [
+                        "id_korisnik = :name:",
+                        "bind" => [
+                            "name" => $id,
+                        ],
+                    ]
+                );
+            } catch (Exception $e){
+                echo $e->getMessage();
+            }
+
+            if($retVal) $this->session->set("role_type","Vlasnik");
+
+
+        }
 		
 }
 
