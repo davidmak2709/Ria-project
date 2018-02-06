@@ -160,6 +160,18 @@
                 )
             );
 
+            $validation->add(
+                "grad",
+                new RegexValidator(
+                    [
+                        "pattern" => "/^[\\s\\p{L}]+$/u",
+                        "message" => "Neispravan unos grada,samo slova",
+                    ]
+                )
+            );
+
+            //za adresu ?????
+
             $messages = $validation->validate($values);
             if(count($messages)){
                 return $messages;
