@@ -70,20 +70,30 @@
 					<input type="text" name="hometown" value="<?php echo $this->session->get('hometown')?>">
 				</div>
 			<legend style="margin-top: 35%; color: #337ab7;">Info kluba</legend>
-			<div class="col-sm-6" align="right">
-					<label class="input-label">Ime kluba:</label> <br>
-					<label class="input-label">Adresa:</label> <br>
-					<label class="input-label">Grad:</label> <br>
-					<label class="input-label">Broj telefona:</label> <br>
-					<label class="input-label">Opis:</label> <br>
-				</div>
-				<div class="col-sm-4">
-					<input type="text" name="bar[ime]">
-					<input type="text" name="bar[adresa]">
-					<input type="text" name="bar[grad]">
-					<input type="text" name="bar[telefon]">
-					<textarea style="resize: none; margin-top: 5%;" cols="30" rows="10" maxlength="256" name="bar[opis]"></textarea>
-				</div>
+                <div class="input-group">
+                    <label class="input-label">Ime Kluba:</label>
+                    <input class="input" type="text" name="bar[ime]"  required>
+                </div>
+                <div class="input-group">
+                    <label class="input-label">Adresa:</label>
+                    <input class="input" type="text" name="bar[adresa]"  required>
+                    <p style="font-size: 12px;">Oblik: Ulica XX</p>
+                </div>
+                <div class="input-group">
+                    <label class="input-label">Grad:</label>
+                    <input class="input" type="text" name="bar[grad]"  required>
+                    <p style="font-size: 12px;">Oblik: Rijeka,Zagreb,Split</p>
+
+                </div>
+                <div class="input-group">
+                    <label class="input-label">Telefon:</label>
+                    <input class="input" type="text" name="bar[telefon]"  required>
+                    <p style="font-size: 12px;">Oblik: 051-XXXXXX ili 09X-XXXXXXX</p>
+                </div>
+                    <label class="input-label">Opis:</label><br>
+                    <textarea style="resize: none; margin-top: 5%;" cols="30" rows="10" maxlength="256" name="bar[opis]"></textarea>
+                <br>
+                <br>
 				<label>Upload slika(max 5): </label>
 				<input class="file" type="file" id="files" name="files[]" multiple onchange = "checkFiles(this.files)" accept = "image/*"/>
 				<div id = "img-status"></div> <br />

@@ -2,6 +2,9 @@
 	use Phalcon\Mvc\Model;
 	use Phalcon\Mvc\Model\Query\Builder as Builder;
 	use Phalcon\Mvc\Model\Query;
+	use Phalcon\Validation;
+	use Phalcon\Validation\Validator\PresenceOf;
+	use Phalcon\Validation\Validator\Regex as RegexValidator;
 
 	class Klub extends Model{
 		private $id_Klub;
@@ -15,11 +18,12 @@
 
 
   		public function addKlub($values){
-            if (! $this->save($values)){
-                //do something with our errors
-                var_dump($this->getMessages());
-            }
-		}
+  			try{
+				$this->save($values);
+			} catch (Exception $exception){
+				echo $exception->getMessage();
+			}
+  		}
 		public function setOpis($values){
 			$this->opis = $values;
 		}
@@ -93,6 +97,75 @@
 	        } catch (Exception $e){
 				return $e->getMessage();
 			}
+
+		}
+
+		public function myValidation($values){
+  			$validation = new Validation();
+
+            $validation->add(
+                'ime',
+                new PresenceOf(
+                    [
+                        'message' => 'Ime kluba je obavezno',
+                    ]
+                )
+            );
+
+            $validation->add(
+                'adresa',
+                new PresenceOf(
+                    [
+                        'message' => 'Adresa kluba je obavezna',
+                    ]
+                )
+            );
+
+
+            $validation->add(
+                'grad',
+                new PresenceOf(
+                    [
+                        'message' => 'Grad kluba je obavezan',
+                    ]
+                )
+            );
+
+
+            $validation->add(
+                'telefon',
+                new PresenceOf(
+                    [
+                        'message' => 'Telefon kluba je obavezan',
+                    ]
+                )
+            );
+
+            $validation->add(
+                'opis',
+                new PresenceOf(
+                    [
+                        'message' => 'Opis kluba je obavezan',
+                    ]
+                )
+            );
+
+            $validation->add(
+                "telefon",
+                new RegexValidator(
+                    [
+                        "pattern" => "/^[0-9]{2,3}-[0-9]{6,7}$/",
+                        "message" => "Nesipravan broj telefona",
+                    ]
+                )
+            );
+
+            $messages = $validation->validate($values);
+            if(count($messages)){
+                return $messages;
+            } else {
+                return false;
+            }
 
 		}
 	}

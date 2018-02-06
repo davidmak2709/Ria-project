@@ -21,7 +21,7 @@ class Korisnik extends Model implements UserInterface {
 			unset($values["bar"]);
 			$values["ime"] = $values["first_name"] ." ". $values["last_name"];
 
-			$val = Korisnik::myValidation($values);
+			$val = $this->myValidation($values);
             $values["password"] = $pwd;
 
 			if($val)
@@ -65,7 +65,7 @@ class Korisnik extends Model implements UserInterface {
             return $this->ime;
         }
 
-		public  static function myValidation($values){
+		public  function myValidation($values){
             $validation = new Validation();
 
             if($values["r-email"] && $values["r-password"]){

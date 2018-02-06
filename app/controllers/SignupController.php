@@ -10,12 +10,13 @@
 		}
 
 		public function registerAction(){
+		   // $this->view->disable();
 			if($this->request->isPost()){
 				$user = User::getUserType($this->request->getPost("Tip"));
 				$retval = $user->addUser($this->request->getPost(),
 							$this->security->hash($this->request->getPost("password")));
 
-				if($retval !== false){
+				if($retval !== false && !is_string($retval)){
 				    while ($retval->current()){
                         $this->flashSession->error($retval->current()->getMessage());
                         $retval->next();
@@ -43,7 +44,9 @@
        			$this->session->set("id",$user->getIdKorisnik());
        			$this->session->set("first_name",$user->getFirstName());
 
+       			echo "aa";
        			$this->response->redirect("/index");
+
 
 			}else{
 				$this->response->redirect("/signup/index");
