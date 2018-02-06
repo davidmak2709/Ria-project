@@ -21,10 +21,13 @@
   		<a class = "navbar-brand" href="/index">POCETNA</a>
   	</div>
 		<ul class = "list-inline">  <!-- DODATI RAZNE LINKOVE -->
-		  <li><a href="/events">EVENTI</a></li>
-		  <li><a href="/addevents">DODAJ EVENT</a></li>
-		  <li><a href="/admin">ADMIN</a></li>
-		  <li><a href="/bars">MOJ KLUBOVI</a></li>
+            <li><a href="/events">EVENTI</a></li>
+		    <li><a href="/addevents">DODAJ EVENT</a></li>
+            <li><a href="/bars">MOJ KLUBOVI</a></li>
+
+            <? if($this->session->get("role_type") == "Admins"){
+                echo "<li><a href=\"/admin\">ADMIN</a></li>";
+                }?>
 		</ul>
 		<!-- OUTPUT OVISAN O STANJU -->
 		<? if (!$this->session->has("id")): ?>
