@@ -1,34 +1,42 @@
 <div class="container">
-  <h2>Admin</h2> 
-  <a href="/admin/addAdmin#bot"><button nam"del0" class='btn btn-info glyphicon glyphicon-user'></button></a>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Id_Korisik</th>
-      </tr>
-    </thead>
-    <tbody>
-    <?php foreach ($page->items as $item){ ?>
-    <form action="/admin/updateAdmin/<?php echo $item->id_Admin; ?>" method = "POST" enctype="multipart/form-data">
-      <tr>
-        <td><?php echo $item->id_Admin; ?></td>
-        <td>
-        	<input type="text" name='id_korisnik' class="form-control" value="<?php echo $item->id_korisnik; ?>"/>
-        </td>
-        <td><button name='submit' class='btn btn-danger glyphicon glyphicon-edit row-edit'></button></td>
-    </form>
-        <td><a href="/admin/deleteAdmin/<?php echo $item->id_Admin; ?>"><button nam"del0" class='btn btn-danger glyphicon glyphicon-trash row-remove'></button></a></td>
-      </tr>
-    
-      <?php } ?>
-    </tbody>
-  </table>
-  <a name="bot">
+    <h2>Admin</h2>
+    <a href="/admin/addAdmin#bot">
+        <button nam
+        "del0" class='btn btn-info glyphicon glyphicon-user'></button></a>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Id_Korisik</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($page->items as $item) { ?>
+            <form action="/admin/updateAdmin/<?php echo $item->id_Admin; ?>" method="POST"
+                  enctype="multipart/form-data">
+                <tr>
+                    <td><?php echo $item->id_Admin; ?></td>
+                    <td>
+                        <input type="text" name='id_korisnik' class="form-control"
+                               value="<?php echo $item->id_korisnik; ?>"/>
+                    </td>
+                    <td>
+                        <button name='submit' class='btn btn-danger glyphicon glyphicon-edit row-edit'></button>
+                    </td>
+            </form>
+            <td><a href="/admin/deleteAdmin/<?php echo $item->id_Admin; ?>">
+                    <button nam
+                    "del0" class='btn btn-danger glyphicon glyphicon-trash row-remove'></button></a></td>
+            </tr>
+
+        <?php } ?>
+        </tbody>
+    </table>
+    <a name="bot">
 </div>
 
 
-<div align = "center">
+<div align="center">
     <ul class="pagination">
         <li><a href="/admin/admins">First</a></li>
         <li><a href="/admin/admins?page=<?= $page->before; ?>">&laquo;</a></li>

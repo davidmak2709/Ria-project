@@ -12,155 +12,172 @@ use Phalcon\Acl\Resource;
 
 class SecurityPlugin extends Plugin
 {
-	public function getAcl()
-	{
-		$acl = new AclList();
+    public function getAcl()
+    {
+        $acl = new AclList();
 
-		// The default action is DENY access
-		$acl->setDefaultAction(
-		    Acl::DENY
-		);
+        // The default action is DENY access
+        $acl->setDefaultAction(
+            Acl::DENY
+        );
 
-		// Register two roles, Users is registered users
-		// and guests are users without a defined identity
-		$roles = [
-		    "users"  => new Role("Users"),
-		    "guests" => new Role("Guests"),
-		    "admins" => new Role("Admins"),
-		    "vlasnik" => new Role("Vlasnik")
+        // Register two roles, Users is registered users
+        // and guests are users without a defined identity
+        $roles = [
+            "users" => new Role("Users"),
+            "guests" => new Role("Guests"),
+            "admins" => new Role("Admins"),
+            "vlasnik" => new Role("Vlasnik")
 
-		];
+        ];
 
-		foreach ($roles as $role) {
-		    $acl->addRole($role);
-		}
+        foreach ($roles as $role) {
+            $acl->addRole($role);
+        }
 
-		// Private area resources (backend)
-		$adminResources = [
-		    "admin" => ["index", "klub", "dogadaj", "korisnik", "admins",
-                "addKlub", "addDogadaj", "addKorisnik", "addAdmins",
-                "deleteKlub", "deleteDogadaj", "deleteKorisnik", "deleteAdmins",
-                "updateKlub", "updateDogadaj", "updateKorisnik", "updateAdmins"],
-		    "details" => ["index", "rate"],
-		    "events" => ["index", "reserve", "unreserve"],
-		    "index" => ["index", "folow", "unfolow"],
-		    "login" => ["index", "login", "logout", "facebook", "callback"],
-		    "signup" => ["index", "register", "facebook", "callback"],
-            "user" => ["index","edit","update"]
-		];
-
-		foreach ($adminResources as $resourceName => $actions) {
-		    $acl->addResource(
-		        new Resource($resourceName),
-		        $actions
-		    );
-		}
-		$superprivateResources = [
-		    "addevents" => ["index", "add"],
-            "bars" => ["index","edit","update","delete","add","newBar"],
+        // Private area resources (backend)
+        $adminResources = [
+            "admin" => [
+                "index",
+                "klub",
+                "dogadaj",
+                "korisnik",
+                "admins",
+                "addKlub",
+                "addDogadaj",
+                "addKorisnik",
+                "addAdmins",
+                "deleteKlub",
+                "deleteDogadaj",
+                "deleteKorisnik",
+                "deleteAdmins",
+                "updateKlub",
+                "updateDogadaj",
+                "updateKorisnik",
+                "updateAdmins"
+            ],
             "details" => ["index", "rate"],
-		    "events" => ["index", "reserve", "unreserve"],
-		    "index" => ["index", "folow", "unfolow"],
-		    "login" => ["index", "login", "logout", "facebook", "callback"],
-		    "signup" => ["index", "register", "facebook", "callback"],
-            "user" => ["index","edit","update"]
-		];
+            "events" => ["index", "reserve", "unreserve"],
+            "index" => ["index", "folow", "unfolow"],
+            "login" => ["index", "login", "logout", "facebook", "callback"],
+            "signup" => ["index", "register", "facebook", "callback"],
+            "user" => ["index", "edit", "update"]
+        ];
 
-		foreach ($superprivateResources as $resourceName => $actions) {
-		    $acl->addResource(
-		        new Resource($resourceName),
-		        $actions
-		    );
-		}
+        foreach ($adminResources as $resourceName => $actions) {
+            $acl->addResource(
+                new Resource($resourceName),
+                $actions
+            );
+        }
+        $superprivateResources = [
+            "addevents" => ["index", "add"],
+            "bars" => ["index", "edit", "update", "delete", "add", "newBar"],
+            "details" => ["index", "rate"],
+            "events" => ["index", "reserve", "unreserve"],
+            "index" => ["index", "folow", "unfolow"],
+            "login" => ["index", "login", "logout", "facebook", "callback"],
+            "signup" => ["index", "register", "facebook", "callback"],
+            "user" => ["index", "edit", "update"]
+        ];
 
-		$privateResources = [
-		    "details" => ["index", "rate"],
-		    "events" => ["index", "reserve", "unreserve"],
-		    "index" => ["index", "folow", "unfolow"],
-		    "login" => ["index", "login", "logout", "facebook", "callback"],
-		    "signup" => ["index", "register", "facebook", "callback"],
-		    "user" => ["index", "edit", "update"]
-		];
+        foreach ($superprivateResources as $resourceName => $actions) {
+            $acl->addResource(
+                new Resource($resourceName),
+                $actions
+            );
+        }
 
-		foreach ($privateResources as $resourceName => $actions) {
-		    $acl->addResource(
-		        new Resource($resourceName),
-		        $actions
-		    );
-		}
+        $privateResources = [
+            "details" => ["index", "rate"],
+            "events" => ["index", "reserve", "unreserve"],
+            "index" => ["index", "folow", "unfolow"],
+            "login" => ["index", "login", "logout", "facebook", "callback"],
+            "signup" => ["index", "register", "facebook", "callback"],
+            "user" => ["index", "edit", "update"]
+        ];
 
-		// Public area resources (frontend)
-		$publicResources = [
-		    "details" => ["index"],
-		    "errors" => ["index", "show404", "show500"],
-		    "events" => ["index"],
-		    "index" => ["index"],
-		    "login" => ["index", "login", "facebook", "callback"],
-		    "signup" => ["index", "register", "facebook", "callback"],
-		];
+        foreach ($privateResources as $resourceName => $actions) {
+            $acl->addResource(
+                new Resource($resourceName),
+                $actions
+            );
+        }
 
-		foreach ($publicResources as $resourceName => $actions) {
-		    $acl->addResource(
-		        new Resource($resourceName),
-		        $actions
-		    );
-		}
+        // Public area resources (frontend)
+        $publicResources = [
+            "details" => ["index"],
+            "errors" => ["index", "show404", "show500"],
+            "events" => ["index"],
+            "index" => ["index"],
+            "login" => ["index", "login", "facebook", "callback"],
+            "signup" => ["index", "register", "facebook", "callback"],
+        ];
 
-		foreach ($roles as $role) {
-		    foreach ($publicResources as $resource => $actions) {
-		        $acl->allow(
-		            $role->getName(),
-		            $resource,
-		            "*"
-		        );
-		    }
-		}
-		// Grant access to private area only to role Admin
-		foreach ($adminResources as $resource => $actions) {
-		    foreach ($actions as $action) {
-		        $acl->allow(
-		            "Admins",
-		            $resource,
-		            $action
-		        );
-		    }
-		}// ...
+        foreach ($publicResources as $resourceName => $actions) {
+            $acl->addResource(
+                new Resource($resourceName),
+                $actions
+            );
+        }
 
-		// Grant access to private area only to role Vlasnik
-		foreach ($superprivateResources as $resource => $actions) {
-		    foreach ($actions as $action) {
-		        $acl->allow(
-		            "Vlasnik",
-		            $resource,
-		            $action
-		        );
-		    }
-		}// ...
+        foreach ($roles as $role) {
+            foreach ($publicResources as $resource => $actions) {
+                $acl->allow(
+                    $role->getName(),
+                    $resource,
+                    $actions
+                );
+            }
+        }
+        // Grant access to private area only to role Admin
+        foreach ($adminResources as $resource => $actions) {
+            foreach ($actions as $action) {
+                $acl->allow(
+                    "Admins",
+                    $resource,
+                    $action
+                );
+            }
+        }// ...
 
-		// Grant access to private area only to role Users
-		foreach ($privateResources as $resource => $actions) {
-		    foreach ($actions as $action) {
-		        $acl->allow(
-		            "Users",
-		            $resource,
-		            $action
-		        );
-		    }
+        // Grant access to private area only to role Vlasnik
+        foreach ($superprivateResources as $resource => $actions) {
+            foreach ($actions as $action) {
+                $acl->allow(
+                    "Vlasnik",
+                    $resource,
+                    $action
+                );
+            }
+        }// ...
 
-		}// ...
+        // Grant access to private area only to role Users
+        foreach ($privateResources as $resource => $actions) {
+            foreach ($actions as $action) {
+                $acl->allow(
+                    "Users",
+                    $resource,
+                    $action
+                );
+            }
 
-		return $acl;
-	}
-	public function beforeExecuteRoute(Event $event, Dispatcher $dispatcher)
+        }// ...
+
+        return $acl;
+    }
+
+    public function beforeExecuteRoute(Event $event, Dispatcher $dispatcher)
     {
         $role = $this->session->get("role_type");
-        if($role ==  null) $role = "Guests";
-
+        if ($role == null) {
+            $role = "Guests";
+        }
 
 
         // Take the active controller/action from the dispatcher
         $controller = $dispatcher->getControllerName();
-        $action     = $dispatcher->getActionName();
+        $action = $dispatcher->getActionName();
 
         // Obtain the ACL list
         $acl = $this->getAcl();
@@ -177,7 +194,7 @@ class SecurityPlugin extends Plugin
             $dispatcher->forward(
                 [
                     "controller" => "index",
-                    "action"     => "index",
+                    "action" => "index",
                 ]
             );
 
@@ -186,7 +203,6 @@ class SecurityPlugin extends Plugin
         }
     }
 }
-
 
 
 ?>

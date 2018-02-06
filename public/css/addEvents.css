@@ -2,7 +2,8 @@ html, body {
     max-width: 100%;
     overflow-x: hidden;
 }
-img{
+
+img {
     width: 90%;
     height: 90%;
 }

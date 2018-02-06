@@ -1,23 +1,22 @@
-.input-label{
-	margin-top: 3%;
+.input-label {
+    margin-top: 3%;
 }
+
 .images {
     height: 150px;
-	border: 1px solid #000;
-	margin: 10px 5px 0 0;
+    border: 1px solid #000;
+    margin: 10px 5px 0 0;
 }
 
-.error-message{
-	width: 40%;
-	height: 5%;
-	color: #a94442;
-	background-color: #f2dede;
-	border: 1 #f2dede solid;
-	border-radius: 15px;
+.error-message {
+    width: 40%;
+    height: 5%;
+    color: #a94442;
+    background-color: #f2dede;
+    border: 1 #f2dede solid;
+    border-radius: 15px;
 }
 
-
-
-.input{
-	width: 45%;
+.input {
+    width: 45%;
 }

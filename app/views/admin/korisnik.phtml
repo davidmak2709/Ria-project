@@ -1,41 +1,48 @@
 <div class="container">
-  <h2>Korisnici</h2> 
-  <a href="/admin/addKorisnik#bot"><button nam"del0" class='btn btn-info glyphicon glyphicon-user'></button></a>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Ime</th>
-        <th>Email</th>
-        <th>Password</th>
-      </tr>
-    </thead>
-    <tbody>
-    <?php foreach ($page->items as $item){ ?>
-    <form action="/admin/updateKorisnik/<?php echo $item->id_Korisnik; ?>" method = "POST" enctype="multipart/form-data">
-      <tr>
-        <td><?php echo $item->id_Korisnik; ?></td>
-        <td>
-        	<input type="text" name='ime' class="form-control" value="<?php echo $item->ime; ?>"/>
-        </td>
-        <td>
-        	<input type="text" name='email' class="form-control" value="<?php echo $item->email; ?>"/>
-        </td>
-        <td>
-		    <input type="text" name='password' class="form-control" value="<?php echo $item->password; ?>"/>    	
-        </td>
-        <td><button name='submit' class='btn btn-danger glyphicon glyphicon-edit row-edit'></button></td>
-    </form>
-        <td><a href="/admin/deleteKorisnik/<?php echo $item->id_Korisnik; ?>"><button nam"del0" class='btn btn-danger glyphicon glyphicon-trash row-remove'></button></a></td>
-      </tr>
-    
-      <?php } ?>
-    </tbody>
-  </table>
-  <a name="bot">
+    <h2>Korisnici</h2>
+    <a href="/admin/addKorisnik#bot">
+        <button nam
+        "del0" class='btn btn-info glyphicon glyphicon-user'></button></a>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Ime</th>
+            <th>Email</th>
+            <th>Password</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($page->items as $item) { ?>
+            <form action="/admin/updateKorisnik/<?php echo $item->id_Korisnik; ?>" method="POST"
+                  enctype="multipart/form-data">
+                <tr>
+                    <td><?php echo $item->id_Korisnik; ?></td>
+                    <td>
+                        <input type="text" name='ime' class="form-control" value="<?php echo $item->ime; ?>"/>
+                    </td>
+                    <td>
+                        <input type="text" name='email' class="form-control" value="<?php echo $item->email; ?>"/>
+                    </td>
+                    <td>
+                        <input type="text" name='password' class="form-control" value="<?php echo $item->password; ?>"/>
+                    </td>
+                    <td>
+                        <button name='submit' class='btn btn-danger glyphicon glyphicon-edit row-edit'></button>
+                    </td>
+            </form>
+            <td><a href="/admin/deleteKorisnik/<?php echo $item->id_Korisnik; ?>">
+                    <button nam
+                    "del0" class='btn btn-danger glyphicon glyphicon-trash row-remove'></button></a></td>
+            </tr>
+
+        <?php } ?>
+        </tbody>
+    </table>
+    <a name="bot">
 </div>
 
-<div align = "center">
+<div align="center">
     <ul class="pagination">
         <li><a href="/admin/korisnik">First</a></li>
         <li><a href="/admin/korisnik?page=<?= $page->before; ?>">&laquo;</a></li>

@@ -1,41 +1,43 @@
 <div class="container">
-    <form action="/bars/newBar" method = "POST" enctype="multipart/form-data">
-    <div class="col-sm-4">
-        <div class="input-group">
-            <label for = "ime">Ime:</label>
-            <input class="form-control" type="text" name="ime" required>
+    <form action="/bars/newBar" method="POST" enctype="multipart/form-data">
+        <div class="col-sm-4">
+            <div class="input-group">
+                <label for="ime">Ime:</label>
+                <input class="form-control" type="text" name="ime" required>
+            </div>
+            <div class="input-group">
+                <label for="adresa">Adresa:</label>
+                <input class="form-control" type="text" name="adresa" required>
+            </div>
+            <div class="input-group">
+                <label for="grad">Grad:</label>
+                <input class="form-control" type="text" name="" required>
+            </div>
+            <div class="input-group">
+                <label for="telefon">Telefon:</label>
+                <input class="form-control" type="text" name="telefon" required>
+            </div>
+            <br>
+            <div>
+                <label for="opis">Opis:</label>
+                <textarea class="form-control" style="resize: none; margin-top: 5%;" cols="30" rows="10"
+                          maxlength="256" name="opis"></textarea>
+            </div>
         </div>
-        <div class="input-group">
-            <label for = "adresa">Adresa:</label>
-            <input class="form-control" type="text" name="adresa" required>
+        <div class="col-sm-6" style="margin-left: 5%;">
+            <label>Upload slika(max 5): </label>
+            <input class="file" type="file" id="files" name="files[]" multiple onchange="checkFiles(this.files)"
+                   accept="image/*"/>
+            <div id="img-status"></div>
+            <br/>
+            <output id="list"></output>
+            <script>
+                document.getElementById('files').addEventListener('change', handleFileSelect, false);
+            </script>
         </div>
-        <div class="input-group">
-            <label for = "grad">Grad:</label>
-            <input class="form-control" type="text" name="" required>
+        <div class="col-sm-12">
+            <button style="margin-left: 40%; width: 30%; color: white;" class="btn btn-success">Dodaj novi klub</button>
         </div>
-        <div class="input-group">
-            <label for = "telefon">Telefon:</label>
-            <input class="form-control" type="text" name="telefon" required>
-        </div>
-        <br>
-        <div>
-            <label for="opis">Opis:</label>
-            <textarea class="form-control"  style="resize: none; margin-top: 5%;" cols="30" rows="10"
-                      maxlength="256" name="opis"></textarea>
-        </div>
-    </div>
-    <div class="col-sm-6" style="margin-left: 5%;">
-        <label>Upload slika(max 5): </label>
-        <input class="file" type="file" id="files" name="files[]" multiple onchange = "checkFiles(this.files)" accept = "image/*"/>
-        <div id = "img-status"></div> <br />
-        <output id="list"></output>
-        <script>
-            document.getElementById('files').addEventListener('change', handleFileSelect, false);
-        </script>
-    </div>
-    <div class="col-sm-12">
-        <button style="margin-left: 40%; width: 30%; color: white;" class="btn btn-success" >Dodaj novi klub</button>
-    </div>
     </form>
 
 </div>

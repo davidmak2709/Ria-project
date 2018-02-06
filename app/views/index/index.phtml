@@ -1,45 +1,46 @@
 <!-- CONTAINER ZA PRINTANJE POJEDNIOG KLUBA, MOZDA BOLJE U MODELU DODATI FUNKCIJU PRINT ZA SVAKI POSEBNO -->
-<?php foreach($page->items as $item){ ?>
-<div class = "container">
-<div class = "row well">
-	<div class = "col-sm-4">
-		<?
-            $folder = "img/".$item->id_Klub."/";
-            if(file_exists($folder) && count(scandir($folder)) > 2){
-                $images = scandir($folder);
-                echo $this->tag->image([$folder . $images[2], "class" => "img-circle"]);
-            } else {
-                echo $this->tag->image(["img/default.png", "class" => "img-circle"]);
-            }
-        ?>
-	</div>
-	<div class = "col-sm-8">
-		<h2><a href = "/details?id=<?=$item->id_Klub;?>"><?php echo $item->ime; ?></a></h2><br> <!-- LINK NA STRANICU S DETALJIMA -->
-		<h5>Adresa:</a><?php echo $item->adresa; ?></h5>
-		<h5>Ocjena: <?php echo $item->ocjena; ?></h5>
-		<h5>Opis:</h5>
-		<p><?php echo $item->opis; ?></p>
-		<div class="col-sm-8" align="right"> 
+<?php foreach ($page->items as $item) { ?>
+    <div class="container">
+        <div class="row well">
+            <div class="col-sm-4">
+                <?
+                $folder = "img/" . $item->id_Klub . "/";
+                if (file_exists($folder) && count(scandir($folder)) > 2) {
+                    $images = scandir($folder);
+                    echo $this->tag->image([$folder . $images[2], "class" => "img-circle"]);
+                } else {
+                    echo $this->tag->image(["img/default.png", "class" => "img-circle"]);
+                }
+                ?>
+            </div>
+            <div class="col-sm-8">
+                <h2><a href="/details?id=<?= $item->id_Klub; ?>"><?php echo $item->ime; ?></a></h2><br>
+                <!-- LINK NA STRANICU S DETALJIMA -->
+                <h5>Adresa:</a><?php echo $item->adresa; ?></h5>
+                <h5>Ocjena: <?php echo $item->ocjena; ?></h5>
+                <h5>Opis:</h5>
+                <p><?php echo $item->opis; ?></p>
+                <div class="col-sm-8" align="right">
 
-		<? if (!Pretplata::isFollowed($this->session->get("id"),$item->id_Klub)): ?>
-			
-			<a href="/index/follow/<?= $item->id_Klub; ?>" class="btn btn-primary follow-btn">Prati</a>
-						
-		<? else: ?>
-				
-			<a href="/index/unfollow/<?= $item->id_Klub; ?>" class="btn btn-primary follow-btn">Odprati</a>
-		
-		<? endif ?>
-		
-		</div>
-	</div>
-</div>
-</div>
+                    <? if (!Pretplata::isFollowed($this->session->get("id"), $item->id_Klub)): ?>
+
+                        <a href="/index/follow/<?= $item->id_Klub; ?>" class="btn btn-primary follow-btn">Prati</a>
+
+                    <? else: ?>
+
+                        <a href="/index/unfollow/<?= $item->id_Klub; ?>" class="btn btn-primary follow-btn">Odprati</a>
+
+                    <? endif ?>
+
+                </div>
+            </div>
+        </div>
+    </div>
 <?php } ?>
 
 
 <!-- PAGINACIJA mozda bolje include jer se ponavlja-->
-<div align = "center">
+<div align="center">
     <ul class="pagination">
         <li><a href="/index">First</a></li>
         <li><a href="/index?page=<?= $page->before; ?>">&laquo;</a></li>

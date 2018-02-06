@@ -1,11 +1,11 @@
 <!-- CONTAINER ZA PRINTANJE POJEDNIOG EVENTA, MOZDA BOLJE U MODELU DODATI FUNKCIJU PRINT ZA SVAKI POSEBNO -->
-<?php foreach($page->items as $item){ ?>
-    <div class = "container">
-        <div class = "row well">
-            <div class = "col-sm-4">
-                <img src="img/images.png" class = "img-circle">
+<?php foreach ($page->items as $item) { ?>
+    <div class="container">
+        <div class="row well">
+            <div class="col-sm-4">
+                <img src="img/images.png" class="img-circle">
             </div>
-            <div class = "col-sm-8">
+            <div class="col-sm-8">
                 <h2><?php echo $item->naziv; ?></h2><br> <!-- LINK NA STRANICU S DETALJIMA -->
                 <h5>Datum: <?php echo $item->vrijeme; ?></h5>
                 <h5>Opis:</h5>
@@ -13,7 +13,7 @@
                 <h5>Broj dolazaka: <?php echo $item->rezervacija; ?></h5>
                 <div class="col-sm-8" align="right">
 
-                    <? if (!Rezervacija::isReserved($this->session->get("id"),$item->id_Dogadaj)): ?>
+                    <? if (!Rezervacija::isReserved($this->session->get("id"), $item->id_Dogadaj)): ?>
 
                         <a href="/events/reserve/<?= $item->id_Dogadaj; ?>" class="btn btn-primary follow-btn">Rezerviraj</a>
 
@@ -31,7 +31,7 @@
 <?php } ?>
 
 <!-- PAGINACIJA  mozda bolje include-->
-<div align = "center">
+<div align="center">
     <ul class="pagination">
         <li><a href="/events">First</a></li>
         <li><a href="/events?page=<?= $page->before; ?>">&laquo;</a></li>

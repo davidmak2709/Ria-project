@@ -27,7 +27,7 @@
             <label>Galerija</label> <span class="glyphicon glyphicon-picture" style="margin-left: 2%;"></span> <br>
             <?
             $folder = "img/" . $bar->getIdKlub() . "/";
-            if (file_exists($folder)  && count(scandir($folder)) > 2){
+            if (file_exists($folder) && count(scandir($folder)) > 2){
             $images = array_diff(scandir($folder), array('..', '.'));
             foreach ($images
 

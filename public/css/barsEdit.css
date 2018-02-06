@@ -8,7 +8,7 @@ img {
     height: 100%;
 }
 
-.btn-edit{
+.btn-edit {
     margin-right: 2%;
 }
 
@@ -24,27 +24,27 @@ img {
 .checkbox {
     position: absolute;
     bottom: 5%;
-    right:  5%;
+    right: 5%;
 }
 
-.input-label{
+.input-label {
     color: #337ab7;
     margin-left: 15%;
     margin-top: 4%;
 }
 
-.input-back{
+.input-back {
     position: absolute;
     background-color: white;
-    border-bottom: 1px solid  black;
+    border-bottom: 1px solid black;
     border-right: 1px solid black;
     height: 15%;
     width: 65%;
     bottom: 0%;
-    right:  0%;
+    right: 0%;
 }
 
-.images{
+.images {
     position: relative;
     width: 150px;
     height: 150px;
@@ -53,21 +53,21 @@ img {
     margin-top: 2%;
 }
 
-#files{
+#files {
     margin-top: 3%;
     margin-left: 5%;
 }
 
-#img-status{
+#img-status {
     color: red;
 
 }
 
-label{
-   color: #337ab7;
+label {
+    color: #337ab7;
 }
 
-input{
+input {
     margin-left: 5%;
 }
 

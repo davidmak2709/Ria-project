@@ -1,16 +1,16 @@
 html, body {
-	max-width: 100%;
-	overflow-x: hidden;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
-.login{
-	margin-top: 10%;
+.login {
+    margin-top: 10%;
 }
 
-.login-btn{
-	width: 150px;
+.login-btn {
+    width: 150px;
 }
 
-.form-control{
-	width:30%;
+.form-control {
+    width: 30%;
 }

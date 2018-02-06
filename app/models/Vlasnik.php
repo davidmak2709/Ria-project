@@ -1,53 +1,58 @@
 <?php
-	use Phalcon\Mvc\Model;
 
-	class Vlasnik extends Model implements UserInterface {
-		
-		private $id_Vlasnik;
-		private $id_korisnik;
-		
-		public function addUser($values,$pwd){
-			$user = new Korisnik();
-			$retval = $user->myValidation($values);
+use Phalcon\Mvc\Model;
 
-            if($retval !== false){
-			    return $retval;
-            }
+class Vlasnik extends Model implements UserInterface
+{
 
-            $bar = new Klub();
+    private $id_Vlasnik;
+    private $id_korisnik;
 
-			$validation = $bar->myValidation($values["bar"]);
+    public function addUser($values, $pwd)
+    {
+        $user = new Korisnik();
+        $retval = $user->myValidation($values);
 
-			if($validation !== false){
-                return $validation;
-            }
-
-            try{
-                $user->addUser($values,$pwd);
-                $values["id_korisnik"] = $user->getIdKorisnik();
-
-                $this->save($values);
-                $values["bar"]["id_Vlasnik"] = $this->id_Vlasnik;
-                $values["bar"]["ocjena"] = 0;
-
-                $bar->addKlub($values["bar"]);
-            } catch (Exception $exception){
-                echo $exception->getMessage();
-            }
-
-            return false;
-
-		}
-
-		public function getIdKorisnik(){
-		    return $this->id_korisnik;
+        if ($retval !== false) {
+            return $retval;
         }
 
-        public function getIdVlasnik(){
-		    return $this->id_Vlasnik;
+        $bar = new Klub();
+
+        $validation = $bar->myValidation($values["bar"]);
+
+        if ($validation !== false) {
+            return $validation;
         }
 
+        try {
+            $user->addUser($values, $pwd);
+            $values["id_korisnik"] = $user->getIdKorisnik();
 
-	}
-	
+            $this->save($values);
+            $values["bar"]["id_Vlasnik"] = $this->id_Vlasnik;
+            $values["bar"]["ocjena"] = 0;
+
+            $bar->addKlub($values["bar"]);
+        } catch (Exception $exception) {
+            echo $exception->getMessage();
+        }
+
+        return false;
+
+    }
+
+    public function getIdKorisnik()
+    {
+        return $this->id_korisnik;
+    }
+
+    public function getIdVlasnik()
+    {
+        return $this->id_Vlasnik;
+    }
+
+
+}
+
 ?>

@@ -1,21 +1,21 @@
-<div class="col-sm-12" >
-    <form action="/addevents/add" method = "POST" enctype="multipart/form-data">
+<div class="col-sm-12">
+    <form action="/addevents/add" method="POST" enctype="multipart/form-data">
         <div style="height: 50%; width: 100%;">
             <label style="margin-left: 5%;  float: left;">Odaberite klub:</label>
-        <?php
-          foreach($myClubs as $club){
-              echo "<div style='text-align: center;  float: left;  width: 120px;  height: 120px;  margin: 2%;'>";
-              $folder = "img/" . $club["id_Klub"] ."/";
-              if(file_exists($folder)) {
-                  $images = scandir($folder);
-                  echo $this->tag->image($folder . $images[2]);
-              } else {
-                  echo $this->tag->image("img/default.png");
-              }
-              echo "<b style='margin-left: 2%; margin-right: 5%;'>".$club["ime"]."</b><input name = 'bars[]' type='checkbox' value='".$club["id_Klub"]."'>";
-              echo "</div>";
-          }
-        ?>
+            <?php
+            foreach ($myClubs as $club) {
+                echo "<div style='text-align: center;  float: left;  width: 120px;  height: 120px;  margin: 2%;'>";
+                $folder = "img/" . $club["id_Klub"] . "/";
+                if (file_exists($folder)) {
+                    $images = scandir($folder);
+                    echo $this->tag->image($folder . $images[2]);
+                } else {
+                    echo $this->tag->image("img/default.png");
+                }
+                echo "<b style='margin-left: 2%; margin-right: 5%;'>" . $club["ime"] . "</b><input name = 'bars[]' type='checkbox' value='" . $club["id_Klub"] . "'>";
+                echo "</div>";
+            }
+            ?>
         </div>
         <div class="input-group" style="margin-top: 2%; margin-left: 25%">
             <label class="input-label">Naziv:</label>
@@ -23,11 +23,12 @@
         </div>
         <div class="input-group" style="margin-left: 25%">
             <label class="input-label">Vrijeme:</label>
-            <input type="date" name="vrijeme" min="<?php echo date('Y-m-d');?>"><br>
+            <input type="date" name="vrijeme" min="<?php echo date('Y-m-d'); ?>"><br>
         </div>
         <div class="input-group" style="margin-left: 25%">
             <label class="input-label">Opis:</label><br>
-            <textarea style="resize: none; margin-left: 2%; margin-bottom: 2%;" cols="30" rows="10" maxlength="256" name="opis"></textarea>
+            <textarea style="resize: none; margin-left: 2%; margin-bottom: 2%;" cols="30" rows="10" maxlength="256"
+                      name="opis"></textarea>
         </div>
         <div style="margin-left: 35%">
             <button name="submit" class="btn btn-primary">Potvrdi</button>
