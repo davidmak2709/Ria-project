@@ -41,7 +41,7 @@ class DetailsController extends Controller{
 		}
 		elseif (!$this->session->get("id")) {
 			$this->flashSession->error('You have to be logged in!');
-			return $this->response->redirect('login');
+			return $this->response->redirect('/login');
 		}
 		else{
 			$ocjena=new Ocjena_klub();
@@ -52,7 +52,7 @@ class DetailsController extends Controller{
 			else{
 				$this->flashSession->notice("Već ste ocijenili ovaj klub!");
 			}
-			return $this->response->redirect('details?id='.$_POST["id_Klub"].'#rating_done');
+			return $this->response->redirect('/details?id='.$_POST["id_Klub"].'#rating_done');
 		}
 
 	}

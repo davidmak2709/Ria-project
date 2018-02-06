@@ -76,7 +76,7 @@
 	</div>
 	<div class="col-sm-8">
 		<div class = "container" height=400px>
- 			 <iframe width=100% height=350px src="https://www.google.com/maps/embed/v1/place?q=<?= $bar->getAdresa();?>,Rijeka		
+ 			 <iframe width=100% height=350px src="https://www.google.com/maps/embed/v1/place?q=<? echo $bar->getAdresa() .",". $bar->getGrad() ?>
     		  &zoom=16
     		  &key=AIzaSyAFjIZDe8vEiCE99V5Sl7xxKXlhyOts_ew">
   			</iframe>

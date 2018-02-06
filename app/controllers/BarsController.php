@@ -46,8 +46,8 @@ class BarsController extends Controller
     }
 
     public function editAction($id){
-        $this->assets->addCss("css/barsEdit.css");
-        $this->assets->addJs("js/edit.js");
+        $this->assets->addCss("/css/barsEdit.css");
+        $this->assets->addJs("/js/edit.js");
         $this->view->bar = Klub::findFirst($id);
 
 

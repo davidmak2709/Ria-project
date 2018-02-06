@@ -44,7 +44,6 @@
        			$this->session->set("id",$user->getIdKorisnik());
        			$this->session->set("first_name",$user->getFirstName());
 
-       			echo "aa";
        			$this->response->redirect("/index");
 
 

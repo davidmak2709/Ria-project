@@ -21,9 +21,6 @@ class EventsController extends Controller{
 			$this->view->page=$paginator->getPaginate();
 	}
 
-	public function addAction(){
-	}
-
 	public function reserveAction($id){
 		
 
@@ -41,7 +38,7 @@ class EventsController extends Controller{
 			$var2->save();
 
 
-		return $this->response->redirect("events");
+		return $this->response->redirect("/events");
 				
 	}
 
@@ -61,7 +58,7 @@ class EventsController extends Controller{
 			$var2->rezervacija -= 1;
 			$var2->save();
 				
-		return $this->response->redirect("events");
+		return $this->response->redirect("/events");
 				
 		}
 

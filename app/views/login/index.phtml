@@ -1,26 +1,26 @@
- <?php echo $this->session->get("user");?>
-	<div class = "conatiner login well" align = "center">
-		<p><?php $this->flashSession->output() ?></p>
-		<h2><b>PRIJAVA</b></h2>
-		<?php echo $this->tag->form("login/login"); ?>
-		<div class = "form-group">
-			<label for = "Email">Email: </label>
-			<br>
-			<?php echo $this->tag->textField(["email","class" => "form-control"]); ?>			
-		</div>
-		<div class = "form-group">
-			<label for = "Password">Password: </label>
-			<br>
-			<?php echo $this->tag->passwordField(["password","class"=>"form-control"]); ?>			
-		</div>
-		<div class = "btn-group">
-			<button class = "btn btn-success login-btn">Prijava</button>
-		</div>		
-		<?php echo $this->tag->endForm(); ?>
-		<br>
-		<a href="login/facebook" class="btn btn-primary">Prijavite se putem Facebook</a>
-		<br>
-		<br>
-		<a class = "btn btn-info login-btn" role = "button" href="signup">Registracija</a>
-		<a href="index" class = "btn btn-danger login-btn">Povratak</a>
-	</div>
+<?php echo $this->session->get("user"); ?>
+<div class="conatiner login well" align="center">
+    <p><?php $this->flashSession->output() ?></p>
+    <h2><b>PRIJAVA</b></h2>
+    <?php echo $this->tag->form("login/login"); ?>
+    <div class="form-group">
+        <label for="Email">Email: </label>
+        <br>
+        <?php echo $this->tag->textField(["email", "class" => "form-control"]); ?>
+    </div>
+    <div class="form-group">
+        <label for="Password">Password: </label>
+        <br>
+        <?php echo $this->tag->passwordField(["password", "class" => "form-control"]); ?>
+    </div>
+    <div class="btn-group">
+        <button class="btn btn-success login-btn">Prijava</button>
+    </div>
+    <?php echo $this->tag->endForm(); ?>
+    <br>
+    <a href="login/facebook" class="btn btn-primary">Prijavite se putem Facebook</a>
+    <br>
+    <br>
+    <a class="btn btn-info login-btn" role="button" href="signup">Registracija</a>
+    <a href="index" class="btn btn-danger login-btn">Povratak</a>
+</div>

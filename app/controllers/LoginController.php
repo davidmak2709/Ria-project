@@ -80,7 +80,7 @@
 			}
 			
 			if (!$accessToken){
-				$this->response->redirect("login");
+				$this->response->redirect("/login");
 			}
 			
 			$oAuth2Client = $fb->getOAuth2Client();
