@@ -1,10 +1,10 @@
 <div class="col-sm-12" >
     <form action="/addevents/add" method = "POST" enctype="multipart/form-data">
-        <div style="height: 250px; width: 100%;">
-            <label style="margin-left: 5%;">Odaberite klub:</label>
+        <div style="height: 50%; width: 100%;">
+            <label style="margin-left: 5%;  float: left;">Odaberite klub:</label>
         <?php
           foreach($myClubs as $club){
-              echo "<div style='text-align: center; width: 150px; height: 150px; margin-left: 2%; margin-top: 2%;'>";
+              echo "<div style='text-align: center;  float: left;  width: 120px;  height: 120px;  margin: 2%;'>";
               $folder = "img/" . $club["id_Klub"] ."/";
               if(file_exists($folder)) {
                   $images = scandir($folder);
@@ -17,7 +17,7 @@
           }
         ?>
         </div>
-        <div class="input-group" style="margin-left: 25%">
+        <div class="input-group" style="margin-top: 2%; margin-left: 25%">
             <label class="input-label">Naziv:</label>
             <input type="text" name="naziv"><br>
         </div>
