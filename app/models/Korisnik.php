@@ -4,8 +4,11 @@
     use Phalcon\Validation;
     use Phalcon\Validation\Validator\Uniqueness;
     use Phalcon\Validation\Validator\PresenceOf;
+    use Phalcon\Validation\Validator\Email as EmailValidator;
+    use Phalcon\Validation\Validator\Identical;
 
-	class Korisnik extends Model implements UserInterface {
+
+class Korisnik extends Model implements UserInterface {
 		private $id_Korisnik;
 		private $password;
 		private $email;
@@ -15,15 +18,14 @@
 
 
 		public function addUser($values,$pwd){
-			$values["password"] = $pwd;
+			unset($values["bar"]);
 			$values["ime"] = $values["first_name"] ." ". $values["last_name"];
-		
 
 			$val = Korisnik::myValidation($values);
-
+            $values["password"] = $pwd;
 
 			if($val)
-			    return false;
+			    return $val;
 			else{
 			    try{
 			        $this->save($values);
@@ -66,12 +68,52 @@
 		public  static function myValidation($values){
             $validation = new Validation();
 
+            if($values["r-email"] && $values["r-password"]){
+            $validation->add(
+                [
+                    "email",
+                ],
+                new Identical(
+                    [
+                        "value" => [
+                            "email" => $values["r-email"],
+                        ],
+                        "message" => [
+                            "email"  => "E-mail mora biti jednak kao i ponovljeni",
+                        ],
+                    ]
+                ));
+                $validation->add(
+                    [
+                        "password",
+                    ],
+                    new Identical(
+                        [
+                            "value" => [
+                                "password" => $values["r-password"],
+                            ],
+                            "message" => [
+                                "password"  => "Lozinke nisu iste",
+                            ],
+                        ]
+                    ));
+            }
+
+            $validation->add(
+                "email",
+                new EmailValidator(
+                    [
+                        "message" => "E-mail neispravan: example@example.com",
+                    ]
+                )
+            );
+
             $validation->add(
                 "email",
                 new Uniqueness(
                     [
                         "model"   => new Korisnik(),
-                        "message" => ":field je vec korišten",
+                        "message" => "E-mail je vec korišten",
                     ]
                 )
             );
@@ -79,7 +121,7 @@
             $messages = $validation->validate($values);
 
             if(count($messages)){
-                return true;
+                return $messages;
             } else {
                 return false;
             }

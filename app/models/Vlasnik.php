@@ -8,10 +8,12 @@
 		
 		public function addUser($values,$pwd){
 			$user = new Korisnik();
-			$values["id_korisnik"] = $user->addUser($values,$pwd);
+			$retval = $user->addUser($values,$pwd);
 
-			if($values["id_korisnik"] === false){
-			    return false;
+			if(!is_string($retval)){
+			    return $retval;
+            } else {
+			    $values["id_korisnik"] = $retval;
             }
 
 			try{
@@ -19,12 +21,15 @@
             } catch (Exception $exception){
 			    echo $exception->getMessage();
             }
+
 			$bar = new Klub();
 			if($this->save($values)){
 				$values["bar"]["id_Vlasnik"] = $this->id_Vlasnik;
 				$values["bar"]["ocjena"] = 0;
 				$bar->addKlub($values["bar"]);
 			}
+
+			return false;
 
 		}
 

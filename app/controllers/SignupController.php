@@ -12,15 +12,17 @@
 		public function registerAction(){
 			if($this->request->isPost()){
 				$user = User::getUserType($this->request->getPost("Tip"));
-				
 				$retval = $user->addUser($this->request->getPost(),
-							$this->security->hash($this->request->getPost("password"))
-						);
+							$this->security->hash($this->request->getPost("password")));
 
-				if($retval === false){
-                    $this->flashSession->error("E-MAIL SE VEĆ KORISTI");
-                    return $this->response->redirect('/signup');
+				if($retval !== false){
+				    while ($retval->current()){
+                        $this->flashSession->error($retval->current()->getMessage());
+                        $retval->next();
+                    }
+				    return $this->response->redirect('/signup');
                 }
+
 				if($this->session->has("facebookId")){
 					$fb = new Facebook();
 
@@ -90,7 +92,7 @@
 			}
 			
 			if (!$accessToken){
-				$this->response->redirect("login");
+				$this->response->redirect("/login");
 			}
 			
 			$oAuth2Client = $fb->getOAuth2Client();
