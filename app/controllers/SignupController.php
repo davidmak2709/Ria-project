@@ -62,7 +62,7 @@
 
 			$helper = $fb->getRedirectLoginHelper();
 
-			$redirectUrl = "http://dir.dev/signup/callback";
+			$redirectUrl = "http://".$this->request->getHttpHost()."/signup/callback";
 			$permissions = ['email'];
 			$loginURL = $helper->getLoginUrl($redirectUrl,$permissions); 
 

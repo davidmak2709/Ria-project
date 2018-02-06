@@ -50,7 +50,7 @@
 				]);
 
 			$helper = $fb->getRedirectLoginHelper();
-			$redirectUrl = $this->request->getHTTPReferer() ."/callback";
+			$redirectUrl =  "http://".$this->request->getHttpHost()."/login/callback";
 			$permissions = ['email'];
 			$loginURL = $helper->getLoginUrl($redirectUrl,$permissions); 
 
