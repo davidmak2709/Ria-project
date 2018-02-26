@@ -13,7 +13,7 @@ use Phalcon\Config\Adapter\Ini as ConfigIni;
 use Phalcon\Mvc\Dispatcher;                //potrebno za acl
 use Phalcon\Events\Manager as EventsManager; //potrebno za acl
 use Phalcon\Mvc\Model\Manager as ModelsManager;
-
+/*AAAA*/
 
 define('BASE_PATH', dirname(__DIR__));
 define('APP_PATH', BASE_PATH . '/app');
